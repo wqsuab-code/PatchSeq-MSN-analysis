@@ -1,0 +1,8 @@
+.decision-note { margin: 0 18px 12px; padding: 10px 12px; border-left: 4px solid #c43c39; background: #fff4f2; color: #421b19; font-size: 13px; }
+.canvas-shell h2 { margin: 18px 18px 8px; font-size: 15px; font-weight: 600; }
+.data-table-wrap { margin: 0 18px 18px; overflow-x: auto; }
+.data-table-wrap table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table-wrap th, .data-table-wrap td { padding: 7px 9px; border-bottom: 1px solid #dde2e8; text-align: right; white-space: nowrap; }
+.data-table-wrap th:first-child, .data-table-wrap td:first-child, .data-table-wrap th:last-child, .data-table-wrap td:last-child { text-align: left; }
+#stabilitySvg { display: block; max-width: none; }
+@media (max-width: 900px) { .decision-note { margin-left: 10px; margin-right: 10px; } }

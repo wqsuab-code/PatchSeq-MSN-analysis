@@ -1,0 +1,32 @@
+CURRENT FIVE-CLASS CORE-SIX E RADAR — FROZEN INPUTS
+Source matrix: C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\outputs\T-type_QC_RiskCells\E_consensus_core_Efeature_zscore_heatmap\E_consensus_core18_Efeature_Zscore_heatmap_W5.5_Zscore_long.csv
+Cohort: 450 HC-GC consensus cells; M377_Batch5 excluded as previously specified.
+Classes: E1 n=142; E2 n=160; E3 n=45; E4 n=61; E5 n=42.
+No PCA, clustering, class assignment, feature order, or feature Z-score was recalculated.
+
+Feature order (identical in all panels):
+1. E_Input.resistance..MOhm. [Rin; source label: Input resistance]
+2. E_Membrane.time.constant..ms. [Tau; source label: Membrane tau]
+3. E_Rheobase..pA. [Rheo; source label: Rheobase]
+4. E_Max.number.of.APs [MaxAP; source label: Max APs]
+5. E_Afterhyperpolarization..mV. [AHP; source label: AHP]
+6. E_AP.amplitude.adaptation.index [APad; source label: AP amplitude adaptation]
+
+Frozen six-feature Z-score matrix observed range: -4.755243 to 4.814617.
+Shared radar display range: Z=-3.0 to 3.0; values outside are display-clipped only; stored Z-scores are unchanged.
+Zero angle: 12 o'clock; clockwise; identical radius and feature angles in every panel.
+Center: feature-wise median; interval: feature-wise 25th-75th percentiles.
+Cells: 0.25 pt, alpha=0.08; median: 0.90 pt; median fill alpha=0.18; IQR alpha=0.12.
+Grid: 0.35 pt, alpha=0.42; Arial 4.0 pt; no radial values; no legend.
+Colors: E1=#4E79A7; E2=#F28E2B; E3=#59A14F; E4=#2AA6B8; E5=#B07AA1.
+Individual canvas: 1.25 x 1.00 in; combined: 6.25 x 1.00 in.
+Outputs: white and true-transparent PNG at 600 dpi; white and transparent vector PDF.
+
+Pre-export QA:
+E1: PASS
+E2: PASS
+E3: PASS
+E4: PASS
+E5: PASS
+Combined: PASS
+Transparent PNG alpha channel: PASS (corner alpha=0).

@@ -1,0 +1,17 @@
+panel,title,primary_data,secondary_data,statistical_unit,method_key
+a,Held-out balanced accuracy,01_date_grouped_model_metrics.csv,02_model_summary.csv,one date-grouped held-out split,200 group-aware 75:25 splits; fold-fitted transform and PCA
+b,Held-out macro-F1,01_date_grouped_model_metrics.csv,02_model_summary.csv,one date-grouped held-out split,200 group-aware 75:25 splits; macro-average across E1-E5
+c,Confusion (%),05_confusion_row_fraction.csv,04_confusion_counts.csv,one cell after repeated held-out probability aggregation,RBF SVM aggregated OOF-like probabilities
+d,Permutation control,07_permutation_null.csv,00_analysis_summary.json,one structured label permutation,100 experimental-day-block permutations; five fixed grouped splits
+e,One-vs-rest ROC,06_roc_pr_auc.csv,03_best_model_cell_predictions.csv,one cell with aggregated held-out probability,one-vs-rest ROC by class
+f,One-vs-rest PR,06_roc_pr_auc.csv,03_best_model_cell_predictions.csv,one cell with aggregated held-out probability,one-vs-rest precision-recall by class
+g,NPC and K sensitivity,08_NPC_K_sensitivity.csv,,one NPC-K specification,Ward clustering ARI scan; NPC 2-10 and K 2-8
+h,Experimental-day-resampled discovery,09_date_resampled_discovery.csv,,one date-resampled algorithm fit,200 resamples for each of four clustering algorithms
+i,Full-data algorithm agreement,10_full_data_algorithm_agreement.csv,,one full-data algorithm fit,K=5 clustering ARI against frozen labels
+j,Cell-level consensus margin,11_cell_consensus_margin.csv,,one cell,Ward co-clustering margin across 200 date resamples
+k,Assignment stability by class,11_cell_consensus_margin.csv,,one cell,cell consensus margin grouped by frozen E class
+l,Association with metadata,12_metadata_association.csv,,one metadata variable,bias-corrected Cramer's V plus 1000 structured permutations
+m,Held-out permutation importance,13_permutation_importance.csv,,one feature in one grouped split,50 splits; test-set permutation importance; 8 repeats; balanced accuracy decrease
+n,MDI stability,14_MDI_stability.csv,,one feature in one grouped split,50 train-only Extra Trees fits; median MDI
+o,Cross-model rank agreement,16_cross_model_ranks.csv,,one feature after averaging 50 ranks,Extra Trees MDI rank versus logistic absolute-coefficient rank
+p,Progressive feature ablation,15_progressive_ablation.csv,,one feature subset in one grouped split,50 splits; train-ranked subsets; held-out balanced accuracy

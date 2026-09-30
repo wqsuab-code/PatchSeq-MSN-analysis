@@ -1,0 +1,13 @@
+{
+  "analysis_date": "2026-09-24",
+  "python": "3.14.3",
+  "python_executable": "C:\\Users\\53461\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "pandas": "2.3.3",
+  "scipy": "1.17.1",
+  "scikit_learn": "1.8.0",
+  "h5py": "3.16.0",
+  "matplotlib": "3.10.9",
+  "joblib": "1.5.3"
+}

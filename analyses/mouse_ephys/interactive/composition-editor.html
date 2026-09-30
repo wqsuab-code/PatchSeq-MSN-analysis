@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mouse E-type strict T-identity composition editor</title>
+  <meta name="description" content="Interactive editor for stable D1, stable D2 and ambiguous T identities across five Mouse HC–GC consensus E-types.">
+  <link rel="stylesheet" href="rrr-editor.css">
+  <link rel="stylesheet" href="composition-editor.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Mouse E-type strict T-identity composition editor</h1><p>450 HC×GC consensus cells · 441 stable D1/D2 + 9 T-identity ambiguous</p></div>
+    <div class="top-actions"><a class="button" href="tsne-editor.html">t-SNE workflow</a><a class="button" href="stability-statistics.html">E stability statistics</a><a class="button" href="rrr-editor.html">RRR editor</a><a class="button" href="index.html">Feature studio</a></div>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="Composition figure controls">
+      <details open><summary>Data and layout</summary><div class="control-group">
+        <label>Display mode<select id="mode"><option value="percent" selected>Within-class percentage</option><option value="count">Cell count</option></select></label>
+        <label class="check"><input id="showAmbiguous" type="checkbox" checked>Include T-identity ambiguous cells</label>
+        <label>Stack order<select id="stackOrder"><option value="D1,D2,Ambiguous" selected>D1 · D2 · ambiguous</option><option value="Ambiguous,D1,D2">Ambiguous · D1 · D2</option><option value="D2,D1,Ambiguous">D2 · D1 · ambiguous</option></select></label>
+        <label>E-type order<input id="classOrder" type="text" value="E1,E2,E3,E4,E5"></label>
+        <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="260" max="1200" step="10" value="560"></label>
+        <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="240" max="1000" step="10" value="460"></label>
+        <label>Left margin <output id="marginLeftValue"></output><input id="marginLeft" type="range" min="20" max="220" value="72"></label>
+        <label>Right margin <output id="marginRightValue"></output><input id="marginRight" type="range" min="10" max="220" value="34"></label>
+        <label>Top margin <output id="marginTopValue"></output><input id="marginTop" type="range" min="10" max="220" value="62"></label>
+        <label>Bottom margin <output id="marginBottomValue"></output><input id="marginBottom" type="range" min="20" max="220" value="62"></label>
+      </div></details>
+
+      <details open><summary>Bars and colors</summary><div class="control-group">
+        <label>D1 color<input id="colorD1" type="color" value="#ff379b"></label>
+        <label>D2 color<input id="colorD2" type="color" value="#00eeb3"></label>
+        <label>T-identity ambiguous color<input id="colorAmbiguous" type="color" value="#b8b8b8"></label>
+        <label>Bar width <output id="barWidthValue"></output><input id="barWidth" type="range" min="0.1" max="1" step="0.01" value="0.68"></label>
+        <label>Fill opacity <output id="barOpacityValue"></output><input id="barOpacity" type="range" min="0" max="1" step="0.01" value="1"></label>
+        <label>Border width <output id="borderWidthValue"></output><input id="borderWidth" type="range" min="0" max="5" step="0.1" value="0.6"></label>
+        <label>Border color<input id="borderColor" type="color" value="#ffffff"></label>
+        <label>Canvas color<input id="canvasColor" type="color" value="#ffffff"></label>
+      </div></details>
+
+      <details open><summary>Axes and text</summary><div class="control-group">
+        <label>Title<input id="title" type="text" value=""></label>
+        <label>Title size <output id="titleSizeValue"></output><input id="titleSize" type="range" min="4" max="36" step="0.5" value="14"></label>
+        <label>Title X fraction <output id="titleXValue"></output><input id="titleX" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+        <label>Title Y <output id="titleYValue"></output><input id="titleY" type="range" min="5" max="150" value="24"></label>
+        <label>Y-axis title<input id="yLabel" type="text" value="Cells (%)"></label>
+        <label>Font family<select id="fontFamily"><option>Arial</option><option>Helvetica</option><option>Times New Roman</option></select></label>
+        <label>Axis/tick font size <output id="axisFontSizeValue"></output><input id="axisFontSize" type="range" min="4" max="24" step="0.5" value="10"></label>
+        <label>Y-title size <output id="yLabelSizeValue"></output><input id="yLabelSize" type="range" min="4" max="28" step="0.5" value="11"></label>
+        <label>Y minimum<input id="yMin" type="number" step="any" placeholder="automatic"></label>
+        <label>Y maximum<input id="yMax" type="number" step="any" placeholder="automatic"></label>
+        <label>Y tick count<input id="tickCount" type="number" min="2" max="12" step="1" value="5"></label>
+        <label>Tick length <output id="tickLengthValue"></output><input id="tickLength" type="range" min="0" max="20" step="0.5" value="5"></label>
+        <label>Axis width <output id="axisWidthValue"></output><input id="axisWidth" type="range" min="0" max="5" step="0.1" value="0.8"></label>
+        <label>Axis color<input id="axisColor" type="color" value="#111111"></label>
+        <label class="check"><input id="showAxes" type="checkbox" checked>Axis lines</label>
+        <label class="check"><input id="showTicks" type="checkbox" checked>Y ticks</label>
+        <label class="check"><input id="showTickLabels" type="checkbox" checked>Y tick labels</label>
+        <label class="check"><input id="showXLabels" type="checkbox" checked>E-type labels</label>
+        <label class="check"><input id="showYLabel" type="checkbox" checked>Y-axis title</label>
+      </div></details>
+
+      <details><summary>Values and legend</summary><div class="control-group">
+        <label class="check"><input id="showSegmentLabels" type="checkbox">Values inside bars</label>
+        <label>Value format<select id="valueFormat"><option value="percent">Percentage</option><option value="count">Count</option><option value="both">Count + percentage</option></select></label>
+        <label>Value font size <output id="valueSizeValue"></output><input id="valueSize" type="range" min="3" max="24" step="0.5" value="8"></label>
+        <label>Value color<input id="valueColor" type="color" value="#111111"></label>
+        <label class="check"><input id="showTotals" type="checkbox">Total n above bars</label>
+        <label class="check"><input id="showLegend" type="checkbox" checked>Legend</label>
+        <label>Legend X fraction <output id="legendXValue"></output><input id="legendX" type="range" min="0" max="1" step="0.01" value="0.66"></label>
+        <label>Legend Y <output id="legendYValue"></output><input id="legendY" type="range" min="5" max="180" value="24"></label>
+        <label>Legend font size <output id="legendSizeValue"></output><input id="legendSize" type="range" min="4" max="24" step="0.5" value="10"></label>
+        <label>Legend swatch width <output id="legendSwatchWidthValue"></output><input id="legendSwatchWidth" type="range" min="4" max="60" value="24"></label>
+        <label>Legend gap <output id="legendGapValue"></output><input id="legendGap" type="range" min="20" max="180" value="72"></label>
+      </div></details>
+
+      <details><summary>Export</summary><div class="control-group">
+        <label>Figure width (in)<input id="exportWidth" type="number" min="1" max="20" step="0.1" value="2.2"></label>
+        <label>PNG resolution<select id="exportDpi"><option>300</option><option selected>600</option><option>900</option><option>1200</option></select></label>
+      </div></details>
+
+      <div class="actions">
+        <button id="saveDefault" class="wide" type="button">Save current parameters as default</button>
+        <button id="resetAll" class="wide" type="button">Reset figure</button>
+        <button id="exportSvg" type="button">Export SVG</button>
+        <button id="exportPng" type="button">Export PNG</button>
+        <button id="exportCsv" type="button">Export data CSV</button>
+        <button id="exportLayout" type="button">Export layout</button>
+        <label class="button wide" for="importLayout">Import layout JSON</label><input id="importLayout" type="file" accept="application/json" hidden>
+      </div>
+      <p class="hint">“Save current parameters as default” stores the complete current figure state in this browser. Reloading the page and “Reset figure” will restore that saved state. The preview, SVG and PNG are generated from the same SVG state. Strict identity requires agreement between RPCA and centroid-based D1/D2 calls. Percentages use all HC×GC consensus cells within each E-type as the denominator.</p>
+    </aside>
+    <section class="canvas-shell">
+      <div class="canvas-head"><strong>Live strict T-identity composition preview</strong><span id="compositionSummary">Loading data…</span></div>
+      <p id="compositionStatus" role="status">Loading consensus labels…</p>
+      <div class="canvas-scroll composition-scroll"><svg id="compositionSvg" role="img" aria-label="Stable D1, stable D2 and ambiguous T-identity percentages within Mouse E-types"></svg></div>
+      <div class="data-table-wrap"><table id="compositionTable"><thead><tr><th>E-type</th><th>Stable D1, n</th><th>Stable D1, %</th><th>Stable D2, n</th><th>Stable D2, %</th><th>Ambiguous, n</th><th>Ambiguous, %</th><th>Total</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+  <script src="composition-editor.js"></script>
+</body>
+</html>

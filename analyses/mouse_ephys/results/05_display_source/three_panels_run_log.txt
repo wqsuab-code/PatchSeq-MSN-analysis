@@ -1,0 +1,6 @@
+Three separate HC/GC panels
+Active cells: 493
+HC x GC consensus: 450/493 (91.28%)
+Dendrogram: Ward.D2 on fixed NPC3; inner ring HC K=5; outer ring GC merged K=5
+t-SNE: GC merged K=5; P45/I1500/seed777 frozen coordinates
+Matrix: HC rows x GC columns

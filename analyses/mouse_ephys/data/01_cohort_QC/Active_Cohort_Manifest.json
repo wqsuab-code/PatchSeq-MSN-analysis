@@ -1,0 +1,51 @@
+{
+  "active_cohort_policy": "Apply config/e_type_global_exclusions.txt",
+  "globally_excluded_ids": [
+    "A1175_Batch4",
+    "J5203_Batch6",
+    "M1142_Batch5",
+    "M3104_Batch5",
+    "M3251_Batch5",
+    "M377_Batch5",
+    "O8232_Batch2",
+    "O932_Batch2"
+  ],
+  "tables": {
+    "Final18_PCA_input": {
+      "source": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\pca_shift_sum_final18\\ShiftSumNorm10000_Log1p_Zscore_Final18_PCA_input.csv",
+      "output": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\active_cohort\\Active_Final18_PCA_input.csv",
+      "source_rows": 494,
+      "active_rows": 493,
+      "removed_from_source": [
+        "M377_Batch5"
+      ]
+    },
+    "Frozen_HC5_assignments": {
+      "source": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\hc5_tree_distillation\\HC5_Tree_Distillation_All494_Assignments.csv",
+      "output": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\active_cohort\\Active_Frozen_HC5_assignments.csv",
+      "source_rows": 494,
+      "active_rows": 493,
+      "removed_from_source": [
+        "M377_Batch5"
+      ]
+    },
+    "Frozen_expert_assignments": {
+      "source": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\corrected_e1e5_physioexpert\\Corrected_E1E5_PhysioExpert_All494_Assignments.csv",
+      "output": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\active_cohort\\Active_Frozen_expert_assignments.csv",
+      "source_rows": 494,
+      "active_rows": 493,
+      "removed_from_source": [
+        "M377_Batch5"
+      ]
+    },
+    "Frozen_triple_consensus_assignments": {
+      "source": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\fixed_npc3_res1.5_merged_k5_tsne\\p45_i1500_seed777_triple_consensus_current_expert_size1p5\\Seurat_HC_PCguidedExpert_TripleConsensus_Cell_Assignments.csv",
+      "output": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\e_type_qc\\active_cohort\\Active_Frozen_triple_consensus_assignments.csv",
+      "source_rows": 494,
+      "active_rows": 493,
+      "removed_from_source": [
+        "M377_Batch5"
+      ]
+    }
+  }
+}

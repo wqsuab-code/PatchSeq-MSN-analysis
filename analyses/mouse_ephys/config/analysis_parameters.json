@@ -1,0 +1,112 @@
+{
+  "module": "mouse_ephys",
+  "label_order": "GC-HC",
+  "cohorts": {
+    "raw_archive": 585,
+    "main_before_stage1": 556,
+    "stage1": 549,
+    "e_qc_complete_case": 494,
+    "active_taxonomy": 493,
+    "gc_hc_consensus": 450,
+    "strict_t_identity": 441,
+    "t_ambiguous_within_consensus": 9
+  },
+  "e_qc": {
+    "holding_mp_mV_max_exclusive": -55,
+    "input_resistance_MOhm_min": 100,
+    "input_resistance_MOhm_max": 1000,
+    "ap_amplitude_mV_min_exclusive": 40,
+    "max_aps_min_exclusive": 2,
+    "ap_width_ms_max": 3,
+    "rheobase_pA_min": 10,
+    "rheobase_pA_max": 300,
+    "complete_case_required": true
+  },
+  "preprocessing": {
+    "primary": [
+      "subtract feature minimum",
+      "divide by feature column sum and multiply by 10000",
+      "log1p",
+      "feature-wise z-score"
+    ],
+    "sensitivity_only": "Yeo-Johnson",
+    "frozen_feature_n": 18,
+    "pca_components_for_clustering": 3
+  },
+  "hierarchical_clustering": {
+    "distance": "Euclidean",
+    "linkage": "Ward.D2",
+    "k": 5
+  },
+  "graph_clustering": {
+    "graph": "shared-nearest-neighbor",
+    "k": 20,
+    "pruning_threshold": "1/15",
+    "algorithm": "Louvain algorithm 1",
+    "resolution": 1.5,
+    "raw_community_n": 11,
+    "merged_k": 5,
+    "merge_rule": ["S1+S3+S9", "S2+S5+S6+S11", "S4", "S8+S10", "S7"]
+  },
+  "tsne_display": {
+    "input": "first three E-feature PCs",
+    "perplexity": 45,
+    "early_exaggeration": 4,
+    "iterations": 1500,
+    "seed": 777,
+    "classification_role": "display only"
+  },
+  "consensus_counts": {"E1": 142, "E2": 160, "E3": 45, "E4": 61, "E5": 42},
+  "strict_counts": {
+    "D1": 209,
+    "D2": 232,
+    "E1": 140,
+    "E2": 155,
+    "E3": 45,
+    "E4": 59,
+    "E5": 42
+  },
+  "statistics": {
+    "omnibus": "two-sided Kruskal-Wallis with tie correction",
+    "omnibus_adjustment": "Benjamini-Hochberg across 18 features",
+    "pairwise": "all 10 two-sided Dunn comparisons with tie correction",
+    "pairwise_adjustment": "Holm within feature",
+    "pairwise_effect_size": "absolute Z / sqrt(450)",
+    "variance": "median-centered Brown-Forsythe Levene test with BH across features",
+    "observation_unit": "cell"
+  },
+  "nested_svm": {
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "classifier": "class-weighted linear SVM",
+    "C_grid": [0.03, 0.1, 0.3, 1, 3, 10],
+    "selected_C": 0.1,
+    "seed": 777,
+    "permutations": 999,
+    "oof_accuracy": 0.92,
+    "oof_balanced_accuracy": 0.9320459322419031,
+    "oof_macro_f1": 0.9205393115288812
+  },
+  "grouped_ml": {
+    "grouping_variable": "recording date",
+    "sequencing_batch_role": "metadata only",
+    "experimental_dates": 160,
+    "sequencing_batches": 7,
+    "split_n": 200,
+    "split_fraction": "75:25",
+    "permutations": 100,
+    "fixed_grouped_splits_for_permutation": 5,
+    "seed": 20260916
+  },
+  "rrr": {
+    "cohort_n": 441,
+    "variable_genes": 1000,
+    "transcriptomic_pcs": 20,
+    "e_features": 18,
+    "rank": 3,
+    "seed": 777,
+    "in_sample_multivariate_r2": 0.2958,
+    "ellipse_probability": 0.9,
+    "interpretation": "descriptive, not cross-validated prediction"
+  }
+}

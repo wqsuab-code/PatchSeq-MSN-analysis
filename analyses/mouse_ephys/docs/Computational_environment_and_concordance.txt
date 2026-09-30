@@ -1,0 +1,7 @@
+Final computational environment
+
+Final Mouse-E analyses were performed on 24 September 2026 under Windows 11 using R 4.5.1 and Python 3.14.3. R package versions were Seurat 5.4.0, SeuratObject 5.2.0, Rtsne 0.17, mclust 6.1.2, Matrix 1.7-4, data.table 1.17.8, ggplot2 4.0.2, patchwork 1.3.2 and clue 0.3-68. Python package versions were NumPy 2.4.6, pandas 2.3.3, SciPy 1.17.1, scikit-learn 1.8.0, h5py 3.16.0, Matplotlib 3.10.9 and joblib 1.5.3. The complete package inventories, executable analysis scripts, output tables, SHA-256 checksums and concordance report are archived in Mouse_E_final_performed_using_20260924.
+
+Concordance statement
+
+The final run reproduced the frozen preprocessing, PCA, HC and GC assignments, GC-HC consensus mask, E1-E5 counts, fixed t-SNE coordinates, E-type statistics, nested-SVM results, date-grouped machine-learning results and strict-441 RRR outputs. All 24 prespecified concordance checks passed.

@@ -1,0 +1,19 @@
+Order,Feature,Display_name,Unit,Test,Statistic_F,df1,df2,P_raw,P_adj_BH_across_18_features
+1,E_Holding.MP..mV.,Holding MP,mV,Brown-Forsythe (median-centered Levene),2.213653161113145,4,445,0.06664102663038383,0.09227219071899301
+2,E_Input.resistance..MOhm.,Input resistance,MΩ,Brown-Forsythe (median-centered Levene),25.992479087813475,4,445,2.2152662238813613e-19,1.3291597343288167e-18
+3,E_Membrane.time.constant..ms.,Membrane tau,ms,Brown-Forsythe (median-centered Levene),21.56328279517241,4,445,2.8195524955878114e-16,1.015038898411612e-15
+4,E_Rheobase..pA.,Rheobase,pA,Brown-Forsythe (median-centered Levene),8.946009476323526,4,445,5.898633286449017e-07,1.3271924894510289e-06
+5,E_Sag.ratio,Sag ratio,ratio,Brown-Forsythe (median-centered Levene),14.400346457956852,4,445,4.5822443939266666e-11,1.374673318178e-10
+6,E_Sag.time..s.,Sag time,s,Brown-Forsythe (median-centered Levene),9.173385171695443,4,445,3.959488925043415e-07,1.0181542950111639e-06
+7,E_AP.threshold..mV.,AP threshold,mV,Brown-Forsythe (median-centered Levene),1.1429127588711843,4,445,0.3356638397480737,0.3776218197165829
+8,E_AP.amplitude..mV.,AP amplitude,mV,Brown-Forsythe (median-centered Levene),4.1888473530924655,4,445,0.002433452212242751,0.003982012710942683
+9,E_AP.width..ms.,AP width,ms,Brown-Forsythe (median-centered Levene),4.26485694249677,4,445,0.002134614943391177,0.003842306898104119
+10,E_Upstroke.to.downstroke.ratio,Up/down ratio,ratio,Brown-Forsythe (median-centered Levene),2.0865843698220425,4,445,0.08159450501306703,0.10490722073108619
+11,E_Afterhyperpolarization..mV.,AHP,mV,Brown-Forsythe (median-centered Levene),0.7123557179458122,4,445,0.5837967456025299,0.618137730637973
+12,E_Max.number.of.APs,Max APs,count,Brown-Forsythe (median-centered Levene),1.6833503301335346,4,445,0.15273749221449529,0.18328499065739434
+13,E_Latency..ms.,Latency,ms,Brown-Forsythe (median-centered Levene),0.5605234338718489,4,445,0.6914423229516993,0.6914423229516993
+14,E_Latency....20pA.current..ms.,Latency @ +20 pA,ms,Brown-Forsythe (median-centered Levene),3.4609947282759537,4,445,0.008450123791232524,0.012675185686848786
+15,E_ISI.adaptation.index,ISI adaptation,index,Brown-Forsythe (median-centered Levene),33.68280771854058,4,445,1.4589905831865302e-24,2.6261830497357545e-23
+16,E_ISI.coefficient.of.variation,ISI CV,CV,Brown-Forsythe (median-centered Levene),22.06644115485886,4,445,1.2386321167256357e-16,5.573844525265361e-16
+17,E_AP.amplitude.adaptation.index,AP amplitude adaptation,index,Brown-Forsythe (median-centered Levene),32.62868320033091,4,445,7.227684381302707e-24,6.504915943172437e-23
+18,E_AP.coefficient.of.variation,AP CV,CV,Brown-Forsythe (median-centered Levene),5.679402069102803,4,445,0.0001823340143552481,0.0003646680287104962
