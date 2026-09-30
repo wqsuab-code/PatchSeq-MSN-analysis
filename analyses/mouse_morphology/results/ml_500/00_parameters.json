@@ -1,0 +1,80 @@
+{
+  "scope": "Mouse NAc MSN morphology; frozen 187-cell cohort",
+  "source_csv": "C:\\Users\\53461\\OneDrive\\Documentos\\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\\outputs\\morph_qc\\final_morph187_NPC3_HCK4_GCres0p50_figures\\00_final_morph187_cell_assignments.csv",
+  "all_complete_cells": 187,
+  "analysis_cells": 187,
+  "class_counts": {
+    "M1": 67,
+    "M2": 23,
+    "M3": 62,
+    "M4": 35
+  },
+  "recording_day_groups": 105,
+  "grouping_definition": "Same recording date = one mouse/experimental-day proxy group; groups never cross training and test partitions",
+  "sequencing_batch_definition": "BatchN parsed from cell ID; used only for sequencing-submission-batch association testing",
+  "animal_id_limitation": "True animal IDs are unavailable; no individual mouse identity was fabricated",
+  "features": [
+    "M_soma_circularity_index",
+    "M_soma_aspect_ratio",
+    "M_cell_max_radial_dist",
+    "M_total_number_of_neurites",
+    "M_basal_dendrite_avg_tortuosity",
+    "M_Total_neurite_length_(sections)",
+    "M_Number_of_bifurcation_points",
+    "M_Maximum_branch_order",
+    "M_trunk_angle_min",
+    "M_trunk_angle_max"
+  ],
+  "feature_n": 10,
+  "transformation": "Training minimum shift; training shifted-column-sum x10,000; log1p; training-fold sample Z-score",
+  "frozen_PCA_n": 3,
+  "frozen_HC": "Euclidean + Ward.D2, K=4",
+  "frozen_GC": "Seurat SNN k=20, prune=1/15, Louvain algorithm 1, resolution=0.50; HC labels retained as taxonomy",
+  "repeats": 500,
+  "unsupervised": {
+    "recording_day_fraction": 0.8,
+    "NPC": "2-10",
+    "K": "2-8",
+    "algorithms": [
+      "Ward",
+      "K-means",
+      "Gaussian mixture",
+      "Spectral"
+    ]
+  },
+  "supervised": {
+    "train_recording_day_fraction": 0.75,
+    "test_recording_day_fraction": 0.25,
+    "all_classes_required_both": true,
+    "models": [
+      "Multinomial logistic",
+      "Linear SVM",
+      "RBF SVM",
+      "kNN",
+      "Random forest",
+      "Extra trees",
+      "HistGradientBoosting"
+    ],
+    "primary_metrics": [
+      "balanced_accuracy",
+      "macro_F1"
+    ],
+    "PCA_n": 3
+  },
+  "permutation": "Global label permutation evaluated on identical recording-day-grouped splits",
+  "consensus_margin_risk_threshold": 0.1,
+  "seed": 20260916,
+  "software": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.8.0",
+    "joblib": "1.5.3",
+    "matplotlib": "3.10.9",
+    "seaborn": "0.13.2"
+  },
+  "E_data_used_as_predictors": false,
+  "Mouse_data_used": true
+}

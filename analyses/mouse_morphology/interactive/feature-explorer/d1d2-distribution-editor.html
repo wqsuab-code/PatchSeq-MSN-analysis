@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consensus and GC-merged morphology distribution editor</title>
+  <meta name="description" content="Single-panel interactive D1/D2 consensus and GC-merged morphology t-SNE editor.">
+  <link rel="stylesheet" href="rrr-editor.css">
+  <style>
+    .compact-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.topbar nav{display:flex;gap:7px;flex-wrap:wrap}
+    .controls input[type=color]{width:100%;height:30px;padding:2px;border:1px solid #b8c0cc;border-radius:4px;background:#fff}
+    #distSvg{display:block;width:100%;height:auto;background:#fff}.audit{padding:8px 12px 12px;font-size:11px;color:var(--muted)}
+    .m-counts{padding:0 12px 14px}.m-counts h2{font-size:13px;margin:6px 0 8px}.m-counts table{width:100%;border-collapse:collapse;font-size:11px}
+    .m-counts th,.m-counts td{padding:5px 7px;border-bottom:1px solid #d9dee7;text-align:right}.m-counts th:first-child,.m-counts td:first-child{text-align:left}.m-counts tr.current{background:#eef4fb;font-weight:600}
+    @media(max-width:820px){.compact-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Morphology distribution editor</h1><p>One t-SNE panel · D1/D2 consensus views plus an independently fitted GC-merged view</p></div>
+    <nav><a class="button" href="distribution-statistics.html">Distribution statistics</a><a class="button" href="percentage-editor.html">Percentage editor</a><a class="button" href="rrr-editor.html">T–M RRR editor</a><a class="button" href="index.html">Feature studio</a></nav>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="D1 D2 distribution controls">
+      <details open><summary>Cohort and labels</summary><div class="control-group">
+        <label>Displayed cohort<select id="identity"><option value="Total">1. Total morphology cells (187)</option><option value="All">2. HC–GC morphology consensus (181)</option><option value="StrictD1">3a. Strict D1 within morphology consensus (74)</option><option value="StrictD2">3b. Strict D2 within morphology consensus (94)</option><option value="StrictMorphConsensus">3. Strict D1 + D2 within morphology consensus (168)</option><option value="StrictBoth">Strict D1 + D2 including discordant morphology (174)</option><option value="GCMerged">GC merged (all 187 coloured)</option></select></label>
+        <label>Title<input id="chartTitle" type="text" value="D1"></label>
+        <label>X-axis title<input id="xTitle" type="text" value="t-SNE 1"></label>
+        <label>Y-axis title<input id="yTitle" type="text" value="t-SNE 2"></label>
+        <label class="check"><input id="autoTitle" type="checkbox" checked>Title follows selected identity</label>
+        <label class="check"><input id="showTitle" type="checkbox" checked>Show title</label>
+        <label class="check"><input id="showBackground" type="checkbox" checked>Show non-highlighted cells in grey</label>
+        <label class="check"><input id="showLegend" type="checkbox" checked>Show class legend</label>
+      </div></details>
+
+      <details open><summary>Points and ellipses</summary><div class="control-group">
+        <label>Highlighted point size <output id="pointSizeValue"></output><input id="pointSize" type="range" min="0.5" max="10" step="0.25" value="3"></label>
+        <label>Highlighted opacity <output id="pointOpacityValue"></output><input id="pointOpacity" type="range" min="0.05" max="1" step="0.05" value="1"></label>
+        <label>Background point size <output id="backgroundSizeValue"></output><input id="backgroundSize" type="range" min="0.25" max="8" step="0.25" value="2"></label>
+        <label>Background opacity <output id="backgroundOpacityValue"></output><input id="backgroundOpacity" type="range" min="0" max="1" step="0.05" value="0.45"></label>
+        <label>Ellipse area <output id="ellipseLevelValue"></output><input id="ellipseLevel" type="range" min="0.5" max="0.99" step="0.01" value="0.85"></label>
+        <label>Ellipse width <output id="ellipseWidthValue"></output><input id="ellipseWidth" type="range" min="0" max="6" step="0.1" value="1"></label>
+        <label>Ellipse fill opacity <output id="ellipseFillOpacityValue"></output><input id="ellipseFillOpacity" type="range" min="0" max="0.4" step="0.01" value="0"></label>
+        <label class="check"><input id="showEllipses" type="checkbox" checked>Show class ellipses</label>
+        <label class="check"><input id="showPointStroke" type="checkbox">Point outlines</label>
+        <label>Point-outline colour<input id="pointStrokeColor" type="color" value="#ffffff"></label>
+        <label>Background colour<input id="backgroundColor" type="color" value="#BDBDBD"></label>
+      </div></details>
+
+      <details open><summary>Axes and ranges</summary><div class="control-group">
+        <div class="compact-grid">
+          <label>X minimum<input id="xMin" type="number" step="0.5"></label><label>X maximum<input id="xMax" type="number" step="0.5"></label>
+          <label>Y minimum<input id="yMin" type="number" step="0.5"></label><label>Y maximum<input id="yMax" type="number" step="0.5"></label>
+        </div>
+        <label>Range padding <output id="rangePaddingValue"></output><input id="rangePadding" type="range" min="0" max="0.3" step="0.01" value="0.04"></label>
+        <label class="check"><input id="lockAutoRange" type="checkbox" checked>Use shared automatic range</label>
+        <label class="check"><input id="equalAspect" type="checkbox" checked>Equal X/Y scale</label>
+        <label class="check"><input id="showXAxis" type="checkbox" checked>X-axis line</label>
+        <label class="check"><input id="showYAxis" type="checkbox" checked>Y-axis line</label>
+        <label class="check"><input id="showAxisTitles" type="checkbox" checked>Axis titles</label>
+        <label class="check"><input id="showTicks" type="checkbox">Numeric ticks</label>
+        <label>Tick count<select id="tickCount"><option>3</option><option selected>5</option><option>7</option><option>9</option></select></label>
+        <label>Axis width <output id="axisWidthValue"></output><input id="axisWidth" type="range" min="0" max="5" step="0.1" value="1"></label>
+        <label>Axis colour<input id="axisColor" type="color" value="#111827"></label>
+      </div></details>
+
+      <details><summary>Canvas and typography</summary><div class="control-group">
+        <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="260" max="1200" step="10" value="520"></label>
+        <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="260" max="1000" step="10" value="520"></label>
+        <div class="compact-grid">
+          <label>Left margin<input id="marginLeft" type="number" min="0" max="250" value="58"></label><label>Right margin<input id="marginRight" type="number" min="0" max="250" value="24"></label>
+          <label>Top margin<input id="marginTop" type="number" min="0" max="250" value="42"></label><label>Bottom margin<input id="marginBottom" type="number" min="0" max="250" value="58"></label>
+        </div>
+        <label>Font family<select id="fontFamily"><option>Arial</option><option>Helvetica</option><option>Times New Roman</option></select></label>
+        <label>Font size <output id="fontSizeValue"></output><input id="fontSize" type="range" min="5" max="28" step="1" value="11"></label>
+        <label>Title size <output id="titleSizeValue"></output><input id="titleSize" type="range" min="6" max="36" step="1" value="14"></label>
+        <label>Canvas colour<input id="canvasColor" type="color" value="#ffffff"></label>
+      </div></details>
+
+      <details><summary>M / GC-matched colours</summary><div class="control-group compact-grid">
+        <label>M1 / G1<input id="colorM1" type="color" value="#00468B"></label><label>M2 / G2<input id="colorM2" type="color" value="#42B540"></label>
+        <label>M3 / G3<input id="colorM3" type="color" value="#ED0000"></label><label>M4 / G4<input id="colorM4" type="color" value="#0099B4"></label>
+      </div></details>
+
+      <details><summary>Export</summary><div class="control-group">
+        <label>Figure width (in)<input id="exportWidth" type="number" min="1" max="20" step="0.1" value="2.2"></label>
+        <label>PNG resolution<select id="exportDpi"><option>300</option><option>600</option><option selected>900</option></select></label>
+      </div></details>
+
+      <div class="actions">
+        <button id="saveAsDefault" class="wide" type="button">Save current settings as default</button>
+        <button id="resetAll" type="button">Reset to saved default</button><button id="restoreFactory" type="button">Restore factory defaults</button>
+        <button id="exportSvg" type="button">Export SVG</button><button id="exportPng" type="button">Export PNG</button>
+        <button id="exportCsv" type="button">Export plotted cells</button><button id="exportMCounts" type="button">Export M-class counts</button><button id="exportLayout" type="button">Export layout</button>
+        <label class="button wide" for="importLayout">Import layout JSON</label><input id="importLayout" type="file" accept="application/json" hidden>
+      </div>
+      <p class="hint">Every view contains all 187 cells. Strict identity requires Stable_D1/Stable_D2 plus agreement with both RPCA and Pearson audits (174 cells); 168 of these are also HC–GC morphology consensus. Saved defaults are stored in this browser.</p>
+    </aside>
+
+    <section class="canvas-shell">
+      <div class="canvas-head"><strong>Live morphology distribution</strong><span id="distSummary">Loading data…</span></div>
+      <p id="distStatus" role="status">Loading embedded consensus assignments…</p>
+      <div class="canvas-scroll"><svg id="distSvg" role="img" aria-label="Consensus D1/D2 or GC-merged distribution in morphology t-SNE"></svg></div>
+      <p id="distAudit" class="audit"></p>
+      <section class="m-counts" aria-labelledby="mCountsTitle">
+        <h2 id="mCountsTitle">Strict D1/D2 identity and M-class counts</h2>
+        <div class="table-scroll"><table><thead><tr><th>Condition</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>Total</th></tr></thead><tbody id="mCountsBody"></tbody></table></div>
+        <p id="mCountsAudit" class="hint"></p>
+        <p id="identityAudit" class="hint"></p>
+      </section>
+    </section>
+  </main>
+  <script src="rrr-data.js"></script>
+  <script src="strict-identity-data.js"></script>
+  <script src="d1d2-distribution-editor.js"></script>
+</body>
+</html>

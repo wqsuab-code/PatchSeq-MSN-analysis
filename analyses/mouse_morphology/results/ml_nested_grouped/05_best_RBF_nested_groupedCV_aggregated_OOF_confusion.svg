@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="131.1906pt" height="103.331062pt" viewBox="0 0 131.1906 103.331062" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-26T10:45:45.012969</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 103.331062 
+L 131.1906 103.331062 
+L 131.1906 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 16.014375 89.163562 
+L 101.946375 89.163562 
+L 101.946375 3.231562 
+L 16.014375 3.231562 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p04e8b04c27)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAABhUlEQVR4nO3TrVGDURRF0Xwhgg4wOIqgAmpAUAcaBonFUgkGQzG4DJgI8kMX3JnNWg2cebPfXb52h9PqH/nZH0d2L+9eR3bXI6v8GYHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7guM16GRo+m/lbFzePI7ufbw8juy44TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4bvO9248MX92+jOxu359Gdqe44DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4Ljl/Pr+NDG8/XiemF0djiPPHeOC4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB4wSOEzhO4DiB434BJhkY9NS98vMAAAAASUVORK5CYII=" id="imagef87c03be1f" transform="scale(1 -1) translate(0 -86.4)" x="16.014375" y="-2.763562" width="86.4" height="86.4"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="26.755875" y="93.026687" transform="rotate(-0 26.755875 93.026687)">M1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="48.238875" y="93.026687" transform="rotate(-0 48.238875 93.026687)">M2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="69.721875" y="93.026687" transform="rotate(-0 69.721875 93.026687)">M3</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="91.204875" y="93.026687" transform="rotate(-0 91.204875 93.026687)">M4</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="58.980375" y="100.736062" transform="rotate(-0 58.980375 100.736062)">ML OOF prediction</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5"/>
+     <g id="text_6">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: end" x="15.014375" y="15.404625" transform="rotate(-0 15.014375 15.404625)">M1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6"/>
+     <g id="text_7">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: end" x="15.014375" y="36.887625" transform="rotate(-0 15.014375 36.887625)">M2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7"/>
+     <g id="text_8">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: end" x="15.014375" y="58.370625" transform="rotate(-0 15.014375 58.370625)">M3</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8"/>
+     <g id="text_9">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: end" x="15.014375" y="79.853625" transform="rotate(-0 15.014375 79.853625)">M4</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="4.663125" y="46.197562" transform="rotate(-90 4.663125 46.197562)">HC-derived class</text>
+    </g>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(24.5315 12.89175)">65</text>
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(22.753063 17.1225)">97%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(47.126688 12.89175)">0</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(45.34825 17.1225)">0%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(68.609688 12.89175)">1</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(66.83125 17.1225)">1%</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(90.092687 12.89175)">1</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(88.31425 17.1225)">1%</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(25.643688 34.37475)">2</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(23.86525 38.6055)">9%</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(46.0145 34.37475)">21</text>
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(44.236063 38.6055)">91%</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(68.609688 34.37475)">0</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(66.83125 38.6055)">0%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(90.092687 34.37475)">0</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(88.31425 38.6055)">0%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(25.643688 55.85775)">1</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(23.86525 60.0885)">2%</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(47.126688 55.85775)">0</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(45.34825 60.0885)">0%</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(67.4975 55.85775)">59</text>
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(65.719063 60.0885)">95%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(90.092687 55.85775)">2</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(88.31425 60.0885)">3%</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(25.643688 77.34075)">1</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(23.86525 81.5715)">3%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(47.126688 77.34075)">1</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(45.34825 81.5715)">3%</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(68.609688 77.34075)">2</text>
+    <text style="font-size: 4px; font-family: 'Arial'" transform="translate(66.83125 81.5715)">6%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(88.9805 77.34075)">31</text>
+    <text style="font-size: 4px; font-family: 'Arial'; fill: #ffffff" transform="translate(87.202062 81.5715)">89%</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 104.875875 89.163562 
+L 109.172475 89.163562 
+L 109.172475 3.231562 
+L 104.875875 3.231562 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAAYAAAB3CAYAAAAgsjEsAAAAqUlEQVR4nM2TSw6AMAgFMen9j+tCC3gBpgmEtLosmb5P8bofdwm+4fG5DKUBnMuwPsKIQLtmGzT6iIWrg7UzAUHOlojETLeL214gaBORmB4jnLzVbpbAdhWv4kF4vhKnq6YikdUo2EVXmKPPLr8g/rX5N4foBfEdOXBLCpWkicUASlRahorGQbutOUDc04Tx7rZpNBKq2qWRF3cixMCV6JsldgyoxF/a/QBvE0SO06VlBQAAAABJRU5ErkJggg==" id="image20a43589c3" transform="scale(1 -1) translate(0 -85.68)" x="105.12" y="-2.88" width="4.32" height="85.68"/>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_9">
+      <defs>
+       <path id="m5edcc0d89a" d="M 0 0 
+L 3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m5edcc0d89a" x="109.172475" y="89.163562" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: start" x="116.172475" y="90.595125" transform="rotate(-0 116.172475 90.595125)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m5edcc0d89a" x="109.172475" y="46.197562" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: start" x="116.172475" y="47.629125" transform="rotate(-0 116.172475 47.629125)">0.5</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m5edcc0d89a" x="109.172475" y="3.231562" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 4px; font-family: 'Arial'; text-anchor: start" x="116.172475" y="4.663125" transform="rotate(-0 116.172475 4.663125)">1.0</text>
+     </g>
+    </g>
+    <g id="text_30">
+     <text style="font-size: 4px; font-family: 'Arial'; text-anchor: middle" x="128.5956" y="46.197562" transform="rotate(-90 128.5956 46.197562)">Row fraction</text>
+    </g>
+   </g>
+   <g id="LineCollection_1"/>
+   <g id="patch_4">
+    <path d="M 104.875875 89.163562 
+L 107.024175 89.163562 
+L 109.172475 89.163562 
+L 109.172475 3.231562 
+L 107.024175 3.231562 
+L 104.875875 3.231562 
+L 104.875875 89.163562 
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.75; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p04e8b04c27">
+   <rect x="16.014375" y="3.231562" width="85.932" height="85.932"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,7 @@
+Dimension,Category,Cell_n
+Mapping_status,Verified_year_and_length,181
+Mapping_status,Missing_matching_ASC,4
+Mapping_status,Parse_failure,1
+Mapping_status,Review_metric_mismatch,1
+Recalc_success,True,182
+Recalc_success,False,5

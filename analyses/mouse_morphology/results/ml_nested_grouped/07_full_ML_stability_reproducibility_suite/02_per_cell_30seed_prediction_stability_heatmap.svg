@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="336.185pt" height="270.3905pt" viewBox="0 0 336.185 270.3905" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-09T17:37:32.873076</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 270.3905 
+L 336.185 270.3905 
+L 336.185 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 27.125 246.183 
+L 334.025 246.183 
+L 334.025 13.335 
+L 27.125 13.335 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p9c2dd6d656)">
+    <image xlink:href="data:image/png;base64,
+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" id="imageb156d9f6f1" transform="scale(1 -1) translate(0 -233.28)" x="27.125" y="-12.903" width="307.44" height="233.28"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m4c5ccba64a" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4c5ccba64a" x="32.24" y="246.183" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="32.24" y="257.477687" transform="rotate(-0 32.24 257.477687)">1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m4c5ccba64a" x="124.31" y="246.183" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="124.31" y="257.477687" transform="rotate(-0 124.31 257.477687)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m4c5ccba64a" x="226.61" y="246.183" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="226.61" y="257.477687" transform="rotate(-0 226.61 257.477687)">20</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m4c5ccba64a" x="328.91" y="246.183" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="328.91" y="257.477687" transform="rotate(-0 328.91 257.477687)">30</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="180.575" y="267.038" transform="rotate(-0 180.575 267.038)">Grouped-CV partition seed</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m405b1b2fd6" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m405b1b2fd6" x="27.125" y="55.048412" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: end" x="20.125" y="57.195756" transform="rotate(-0 20.125 57.195756)">M1</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m405b1b2fd6" x="27.125" y="111.081353" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: end" x="20.125" y="113.228697" transform="rotate(-0 20.125 113.228697)">M2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m405b1b2fd6" x="27.125" y="164.001353" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: end" x="20.125" y="166.148697" transform="rotate(-0 20.125 166.148697)">M3</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m405b1b2fd6" x="27.125" y="224.392412" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 6px; font-family: 'Arial'; text-anchor: end" x="20.125" y="226.539756" transform="rotate(-0 20.125 226.539756)">M4</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 6px; font-family: 'Arial'; text-anchor: middle" x="6.527813" y="129.759" transform="rotate(-90 6.527813 129.759)">Reference class; cells ordered by stability</text>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 27.125 96.761824 
+L 334.025 96.761824 
+" clip-path="url(#p9c2dd6d656)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 27.125 125.400882 
+L 334.025 125.400882 
+" clip-path="url(#p9c2dd6d656)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 27.125 202.601824 
+L 334.025 202.601824 
+" clip-path="url(#p9c2dd6d656)" style="fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 27.125 246.183 
+L 27.125 13.335 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 334.025 246.183 
+L 334.025 13.335 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 27.125 246.183 
+L 334.025 246.183 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 27.125 13.335 
+L 334.025 13.335 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.2px; font-family: 'Arial'; text-anchor: middle" x="180.575" y="7.335" transform="rotate(-0 180.575 7.335)">Per-cell prediction reproducibility across 30 grouped partitions</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9c2dd6d656">
+   <rect x="27.125" y="13.335" width="306.9" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg>
