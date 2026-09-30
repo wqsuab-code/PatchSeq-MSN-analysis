@@ -1,0 +1,12 @@
+# Versions recorded by the frozen Mouse-M ML/RRR release
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+scikit-learn==1.8.0
+joblib==1.5.3
+matplotlib==3.10.9
+seaborn==0.13.2
+neurom==4.0.5
+
+# Python used by the archived run: 3.14.3 on Windows 11
+# R/Seurat versions remain to be recovered and locked with renv.

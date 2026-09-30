@@ -1,0 +1,17 @@
+{
+  "previous_primary_cells": 193,
+  "newly_quarantined_n": 6,
+  "current_primary_discovery_cells": 187,
+  "newly_quarantined_cells": [
+    "D251161_Batch8",
+    "A20256247_Batch7",
+    "A20257158_Batch7",
+    "A2025797_Batch7",
+    "A20256245_Batch7",
+    "O9192_Batch2"
+  ],
+  "reason": "user-adjudicated incomplete reconstruction after PC1-PC3 three-SD morphology review",
+  "scope": "Morphology discovery/classification only",
+  "reversible": true,
+  "permanent_global_exclusion_changed": false
+}

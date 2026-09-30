@@ -1,0 +1,4 @@
+# Sensitive information scan
+
+Generated 2026-09-30. No match means no common token/private-key/password/e-mail pattern was found.
+

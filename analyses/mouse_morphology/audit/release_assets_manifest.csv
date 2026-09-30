@@ -1,0 +1,5 @@
+"filename","description","bytes","sha256","planned_upload_location"
+"07_unsupervised_all_runs_500.csv","Complete 500-repeat unsupervised run table","130329137","26354c3ded0d2dbb119a3ee6a7e19798cf20084dd11bedbcb238c65f9ce548ff","GitHub release asset after scientific review; not uploaded in this task"
+"15_supervised_cell_predictions_probabilities_500.csv","Complete 500-repeat cell probability table","15879228","c2183677cf82e704f3df68c296734df4fa216dd16b603a74b875b21e8c5e0ae2","GitHub release asset after scientific review; not uploaded in this task"
+"Mouse_M_ML_validation_final_600dpi.tif","600-dpi ML validation TIFF","41990604","c7919ec658dc36875e14c6594f934fc320177726a7ce816b4a46696c18f30886","GitHub release asset after scientific review; not uploaded in this task"
+"Mouse_M1-M4_frozen10_feature_comparison_600dpi.tif","600-dpi feature-comparison TIFF","23146764","261c44c649ba227de666290262c9d553fb667df775526bdc838b83bcb5fbad66","GitHub release asset after scientific review; not uploaded in this task"

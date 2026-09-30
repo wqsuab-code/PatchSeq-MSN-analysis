@@ -1,0 +1,17 @@
+{
+  "scope": "current_morphology_analysis_only",
+  "status": "temporary_manual_pyramidal_like_exclusion",
+  "source_figure_numbering": "all_12_automatic_candidates",
+  "cells": [
+    "M1252_Batch5",
+    "M4233_Batch5",
+    "M423_Batch5",
+    "M4222_Batch5",
+    "A20256114_Batch7"
+  ],
+  "notes": [
+    "These cells are excluded from the current MSN morphology discovery analysis after manual visual review.",
+    "They are not added to the permanent global exclusion list.",
+    "The remaining automatic pyramidal-like candidates are not excluded solely by the automated review flag."
+  ]
+}

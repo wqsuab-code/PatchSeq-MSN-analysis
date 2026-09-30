@@ -1,0 +1,34 @@
+{
+  "scope": "primary_morphology_unsupervised_discovery",
+  "decision_date": "2026-08-25",
+  "active": true,
+  "primary_cohort_n": 193,
+  "source": "frozen 215-cell Morph cohort after the active 22-cell morphology/reconstruction quarantine",
+  "transcriptomic_D1D2_stability_filter_applied": false,
+  "electrophysiology_QC_filter_newly_applied": false,
+  "active_morphology_quarantine_config": "config/morph_current_reconstruction_spe_local_pyramid_quarantine.json",
+  "policy": [
+    "The ten cells with unstable D1/D2 assignment remain in unsupervised morphology discovery.",
+    "D1/D2 instability is displayed as uncertain or grey only in transcriptomic-association analyses.",
+    "No transcriptomic or electrophysiological label is used to fit morphology preprocessing, PCA, HC, GC, bootstrap or consensus clustering.",
+    "The 183-cell stable-D1/D2-filtered analysis is sensitivity-only."
+  ],
+  "restored_cells": [
+    "A11186_Batch4",
+    "A20256303_Batch7",
+    "A2025784_Batch7",
+    "D251161_Batch8",
+    "D251171_Batch8",
+    "M1296_Batch5",
+    "M4248_Batch5",
+    "M4253_Batch5",
+    "O8211_Batch2",
+    "O8233_Batch2"
+  ],
+  "primary_HC_GC_result": {
+    "cells": 193,
+    "agreement_n": 174,
+    "agreement_percent": 90.1554,
+    "adjusted_rand_index": 0.76184276922513
+  }
+}
