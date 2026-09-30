@@ -1,0 +1,10 @@
+issue	candidate_or_observation	resolution	status
+Frozen class labels	Archived outputs use C1-C4; manuscript uses E1-E4	One-to-one display mapping C1=E1, C2=E2, C3=E3, C4=E4; cell labels unchanged	RESOLVED
+D2 cell count	D2=193 and D2=183 both occur	193 is the 390-cell pre-consensus cohort; 183 is the 368-cell consensus cohort	RESOLVED
+Feature count	10-feature radar tables and 19-feature clustering tables	Frozen classification uses 19; radar uses ten display features only	RESOLVED
+Preprocessing	Historical Yeo-Johnson branch versus mixed frozen transform	Primary E4 uses log2 ratios or shift-sum10000-log1p followed by Z-score; Yeo-Johnson is sensitivity only	RESOLVED
+RRR cohort	368 consensus cells versus 346 RRR cells	RRR excludes 22 Hybrid cells and uses the 163 D1 plus 183 D2 consensus cells	RESOLVED
+GC resolution	Several scanned resolutions exist	Frozen result is NPC3, HC K4, GC resolution 3.0, seed 777, raw GC K15	RESOLVED
+Final Seurat generator	Frozen assignments and scan tables exist but exact historical final19 R script was not located	Do not substitute generic/older scripts; archive frozen outputs and disclose provenance limitation	OPEN_WARNING
+R/Seurat versions	Exact original sessionInfo not recorded	Disclose as an unresolved environment provenance limitation	OPEN_WARNING
+Main-figure assembly	Final SVG includes manually arranged vector panels	Archive SVG, source panels, layout JSON and panel-generating scripts; assembly is display-only	RESOLVED

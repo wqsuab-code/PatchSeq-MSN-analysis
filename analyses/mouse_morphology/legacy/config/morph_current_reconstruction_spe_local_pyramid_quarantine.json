@@ -1,0 +1,65 @@
+{
+  "scope": "current_morphology_analysis_only",
+  "status": "temporary_quarantine_for_sensitivity_analysis",
+  "base_cohort": "frozen_215_cell_morphology_cohort",
+  "suspected_reconstruction_failure": {
+    "possible_under_reconstruction": [
+      "A10313_Batch4",
+      "A20256245_Batch7",
+      "A20256247_Batch7",
+      "A20257158_Batch7",
+      "A2025797_Batch7",
+      "D2510218_Batch8",
+      "D251161_Batch8",
+      "D258201_Batch8",
+      "D258221_Batch8",
+      "D25957_Batch8",
+      "M493_Batch5",
+      "O9192_Batch2",
+      "O9163_Batch2"
+    ],
+    "direct_ASC_technical_review": [
+      "D258156_Batch8",
+      "D25883_Batch8",
+      "M3212_Batch5"
+    ],
+    "ASC_parse_failure": [
+      "D258181_Batch8"
+    ]
+  },
+  "SPE_extreme": [
+    "A20256114_Batch7",
+    "M1252_Batch5",
+    "M4233_Batch5",
+    "M423_Batch5",
+    "O9243_Batch2",
+    "M4222_Batch5",
+    "D251024_Batch8",
+    "M376_Batch5",
+    "O9163_Batch2",
+    "J5201_Batch6",
+    "M493_Batch5",
+    "M3274_Batch5"
+  ],
+  "strict_local_multivariate_outlier": [
+    "A11254_Batch4"
+  ],
+  "selected_pyramidal_like_candidates": {
+    "source_ranks": [1, 2, 4, 7],
+    "cells": [
+      "M1252_Batch5",
+      "M4233_Batch5",
+      "M423_Batch5",
+      "A20256114_Batch7"
+    ]
+  },
+  "notes": [
+    "This is a reversible morphology-only quarantine and does not alter the permanent global exclusion list.",
+    "The 23 cells lacking a matched raw ASC file are not quarantined solely for raw-file unavailability.",
+    "The selected pyramidal-like candidates are already contained in the S/P/E-extreme set and therefore do not add unique exclusions.",
+    "M493_Batch5 and O9163_Batch2 overlap the suspected under-reconstruction and S/P/E-extreme sets.",
+    "On 2026-08-25, D251161_Batch8, A20256247_Batch7, A20257158_Batch7, A2025797_Batch7, A20256245_Batch7 and O9192_Batch2 were user-adjudicated as incompletely reconstructed and temporarily quarantined after the PC1-PC3 three-SD morphology review.",
+    "These six cells remain recoverable and are not added to the permanent global exclusion list.",
+    "Permanent exclusions, including M377_Batch5, remain upstream of the frozen 215-cell cohort and are not subtracted again."
+  ]
+}

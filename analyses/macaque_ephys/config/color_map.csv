@@ -1,0 +1,11 @@
+object,hex,role
+E1,#F8766D,electrophysiological class
+E2,#7CAE00,electrophysiological class
+E3,#00BFC4,electrophysiological class
+E4,#C77CFF,electrophysiological class
+D1,#D95F02,transcriptomic class
+D2,#008F7A,transcriptomic class
+Hybrid,#6B7280,transcriptomic class
+Ca,#5B8FF9,ROI annotation
+Pu,#61DDAA,ROI annotation
+NAc,#7262FD,ROI annotation

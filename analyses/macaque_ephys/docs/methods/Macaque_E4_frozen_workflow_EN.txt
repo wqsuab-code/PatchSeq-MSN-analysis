@@ -1,0 +1,408 @@
+Frozen Four-Class Electrophysiological Classification of Macaque Ca, Pu, and NAc Cells
+======================================================================================
+
+Version status
+--------------
+This document records the currently frozen four-class classification as of September 7, 2026. Unless the analysis is explicitly unfrozen and recomputed, the primary analysis is defined as follows:
+
+  Anatomical scope: Ca + Pu + NAc
+  Input: 19 nonredundant electrophysiological features (E-features)
+  Missing-data strategy: strict complete-case analysis; no imputation
+  PCA space used for clustering: PC1-PC3
+  Hierarchical clustering (HC): Ward.D2, K=4
+  Graph-based clustering (GC): Seurat, resolution=3.0, yielding 15 raw clusters
+  GC merging: maximum-overlap surjective mapping of the 15 raw GC clusters onto four HC-aligned classes
+  Consensus definition: identical HC and merged-GC labels
+  Final consensus set: 368/390 cells (94.36%)
+
+
+1. Analysis population and frozen cohort
+-----------------------------------------
+
+1.1 Species and cell population
+  - Macaque Patch-seq data were analyzed.
+  - Cells had previously passed the upstream MSN/T-class annotation procedure and stage-1 cell-level quality control.
+  - Transcriptomic class labels (D1, D2, and Hybrid) were used only as post hoc annotations and were not used to derive the electrophysiological classes.
+
+1.2 Anatomical scope
+  - Cells were retained when Lib_region_of_interest_label was Ca, Pu, or NAC.
+  - VS, DS, ic, and all other ROI labels were excluded from this frozen analysis.
+
+1.3 Cohort sizes
+  - The stage-1 QC file contained 455 Ca+Pu+NAC cells.
+  - The all-E-feature redundancy audit used a previously frozen Ca+Pu+NAC analysis frame containing 441 cells.
+  - Strict complete-case filtering across the final 19 features retained 390 cells.
+  - The 390 retained cell_label values were identical to the 390 complete cases obtained in the preceding final20 analysis.
+  - ROI composition of the 390 cells: Ca=181, Pu=140, and NAc=69.
+  - T-class composition of the 390 cells: D1=175, D2=193, and Hybrid=22.
+
+1.4 Missing-data rule
+  - The upstream stage-1 cell list inherited the previously frozen cell-level missingness QC, using 50% as the decision boundary.
+  - No median, K-nearest-neighbor, or other imputation was applied during the final PCA and clustering analysis.
+  - A cell was excluded from PCA if any of the final 19 features was missing.
+  - The final 390-by-19 analysis matrix contained zero missing values.
+
+Important cohort distinction:
+The 441-cell frame was used for the all-E-feature redundancy audit. The final PCA script read the stage-1 file and obtained 455 Ca/Pu/NAc cells after anatomical filtering. Both processing paths converged on exactly the same set of 390 complete cases. For exact reproduction of the frozen classification, the final list of 390 cell_label values should be used as the clustering input; 455 and 441 should not be reported as the clustering sample size.
+
+
+2. E-feature quality control and redundancy filtering
+-----------------------------------------------------
+
+2.1 Initial features
+  - All 57 columns beginning with "Epsy_" were extracted from cell_metadata_AllCell.csv.
+  - A feature was considered usable when observed_n >=30 and the number of distinct nonmissing values was greater than one.
+  - Fifty-four features met these criteria.
+  - Three features were unusable because they were 100% missing:
+      Epsy_fast_trough_v_short_square
+      Epsy_trough_t_short_square
+      Epsy_trough_v_short_square
+
+2.2 Redundancy criterion
+  - Association measure: Spearman correlation coefficient (rho).
+  - Missing values: pairwise-complete observations were used for each feature pair.
+  - Minimum number of paired observations: 30.
+  - Redundancy threshold: |rho| >0.80.
+  - A total of 122 feature pairs exceeded this threshold.
+
+2.3 Feature-retention priority
+Usable features were processed using a greedy independent-set procedure. A candidate feature was removed when it had |rho|>0.80 with a feature that had already been retained. Features were ordered by protocol priority as follows:
+
+      Rheobase (_rheo)              100
+      Last rheobase (_last_rheo)     95
+      Five-spike (_5spike)           75
+      Hero (_hero)                   70
+      Adaptation ratio               65
+      Ramp (_ramp)                   50
+      Short square                   40
+      Other                          30
+
+Within the same protocol priority, features were ordered by lower missingness, preference for a canonical field name, and then alphabetical order. For example, when width_rheo and width_rheo_ms represented the same information, the canonical field Epsy_width_rheo was prioritized.
+
+2.4 Result of redundancy filtering
+  - Twenty-two of the 54 usable features were retained.
+  - Thirty-two features were removed as redundant.
+  - Two high-missingness ramp features were then removed from the 22-feature set:
+      Epsy_postap_slope_ramp
+      Epsy_upstroke_ramp
+  - This produced a set of 20 candidate features.
+
+2.5 Skewness audit and removal of the twentieth feature
+  - Epsy_peak_deltav_adapt_ratio had a raw skewness of 6.117 and was considered severely right-skewed.
+  - It showed no meaningful univariate separation among D1, D2, and Hybrid cells (Kruskal-Wallis p=0.778).
+  - Because of its severe skewness and lack of evidence for useful T-class separation, it was removed from the final20 set.
+  - Epsy_width_adapt_ratio also had substantial raw skewness but was retained because it was a strictly positive ratio feature and was appropriately handled by the frozen log2 transformation.
+  - The final frozen feature set therefore contained 19 variables.
+
+2.6 Extreme-value handling
+  - Individual extreme values were not deleted.
+  - Winsorization, trimming, and manual replacement were not performed.
+  - Skewness was addressed only through the specified monotonic transformations followed by feature-wise Z-scoring.
+
+
+3. Frozen set of 19 E-features
+--------------------------------
+
+01. Epsy_width_rheo
+02. Epsy_fast_trough_v_rheo
+03. Epsy_peak_deltav_rheo
+04. Epsy_peak_v_rheo
+05. Epsy_postap_slope_rheo
+06. Epsy_threshold_v_rheo
+07. Epsy_trough_t_rheo
+08. Epsy_trough_v_rheo
+09. Epsy_upstroke_downstroke_ratio_rheo
+10. Epsy_ahp_delay_5spike
+11. Epsy_ahp_delay_ratio_5spike
+12. Epsy_postap_slope_hero
+13. Epsy_trough_t_hero
+14. Epsy_downstroke_adapt_ratio
+15. Epsy_peak_v_adapt_ratio
+16. Epsy_threshold_v_adapt_ratio
+17. Epsy_upstroke_adapt_ratio
+18. Epsy_width_adapt_ratio
+19. Epsy_threshold_v_short_square
+
+
+4. Transcriptomics-like transformation and standardization
+-----------------------------------------------------------
+
+All transformations were applied feature by feature to the 390 complete cases. Transformation parameters were estimated only from these 390 cells.
+
+4.1 Seven strictly positive ratio features
+  - Features containing "ratio" in their names were first checked to ensure that all values were greater than zero.
+  - If a nonpositive value had been detected, the pipeline would have stopped with an error rather than adding a pseudocount.
+  - Transformation: x' = log2(x).
+  - Each transformed feature was subsequently standardized:
+
+        z = [x' - mean(x')] / SD(x')
+
+4.2 Remaining 12 features
+For each non-ratio feature, the following transformation was applied independently:
+
+  a. Shift to a nonnegative scale:
+       x_shift = x - min(x)
+
+  b. Normalize the feature column to a total of 10,000:
+       x_10k = x_shift / sum(x_shift) x 10,000
+
+  c. Log transformation:
+       x_log = log(1 + x_10k)
+
+  d. Feature-wise Z-score:
+       z = [x_log - mean(x_log)] / SD(x_log)
+
+The population standard-deviation definition used by sklearn StandardScaler was applied (ddof=0).
+
+4.3 Procedures that were not applied
+  - Cells were not normalized by row totals.
+  - Missing values were not imputed.
+  - Donor, batch, and ROI effects were not regressed out.
+  - D1/D2/Hybrid, ROI, and donor labels were not used to supervise transformation, PCA, or clustering.
+
+
+5. Principal-component analysis
+--------------------------------
+
+5.1 Input matrix
+  - 390 cells by 19 transformed and Z-scored E-features.
+
+5.2 Algorithm and parameters
+  - Implementation: sklearn.decomposition.PCA.
+  - n_components=19.
+  - svd_solver="full".
+  - Only PC1, PC2, and PC3 were used for the frozen clustering analysis (NPCs=3).
+
+5.3 Explained variance
+  - PC1: 23.2751%.
+  - PC2: 17.5400%.
+  - PC3: 13.8060%.
+  - Cumulative variance explained by PC1-PC3: 54.6211%.
+  - PC4: 10.9330%.
+  - Cumulative variance explained by PC1-PC4: 65.5542%.
+  - PC4 was examined in sensitivity analyses but was not used in the frozen classification.
+
+
+6. Hierarchical clustering
+--------------------------
+
+6.1 Input
+  - PC1-PC3 scores.
+
+6.2 Parameters
+  - Distance: Euclidean.
+  - Linkage: Ward, implemented as scipy method="ward", corresponding to the Ward.D2 minimum-within-cluster-sum-of-squares principle.
+  - Tree cutting: criterion="maxclust".
+  - Number of clusters: K=4.
+
+6.3 HC cluster sizes among all 390 cells
+  - HC1=65.
+  - HC2=139.
+  - HC3=64.
+  - HC4=122.
+
+
+7. Graph-based clustering
+-------------------------
+
+7.1 Seurat object construction
+  - Graph-based clustering was performed using Seurat.
+  - A two-by-390 all-one dummy count matrix was used only to instantiate the Seurat cell object.
+  - NormalizeData, FindVariableFeatures, and ScaleData were not applied to the dummy matrix.
+  - The previously calculated PCA scores were inserted directly into a Seurat "pca" DimReducObject.
+
+7.2 Neighbor graph
+  - Function: FindNeighbors.
+  - reduction="pca".
+  - dims=1:3.
+  - k.param=20.
+  - prune.SNN=1/15.
+
+7.3 Community detection
+  - Function: FindClusters.
+  - resolution=3.0.
+  - algorithm=1, corresponding to Seurat Louvain modularity optimization.
+  - random.seed=777.
+  - This parameter combination produced 15 raw graph clusters among the 390 cells.
+
+7.4 Parameter scan and random-seed stability
+  - Full scan: NPCs=2-10.
+  - Resolution scan: 0.2-3.0 in increments of 0.1.
+  - The primary result was frozen at NPCs=3, HC K=4, and GC resolution=3.0.
+  - Resolution 3.0 was additionally evaluated using ten random seeds:
+      42, 99, 101, 303, 555, 777, 999, 1201, 2025, and 2026.
+  - All ten runs achieved a post-merge consensus rate of at least 90%.
+  - The number of raw GC clusters ranged from 14 to 16.
+  - Mean consensus rate across seeds: 92.95%.
+  - Consensus-rate range: 90.00%-94.62%.
+  - Frozen seed-777 result: raw GC K=15 and consensus rate=94.36%.
+
+
+8. Merging the 15 graph clusters into four classes
+--------------------------------------------------
+
+8.1 Merging principle
+  - An HC4-by-raw-GC15 contingency table was constructed.
+  - Each raw graph cluster was required to map to exactly one HC class.
+  - Every HC class was required to receive at least one raw graph cluster; therefore, the mapping was constrained to be surjective.
+  - Dynamic programming was used to identify the surjective mapping that maximized the total number of diagonal agreements.
+  - This procedure only recoded raw GC subclusters. It did not alter the HC tree, refit PCA, or move cells in feature space.
+
+8.2 Frozen mapping
+Raw Seurat graph-cluster identifiers begin at zero:
+
+  GC0  -> C4
+  GC1  -> C2
+  GC2  -> C1
+  GC3  -> C3
+  GC4  -> C3
+  GC5  -> C2
+  GC6  -> C1
+  GC7  -> C4
+  GC8  -> C4
+  GC9  -> C2
+  GC10 -> C2
+  GC11 -> C4
+  GC12 -> C4
+  GC13 -> C2
+  GC14 -> C2
+
+8.3 Class names
+  - The four merged GC classes were aligned with HC1-HC4 and named C1-C4.
+  - C1-C4 are frozen algorithmic labels. They do not encode a prespecified D1/D2 identity, anatomical region, or biological ordering.
+
+
+9. Consensus definition and frozen class membership
+---------------------------------------------------
+
+9.1 Cell-level definition
+  - If HC_class equaled merged_GC_class, the cell received a consensus label of C1, C2, C3, or C4.
+  - If the labels differed, the cell was marked discordant and was not forced into a consensus class.
+
+9.2 HC4-by-merged-GC4 count matrix
+
+                Merged C1   C2   C3   C4   Row total
+  HC1                  59    0    4    2          65
+  HC2                   2  133    2    2         139
+  HC3                   0    2   57    5          64
+  HC4                   1    2    0  119         122
+
+9.3 Agreement statistics
+  - Concordant cells: 368/390=94.36%.
+  - Discordant cells: 22/390=5.64%.
+  - Adjusted Rand index after merging: 0.86571.
+  - Normalized mutual information after merging: 0.80880.
+  - Within-HC consensus rates:
+      C1: 59/65=90.77%.
+      C2: 133/139=95.68%.
+      C3: 57/64=89.06%.
+      C4: 119/122=97.54%.
+
+9.4 Final consensus-class sizes
+  - C1=59.
+  - C2=133.
+  - C3=57.
+  - C4=119.
+  - Total=368.
+
+9.5 T-class composition of the 368 consensus cells
+  - D1=163.
+  - D2=183.
+  - Hybrid=22.
+
+             D1   D2   Hybrid
+  C1         24   20       15
+  C2         35   95        3
+  C3         38   19        0
+  C4         66   49        4
+
+9.6 ROI composition of the 368 consensus cells
+  - Ca=169.
+  - Pu=132.
+  - NAc=67.
+
+             Ca   Pu   NAc
+  C1         20   23    16
+  C2         70   49    14
+  C3         25   28     4
+  C4         54   32    33
+
+
+10. Visualization parameters not used for classification
+---------------------------------------------------------
+
+10.1 t-SNE
+  - Input: frozen PC1-PC3 scores.
+  - perplexity=80.
+  - early_exaggeration=12.
+  - learning_rate="auto".
+  - init="random".
+  - max_iter=3000.
+  - random_state=777.
+  - In R3_panels_v3, only the displayed X coordinates were compressed to 75% of the equal-axis version. Numerical classifications were unchanged.
+
+10.2 Class boundaries
+  - Current R3_panels_v3 figures use robust Minimum Covariance Determinant ellipses.
+  - support_fraction=0.75.
+  - random_state=777.
+  - Displayed coverage=80%.
+  - Ellipses, KDE contours, and t-SNE parameters were not used to calculate C1-C4.
+
+10.3 Heat map
+  - The heat map contains only the 368 consensus cells.
+  - It displays the frozen transformed Z-scores for the 19 features.
+  - Display values are clipped to [-2, 2].
+  - Low values are magenta, the midpoint is black, and high values are yellow.
+  - Heat-map ordering, gaps, and colors affect only presentation and do not alter classification.
+
+10.4 Frozen class colors
+  - C1: #F8766D (coral).
+  - C2: #7CAE00 (green).
+  - C3: #00BFC4 (cyan).
+  - C4: #C77CFF (purple).
+
+
+11. Manuscript-ready Methods paragraph
+--------------------------------------
+
+After cell-level quality control, macaque Ca, Pu, and NAc neurons were restricted to strict complete cases across 19 nonredundant electrophysiological features (n=390). Redundant variables were screened using pairwise-complete Spearman correlations (|rho|>0.80), with rheobase measurements prioritized during feature retention. Strictly positive ratio features were log2-transformed. All remaining features were shifted by the column minimum, normalized to a column sum of 10,000, and log1p-transformed. All variables were subsequently Z-scored. Principal-component analysis was performed using full singular-value decomposition, and PC1-PC3, which explained 54.62% of the total variance, were used for clustering. Ward hierarchical clustering with Euclidean distance was cut at K=4. In parallel, a Seurat shared-nearest-neighbor graph was constructed using k.param=20 and prune.SNN=1/15, followed by Louvain clustering at resolution 3.0 with random seed 777, yielding 15 raw graph clusters. The raw graph clusters were merged onto the four Ward clusters using a maximum-overlap surjective mapping. Cells receiving identical Ward and merged graph-clustering labels were retained as the consensus classification (368/390 cells, 94.36%), yielding C1=59, C2=133, C3=57, and C4=119.
+
+
+12. Key reproducibility files
+-----------------------------
+
+1. Final PCA scores:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_scores_n390.csv
+
+2. Transformed Z-score matrix:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_transformed_Zscore_matrix_n390.csv
+
+3. Feature-specific transformation plan:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_transform_plan.csv
+
+4. PCA loadings and explained variance:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_loadings.csv
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_variance.csv
+
+5. Frozen GC15-to-C4 mapping:
+   outputs/R3_panels_v3/00_res3_GC15_to_C4_mapping.csv
+
+6. Cell-level HC, GC, consensus, and t-SNE assignments:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/res3_main_panel_basket_H1in/00_res3_main_cell_assignments_and_tsne.csv
+
+7. Frozen contingency matrix:
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_NPC3_HCK4_res3p0_merged_4x4_confusion.csv
+
+
+13. Freeze rules
+----------------
+
+Any of the following changes should be treated as unfreezing the current classification and creating a new analysis version:
+  - changing the anatomical scope;
+  - changing the complete-case cell list;
+  - adding or removing any of the 19 features;
+  - changing the transformation, standardization, or PCA fitting population;
+  - changing the number of PCs, HC K, Seurat k.param, prune.SNN, resolution, algorithm, or random seed; or
+  - changing the GC15-to-C4 mapping rule.
+
+Changes limited to colors, fonts, figure dimensions, displayed t-SNE axis proportions, ellipse coverage, or heat-map ordering do not unfreeze the classification because they do not alter cell labels.

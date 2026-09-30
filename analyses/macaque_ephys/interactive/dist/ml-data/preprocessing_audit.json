@@ -1,0 +1,17 @@
+{
+  "scope": "Macaque MSN; Ca+Pu+NAC",
+  "n_complete_cells": 390,
+  "n_features": 19,
+  "ratio_features_log2": 7,
+  "nonratio_features_shift_sum_log1p": 12,
+  "yeo_johnson_used": false,
+  "max_abs_difference_rebuilt_vs_frozen_z": 1.7763568394002505e-15,
+  "max_abs_difference_rebuilt_vs_frozen_pc_after_sign_alignment": 5.713207684721056e-13,
+  "max_abs_difference_explained_variance_ratio": 1.6653345369377348e-16,
+  "ward_k4_ARI_vs_frozen": 1.0,
+  "ward_k4_NMI_vs_frozen": 1.0000000000000002,
+  "ward_k4_mismatches_after_label_invariant_comparison": 0,
+  "fold_local_validation": "For every donor-held-out split, transform minima/sums/means/SDs and PCA are fitted on training donors only; held-out values below the training minimum are clipped to the training lower bound.",
+  "main_analysis_status": "Matches the frozen E1-E4 preprocessing; no Yeo-Johnson correction is required.",
+  "sensitivity_boundary": "Any Yeo-Johnson run must be labelled as a separate sensitivity analysis."
+}

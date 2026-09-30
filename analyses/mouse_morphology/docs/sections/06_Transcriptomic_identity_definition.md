@@ -1,0 +1,3 @@
+# Strict D1 and D2 transcriptomic identity
+
+Strict D1/D2 identity required a stable D1 or D2 call and agreement of both the reference-projection classifier and Pearson-correlation classifier. The T-M analysis additionally required HC-GC morphology consensus. This yielded 168 cells (D1, n=74; D2, n=94). Cells failing any component of this definition were excluded from T-M reduced-rank regression rather than being assigned to an ambiguous D1/D2 category. The broader D1_D2 field in the 187-cell morphology table is retained for descriptive legacy plots but is not the strict RRR inclusion variable.

@@ -1,0 +1,112 @@
+{
+  "configuration_name": "Morph_primary10_v1",
+  "status": "frozen",
+  "frozen_date": "2026-08-11",
+  "analysis_cohort_n": 215,
+  "global_exclusion_config": "config/e_type_global_exclusions.json",
+  "batch_used": false,
+  "preprocessing": {
+    "transformation_rule": "Prespecified feature-level identity or log1p transformation",
+    "scaling": "Median center and IQR/1.3489795003921634 robust scale",
+    "column_sum_normalization": false,
+    "pca_refit_for_each_analysis": true
+  },
+  "features": [
+    {
+      "order": 1,
+      "feature": "M_soma_average_radius",
+      "short_name": "SomaAvgR",
+      "module": "Soma geometry",
+      "transform": "log1p",
+      "role": "Soma-size representative"
+    },
+    {
+      "order": 2,
+      "feature": "M_soma_aspect_ratio",
+      "short_name": "SomaAR",
+      "module": "Soma geometry",
+      "transform": "identity",
+      "role": "Soma anisotropy"
+    },
+    {
+      "order": 3,
+      "feature": "M_basal_dendrite_longthest_path",
+      "short_name": "DendLongestPath",
+      "module": "Dendritic reach and scale",
+      "transform": "log1p",
+      "role": "Dendritic path extent representative"
+    },
+    {
+      "order": 4,
+      "feature": "M_Total_neurite_length_(sections)",
+      "short_name": "TotalNeuriteLength",
+      "module": "Dendritic reach and scale",
+      "transform": "log1p",
+      "role": "Overall reconstructed neurite length"
+    },
+    {
+      "order": 5,
+      "feature": "M_total_number_of_neurites",
+      "short_name": "NeuriteN",
+      "module": "Branching complexity",
+      "transform": "identity",
+      "role": "Primary neurite count; retained instead of exact duplicate Nseg"
+    },
+    {
+      "order": 6,
+      "feature": "M_Number_of_bifurcation_points",
+      "short_name": "BifurcationN",
+      "module": "Branching complexity",
+      "transform": "identity",
+      "role": "Branch point count"
+    },
+    {
+      "order": 7,
+      "feature": "M_Maximum_branch_order",
+      "short_name": "MaxBranchOrder",
+      "module": "Branching complexity",
+      "transform": "log1p",
+      "role": "Hierarchical branching depth"
+    },
+    {
+      "order": 8,
+      "feature": "M_basal_dendrite_avg_tortuosity",
+      "short_name": "AvgTortuosity",
+      "module": "Path geometry",
+      "transform": "log1p",
+      "role": "Typical dendritic tortuosity"
+    },
+    {
+      "order": 9,
+      "feature": "M_trunk_angle_min",
+      "short_name": "TrunkAngleMin",
+      "module": "Path geometry",
+      "transform": "log1p",
+      "role": "Minimum trunk angle"
+    },
+    {
+      "order": 10,
+      "feature": "M_trunk_angle_max",
+      "short_name": "TrunkAngleMax",
+      "module": "Path geometry",
+      "transform": "identity",
+      "role": "Maximum trunk angle"
+    }
+  ],
+  "sensitivity_only": [
+    "M_cell_max_radial_dist",
+    "M_basal_dendrite_max_tortuosity",
+    "M_Total_neurite_volume",
+    "M_soma_circularity_index"
+  ],
+  "excluded_redundant": [
+    "M_soma_maximal_radius",
+    "M_soma_minimal_radius",
+    "M_soma_max_pairwise_dist",
+    "M_soma_perimeter",
+    "M_soma_area",
+    "M_soma_shape_factor",
+    "M_basal_dendrite_Nseg",
+    "M_Total_neurite_area"
+  ]
+}

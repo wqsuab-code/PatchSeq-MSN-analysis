@@ -1,0 +1,20 @@
+feature,frozen_transform,kind,full_data_minimum,full_data_shifted_sum,full_data_transformed_mean,full_data_transformed_sd_ddof0
+Epsy_width_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,0.00062,0.1804449999999797,3.1835882357290415,0.4680009789225727
+Epsy_fast_trough_v_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-64.03125,5488.717803955078,3.204695011799734,0.4477123892548023
+Epsy_peak_deltav_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,55.6875,11800.001760482788,3.2072189048942477,0.4631978398474523
+Epsy_peak_v_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,15.75,11716.219724655151,3.225192003833079,0.3971251224653362
+Epsy_postap_slope_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-2.5609739735588644,996.132269665302,3.2310483918654906,0.3485371046977301
+Epsy_threshold_v_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-59.59375381469727,7582.156951904297,3.223143660647193,0.3950255307987352
+Epsy_trough_t_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,0.13428,157.4657,3.096258581684292,0.6641871559594898
+Epsy_trough_v_rheo,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-67.625,5307.373985290526,3.1930680094903505,0.4822202129414253
+Epsy_upstroke_downstroke_ratio_rheo,log2(ratio) -> training mean/SD Z-score,log2,,,2.1820783783944075,0.29500509134424957
+Epsy_ahp_delay_5spike,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,0.0003549999999998,11.970110000000062,3.018019686058817,0.8694453744583851
+Epsy_ahp_delay_ratio_5spike,log2(ratio) -> training mean/SD Z-score,log2,,,-2.682580501365593,1.3268622211707282
+Epsy_postap_slope_hero,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-1.8666385924902016,782.0043849542067,3.1931100768485274,0.45704122608185666
+Epsy_trough_t_hero,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,0.12704,34.76974999999997,3.082001499244711,0.6687321051698423
+Epsy_downstroke_adapt_ratio,log2(ratio) -> training mean/SD Z-score,log2,,,-0.17589130418899723,0.17898941229631707
+Epsy_peak_v_adapt_ratio,log2(ratio) -> training mean/SD Z-score,log2,,,0.014580060247421554,0.08180608732579152
+Epsy_threshold_v_adapt_ratio,log2(ratio) -> training mean/SD Z-score,log2,,,-0.059620637084783504,0.11765163061503085
+Epsy_upstroke_adapt_ratio,log2(ratio) -> training mean/SD Z-score,log2,,,-0.17805986486628608,0.20918896400358947
+Epsy_width_adapt_ratio,log2(ratio) -> training mean/SD Z-score,log2,,,0.17788076126541535,0.14368601320660007
+Epsy_threshold_v_short_square,training minimum shift -> training shifted-column sum x10000 -> log1p -> training mean/SD Z-score,shift_sum_log1p,-82.09375,14627.3221467336,3.2514793973753395,0.28791157660771494

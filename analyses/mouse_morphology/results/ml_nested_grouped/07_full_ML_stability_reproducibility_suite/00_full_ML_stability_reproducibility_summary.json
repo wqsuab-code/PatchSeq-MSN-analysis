@@ -1,0 +1,99 @@
+{
+  "scope": "Internal recoverability and reproducibility of HC-derived M1-M4 labels",
+  "cohort_n": 187,
+  "recording_day_groups": 105,
+  "class_counts": {
+    "M1": 67,
+    "M2": 23,
+    "M3": 62,
+    "M4": 35
+  },
+  "frozen_features": [
+    "M_soma_circularity_index",
+    "M_soma_aspect_ratio",
+    "M_cell_max_radial_dist",
+    "M_total_number_of_neurites",
+    "M_basal_dendrite_avg_tortuosity",
+    "M_Total_neurite_length_(sections)",
+    "M_Number_of_bifurcation_points",
+    "M_Maximum_branch_order",
+    "M_trunk_angle_min",
+    "M_trunk_angle_max"
+  ],
+  "primary_nested_repeated_grouped_OOF": {
+    "metrics": {
+      "Accuracy": 0.9411764705882353,
+      "Balanced_accuracy": 0.9301299802330762,
+      "Macro_F1": 0.9348448285344994,
+      "ARI": 0.8537138892436816
+    },
+    "day_group_bootstrap_95CI": {
+      "Accuracy": [
+        0.9044943820224719,
+        0.9728260869565217
+      ],
+      "Balanced_accuracy": [
+        0.8825835103002415,
+        0.9697876624362279
+      ],
+      "Macro_F1": [
+        0.891778362019115,
+        0.9703578297894472
+      ],
+      "ARI": [
+        0.7663970886277198,
+        0.9334571716046808
+      ]
+    }
+  },
+  "nested_leave_one_recording_day_out": {
+    "metrics": {
+      "Accuracy": 0.9411764705882353,
+      "Balanced_accuracy": 0.9304308950140102,
+      "Macro_F1": 0.9350080515297906,
+      "ARI": 0.8530984395035198
+    },
+    "day_group_bootstrap_95CI": {
+      "Accuracy": [
+        0.9044943820224719,
+        0.9728260869565217
+      ],
+      "Balanced_accuracy": [
+        0.8829434955793619,
+        0.970023923444976
+      ],
+      "Macro_F1": [
+        0.8919301255978888,
+        0.9695515559906527
+      ],
+      "ARI": [
+        0.7668167036555512,
+        0.932263564812843
+      ]
+    }
+  },
+  "partition_reproducibility_30_seeds": {
+    "mean_balanced_accuracy": 0.9291619791246134,
+    "sd_balanced_accuracy": 0.007908432588680398,
+    "median_cell_reference_agreement": 1.0,
+    "mean_pairwise_ARI_between_seed_predictions": 0.9190491209199149,
+    "minimum_pairwise_ARI_between_seed_predictions": 0.851337027550251
+  },
+  "label_permutation_test": {
+    "observed_balanced_accuracy": 0.9412861807970765,
+    "null_mean": 0.2541828619873982,
+    "null_95percentile": 0.32118128302586446,
+    "empirical_P": 0.001996007984031936,
+    "permutations": 500
+  },
+  "probability_quality": {
+    "Multiclass_log_loss": 0.2129863297865335,
+    "Multiclass_Brier_score": 0.09434355508723004,
+    "Expected_calibration_error_10bins": 0.10066404593851881,
+    "Macro_OVR_ROC_AUC": 0.9960962085748177,
+    "Macro_average_precision": 0.9876085396216232
+  },
+  "HC_GC_consensus_n": 181,
+  "integrated_reproducible_high_confidence_n": 157,
+  "interpretation": "Strong internal reproducibility supports recoverable M1-M4 morphology modules. Because HC labels and ML predictors use the same ten morphology features, these tests do not constitute independent biological or external-cohort validation."
+}

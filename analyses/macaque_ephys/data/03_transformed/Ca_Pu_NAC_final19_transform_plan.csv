@@ -1,0 +1,20 @@
+feature,transform
+Epsy_width_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_fast_trough_v_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_peak_deltav_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_peak_v_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_postap_slope_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_threshold_v_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_trough_t_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_trough_v_rheo,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_upstroke_downstroke_ratio_rheo,log2(ratio) then Z-score
+Epsy_ahp_delay_5spike,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_ahp_delay_ratio_5spike,log2(ratio) then Z-score
+Epsy_postap_slope_hero,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_trough_t_hero,"shift-min, sum-to-10000, log1p, then Z-score"
+Epsy_downstroke_adapt_ratio,log2(ratio) then Z-score
+Epsy_peak_v_adapt_ratio,log2(ratio) then Z-score
+Epsy_threshold_v_adapt_ratio,log2(ratio) then Z-score
+Epsy_upstroke_adapt_ratio,log2(ratio) then Z-score
+Epsy_width_adapt_ratio,log2(ratio) then Z-score
+Epsy_threshold_v_short_square,"shift-min, sum-to-10000, log1p, then Z-score"

@@ -1,0 +1,49 @@
+{
+  "frozen_HC_reproduction": {
+    "ARI": 1.0,
+    "NMI": 1.0,
+    "mapped_accuracy": 1.0,
+    "max_abs_Z_difference": 0.0,
+    "max_abs_PC_abs_difference": 3.6415315207705135e-14,
+    "mapping": {
+      "1": "M1",
+      "2": "M2",
+      "3": "M3",
+      "4": "M4"
+    },
+    "mismatch_n": 0
+  },
+  "frozen_GC_reproduction": {
+    "status": "Frozen source table used",
+    "HC_GC_exact_agreement_n": 181,
+    "total_n": 187
+  },
+  "unsupervised_frozen_NPC3_K4_Ward": {
+    "ARI_median": 0.517564990924068,
+    "ARI_95CI": [
+      0.18549450891361044,
+      0.9029406765400286
+    ],
+    "NMI_median": 0.6238804461071396,
+    "silhouette_median": 0.3093359998542371,
+    "minimum_cluster_n_median": 14.0,
+    "small_cluster_le2_rate": 0.0
+  },
+  "best_supervised_model": "RBF SVM",
+  "best_supervised_BA_median": 0.9647727272727273,
+  "best_supervised_BA_95CI": [
+    0.8729773652882206,
+    1.0
+  ],
+  "best_supervised_macro_F1_median": 0.957380880150252,
+  "best_supervised_macro_F1_95CI": [
+    0.861288433908046,
+    1.0
+  ],
+  "permutation_BA_median": 0.24719742063492062,
+  "permutation_empirical_p": 0.001996007984031936,
+  "feature_rank_Spearman_rho": 0.709090909090909,
+  "risk_cells_margin_le_0": 9,
+  "risk_cells_margin_below_0.10": 22,
+  "E_annotation_available_n": 0
+}

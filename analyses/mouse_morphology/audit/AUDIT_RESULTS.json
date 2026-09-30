@@ -1,0 +1,52 @@
+{
+  "release_date": "2026-09-23",
+  "frozen_taxonomy": "NPC3, Euclidean Ward.D2 HC K=4, GC resolution=0.50",
+  "cohort": {
+    "raw187_rows": 187,
+    "final_rows": 187,
+    "interactive_rows": 187,
+    "unique_ids": 187,
+    "class_counts": {
+      "M1": 67,
+      "M2": 23,
+      "M3": 62,
+      "M4": 35
+    },
+    "raw_final_id_sets_identical": true,
+    "final_interactive_id_sets_identical": true
+  },
+  "feature_concordance": {
+    "raw_vs_final_max_absolute_difference": 0.0,
+    "final_vs_interactive_max_absolute_difference": 0.0
+  },
+  "pca_hc_reproduction": {
+    "max_absolute_difference_of_absolute_PC_scores": 3.9968028886505635e-14,
+    "HC_mapped_match_n": 187,
+    "HC_total_n": 187,
+    "HC_ARI": 1.0
+  },
+  "hc_gc": {
+    "consensus_n": 181,
+    "total_n": 187,
+    "consensus_percent": 96.79144385026738
+  },
+  "strict_T_M_RRR": {
+    "strict_consensus_n": 168,
+    "D1_n": 74,
+    "D2_n": 94,
+    "RRR_score_rows": 168,
+    "strict_and_RRR_ID_sets_identical": true
+  },
+  "identity_scope_conflict": {
+    "broad_D1D2_consensus_n": 180,
+    "strict_RPCA_Pearson_consensus_n": 168,
+    "difference_n": 12,
+    "resolution": "Use the strict n=168 table only for T-M RRR; retain the broader table only for descriptive plots explicitly labelled as broad consensus identity."
+  },
+  "raw_ASC": {
+    "external_ASC_root_available": null,
+    "mapped_filename_n": 183,
+    "available_file_n_during_packaging": 0,
+    "note": "Raw ASC files were on an external E:/ or D:/ volume and were not mounted during packaging. The frozen mapping and NeuroM recomputation audits are included."
+  }
+}

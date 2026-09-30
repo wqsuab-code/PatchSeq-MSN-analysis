@@ -1,0 +1,39 @@
+{
+  "scope": "All current and future E-type analyses",
+  "updated": "2026-08-04",
+  "id_column": "MSN_unique_ID",
+  "exclusions": [
+    {
+      "MSN_unique_ID": "A1175_Batch4",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "J5203_Batch6",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "M1142_Batch5",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "M3104_Batch5",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "M3251_Batch5",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "O8232_Batch2",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "O932_Batch2",
+      "reason": "Previously frozen pre-QC exclusion"
+    },
+    {
+      "MSN_unique_ID": "M377_Batch5",
+      "reason": "User-directed permanent exclusion from the complete E-type dataset"
+    }
+  ]
+}

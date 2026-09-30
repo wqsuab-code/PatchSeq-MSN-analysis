@@ -1,0 +1,41 @@
+{
+  "indexed_files_excluding_generated_indexes": 280,
+  "indexed_bytes": 34999049,
+  "counts_by_top_level_directory": {
+    ".gitattributes": 1,
+    "LICENSE_PENDING.md": 1,
+    "README.md": 1,
+    "RUN_ORDER.md": 1,
+    "audit": 3,
+    "code": 36,
+    "config": 2,
+    "data": 22,
+    "docs": 19,
+    "environment": 3,
+    "figures": 28,
+    "interactive": 67,
+    "legacy": 1,
+    "results": 94,
+    "tests": 1
+  },
+  "files_over_25_MB": [],
+  "files_over_50_MB": [],
+  "absolute_path_occurrences": 16,
+  "absolute_path_files": [
+    "code/01_cohort_QC/audit_dstr_missingness_overlap.py",
+    "code/01_cohort_QC/audit_dstrvstr_complete_pca_outliers.py",
+    "code/01_cohort_QC/audit_primary10_missing_reason.py",
+    "code/01_cohort_QC/build_primary10_sensitivity_cohorts.py",
+    "code/01_cohort_QC/run_dstr_dstrvstr_redundancy_skewness.py",
+    "code/01_cohort_QC/run_dstr_dstrvstr_rheobase_qc.py",
+    "code/05_ML_validation/validate_macaque_EM_stability_500.py",
+    "code/06_cross_modal/analyze_nac_d1d2_transcriptomic_ephys_rrr.py",
+    "code/07_interactive/build_macaque_e_rrr_editor.py",
+    "code/08_packaging/package_macaque_E4_frozen_analysis.py",
+    "code/08_packaging/package_macaque_E4_tsne_feature_statistics.py",
+    "code/08_packaging/package_macaque_E_RRR_methods_supplement.py",
+    "interactive/dist/ml-code/validate_macaque_EM_stability_500.py"
+  ],
+  "suspected_secret_hits": [],
+  "note": "Generated index files are intentionally excluded from their own checksum index."
+}

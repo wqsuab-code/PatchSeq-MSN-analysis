@@ -1,0 +1,21 @@
+Raw ASC recomputation of final Morph n=187
+ASC inventory: 466 files from E:\ASC files
+Year-aware matches: 183/187
+Successful geometry recomputation: 182/187
+NeuroM version: 4.0.5
+
+Metric  Matched_cell_n  Spearman_rho_old_vs_recalculated  Spearman_p  Median_recalculated_over_historical  Median_absolute_relative_error
+Length             182                          0.999928         0.0                                  1.0                    1.416220e-08
+  Area             182                          0.999928         0.0                                  1.0                    5.043492e-08
+Volume             182                          0.999910         0.0                                  1.0                    3.255542e-08
+
+Batch8 one-versus-rest recomputed scale audit:
+                              Feature  Batch  Batch_n  Batch_median  Other_batches_median  Median_ratio  One_vs_rest_absolute_AUC
+               Recalc_total_length_um Batch8       25   1021.503448            988.402969      1.033489                  0.522548
+                Recalc_total_area_um2 Batch8       25   4450.106049            719.471489      6.185243                  0.999490
+              Recalc_total_volume_um3 Batch8       25   1437.658783             39.786076     36.134721                  1.000000
+            Recalc_area_per_length_um Batch8       25      4.021239              0.691150      5.818182                  1.000000
+         Recalc_volume_per_length_um2 Batch8       25      1.286796              0.038013     33.851237                  1.000000
+ Recalc_effective_radius_2V_over_A_um Batch8       25      0.640000              0.110000      5.818181                  1.000000
+           ASC_point_radius_median_um Batch8       25      0.640000              0.110000      5.818182                  1.000000
+ASC_length_weighted_segment_radius_um Batch8       25      0.640000              0.110000      5.818182                  1.000000

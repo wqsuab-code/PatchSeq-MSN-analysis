@@ -1,0 +1,26 @@
+:root{font-family:Arial,sans-serif;color:#16202a;background:#e8edf1}
+body{margin:0;background:#e8edf1}
+body>header{height:82px;padding:14px 18px;background:#fff;border-bottom:1px solid #ccd5db;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:none;margin:0}
+body>header h1{font-size:22px;margin:0 0 5px}
+body>header p{margin:0;color:#61707c;font-size:13px}
+body>header .button{border:1px solid #98a8b4;background:#fff;color:#21303a;border-radius:4px;padding:7px 10px;text-decoration:none;font:inherit}
+.editor-main{height:calc(100vh - 82px);max-width:none;margin:0;padding:0;min-height:0}
+.editor-shell.comparison-shell{height:100%;display:grid;grid-template-columns:300px minmax(0,1fr);gap:0;align-items:stretch}
+.editor-controls{position:static;max-height:none;height:100%;overflow:auto;padding:10px;background:#f7f9fa;border:0;border-right:1px solid #cbd5db;border-radius:0;display:block}
+.editor-controls details{background:#fff;border:1px solid #d1d9de;border-radius:5px;margin:0 0 8px;padding:0}
+.editor-controls summary{font-weight:700;padding:9px}
+.control-group{padding:0 9px 9px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.control-group>label{font-size:11px;color:#4b5a64;display:flex;flex-direction:column;gap:3px;font-weight:400}
+.control-group input,.control-group select{width:100%;height:29px;border:1px solid #aebbc4;border-radius:3px;background:#fff;padding:4px;color:#18242c}
+.control-group input[type="range"]{padding:0}
+.control-group .check{flex-direction:row;align-items:center}
+.control-group .check input{width:auto;height:auto}
+.editor-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.editor-actions button,.editor-actions .button{font-size:11px;border:1px solid #98a8b4;background:#fff;color:#21303a;border-radius:4px;padding:7px 10px;text-decoration:none;text-align:center}
+.editor-actions .wide{grid-column:1/-1}
+.hint{font-size:11px;line-height:1.45;color:#63727b;margin:12px 4px}
+.editor-canvas{min-width:0;min-height:0;border:0;border-radius:0;padding:0;background:#e8edf1;display:flex;flex-direction:column;overflow:hidden}
+.editor-canvas #comparisonStatus{height:34px;margin:0;background:#f9fbfc;border-bottom:1px solid #cbd5db;padding:8px 13px;font-size:12px;color:#51616b}
+.editor-canvas #comparisonSvg{margin:18px;display:block;background:#fff;box-shadow:0 3px 18px #51616b33;min-width:700px;flex:none}
+.editor-canvas{background:repeating-conic-gradient(#eef2f4 0 25%,#e8edef 0 50%) 50%/24px 24px;overflow:auto}
+@media(max-width:850px){.editor-shell.comparison-shell{grid-template-columns:250px minmax(0,1fr)}body>header p{display:none}}

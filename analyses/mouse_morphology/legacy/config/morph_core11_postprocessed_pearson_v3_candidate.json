@@ -1,0 +1,125 @@
+{
+  "configuration_name": "Morph_core11_postprocessed_pearson_v3_candidate",
+  "status": "candidate_not_frozen",
+  "cohort_n": 215,
+  "batch_used": false,
+  "preprocessing": "shift feature minimum to zero; divide by shifted column sum; multiply by 10000; log1p; feature-wise z-score with sample SD",
+  "redundancy_rule": "Final processed Pearson abs(r)>0.80; choose one representative per connected component before evaluating skewness",
+  "features": [
+    {
+      "Order": 1,
+      "Feature": "M_soma_average_radius",
+      "Module": "Soma size",
+      "Final_skewness": -1.28254958994098,
+      "Abs_final_skewness": 1.28254958994098,
+      "Status": "Highly skewed",
+      "Selection_reason": "Stable central summary of the correlated soma-size block."
+    },
+    {
+      "Order": 2,
+      "Feature": "M_soma_aspect_ratio",
+      "Module": "Soma shape",
+      "Final_skewness": -2.53925393797996,
+      "Abs_final_skewness": 2.53925393797996,
+      "Status": "Highly skewed",
+      "Selection_reason": "Direct anisotropy measure; circularity is deterministically derived."
+    },
+    {
+      "Order": 3,
+      "Feature": "M_cell_max_radial_dist",
+      "Module": "Dendritic reach",
+      "Final_skewness": -0.560263906632111,
+      "Abs_final_skewness": 0.560263906632111,
+      "Status": "Moderately skewed",
+      "Selection_reason": "Direct spatial reach; avoids additional path-length interpretation."
+    },
+    {
+      "Order": 4,
+      "Feature": "M_Total_neurite_length_(sections)",
+      "Module": "Arbor scale",
+      "Final_skewness": -1.30679816642462,
+      "Abs_final_skewness": 1.30679816642462,
+      "Status": "Highly skewed",
+      "Selection_reason": "Independent whole-arbor length dimension."
+    },
+    {
+      "Order": 5,
+      "Feature": "M_Total_neurite_area",
+      "Module": "Neurite caliber/surface",
+      "Final_skewness": 0.205328852106347,
+      "Abs_final_skewness": 0.205328852106347,
+      "Status": "Approximately symmetric",
+      "Selection_reason": "More stable representative than total volume."
+    },
+    {
+      "Order": 6,
+      "Feature": "M_total_number_of_neurites",
+      "Module": "Branching complexity",
+      "Final_skewness": -2.54326538817497,
+      "Abs_final_skewness": 2.54326538817497,
+      "Status": "Highly skewed",
+      "Selection_reason": "Representative of the exact duplicate count pair."
+    },
+    {
+      "Order": 7,
+      "Feature": "M_Number_of_bifurcation_points",
+      "Module": "Branching complexity",
+      "Final_skewness": -1.76115381260492,
+      "Abs_final_skewness": 1.76115381260492,
+      "Status": "Highly skewed",
+      "Selection_reason": "Independent branching-breadth dimension."
+    },
+    {
+      "Order": 8,
+      "Feature": "M_Maximum_branch_order",
+      "Module": "Branching complexity",
+      "Final_skewness": -2.47846902306827,
+      "Abs_final_skewness": 2.47846902306827,
+      "Status": "Highly skewed",
+      "Selection_reason": "Independent hierarchical-depth dimension."
+    },
+    {
+      "Order": 9,
+      "Feature": "M_basal_dendrite_avg_tortuosity",
+      "Module": "Path geometry",
+      "Final_skewness": -1.11414840534852,
+      "Abs_final_skewness": 1.11414840534852,
+      "Status": "Highly skewed",
+      "Selection_reason": "Typical tortuosity is less tail-sensitive than the maximum."
+    },
+    {
+      "Order": 10,
+      "Feature": "M_trunk_angle_min",
+      "Module": "Path geometry",
+      "Final_skewness": -0.374981426214474,
+      "Abs_final_skewness": 0.374981426214474,
+      "Status": "Approximately symmetric",
+      "Selection_reason": "Independent lower angular envelope."
+    },
+    {
+      "Order": 11,
+      "Feature": "M_trunk_angle_max",
+      "Module": "Path geometry",
+      "Final_skewness": -2.13668696034771,
+      "Abs_final_skewness": 2.13668696034771,
+      "Status": "Highly skewed",
+      "Selection_reason": "Independent upper angular envelope."
+    }
+  ],
+  "audit": {
+    "cells": 215,
+    "processed_features_before_filter": 22,
+    "processed_pearson_pairs_abs_gt_0p80": 18,
+    "redundancy_components_with_more_than_one_feature": 6,
+    "retained_core_features": 11,
+    "core_pairs_abs_pearson_gt_0p80": 0,
+    "max_abs_pearson_within_core": 0.671523165213,
+    "max_abs_pearson_core_pair": [
+      "M_Maximum_branch_order",
+      "M_Number_of_bifurcation_points"
+    ],
+    "core_highly_skewed_abs_ge_1": 8,
+    "core_moderately_skewed_abs_0p5_to_1": 1,
+    "core_approximately_symmetric_abs_lt_0p5": 2
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "module": "Mouse M morphology taxonomy and T-M analysis",
+  "freeze_date": "2026-09-23",
+  "supersedes": "2026-09-19 source package",
+  "cohort": {
+    "starting_morphology_records": 228,
+    "post_qc_cells": 193,
+    "frozen_cells": 187,
+    "recording_day_groups": 105,
+    "animal_definition": "One mouse was used per recording day; true animal IDs are unavailable, so recording day is an animal proxy only."
+  },
+  "features": [
+    "M_soma_circularity_index",
+    "M_soma_aspect_ratio",
+    "M_cell_max_radial_dist",
+    "M_total_number_of_neurites",
+    "M_basal_dendrite_avg_tortuosity",
+    "M_Total_neurite_length_(sections)",
+    "M_Number_of_bifurcation_points",
+    "M_Maximum_branch_order",
+    "M_trunk_angle_min",
+    "M_trunk_angle_max"
+  ],
+  "preprocessing": "Feature-wise minimum shift; shifted feature column-sum normalization to 10000; log1p; feature-wise Z-score",
+  "pca_components_used": 3,
+  "hierarchical_clustering": {
+    "distance": "Euclidean",
+    "linkage": "Ward.D2",
+    "k": 4
+  },
+  "graph_clustering": {
+    "implementation": "Seurat SNN",
+    "k": 20,
+    "prune": "1/15",
+    "algorithm": 1,
+    "resolution": 0.5
+  },
+  "frozen_class_counts": {"M1": 67, "M2": 23, "M3": 62, "M4": 35},
+  "hc_gc_consensus_cells": 181,
+  "strict_t_m_rrr": {
+    "cells": 168,
+    "D1": 74,
+    "D2": 94,
+    "M1": 63,
+    "M2": 22,
+    "M3": 55,
+    "M4": 28,
+    "transcriptomic_genes": 1000,
+    "transcriptomic_pcs": 20,
+    "rank": 3
+  }
+}
