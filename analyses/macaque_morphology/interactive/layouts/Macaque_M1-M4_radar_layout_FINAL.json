@@ -1,0 +1,84 @@
+{
+  "canvasWidth": 1160,
+  "canvasHeight": 300,
+  "sideMargin": 34,
+  "panelGap": 14,
+  "radarRadius": 92,
+  "centerY": 156,
+  "showTitles": true,
+  "titleSize": 15,
+  "classes": {
+    "M1": {
+      "enabled": true,
+      "title": "M1 (n=43)"
+    },
+    "M2": {
+      "enabled": true,
+      "title": "M2 (n=42)"
+    },
+    "M3": {
+      "enabled": true,
+      "title": "M3 (n=20)"
+    },
+    "M4": {
+      "enabled": true,
+      "title": "M4 (n=12)"
+    }
+  },
+  "colors": {
+    "M1": "#1F77B4",
+    "M2": "#D9A400",
+    "M3": "#8C564B",
+    "M4": "#E377C2"
+  },
+  "scaleMode": "zscore",
+  "zMin": -3,
+  "zMax": 3,
+  "centerStatistic": "median",
+  "showCells": true,
+  "cellWidth": 2,
+  "cellOpacity": 0.1,
+  "showIqr": true,
+  "iqrOpacity": 0,
+  "centerWidth": 2,
+  "centerFillOpacity": 0,
+  "curveTension": 1,
+  "ringCount": 5,
+  "gridWidth": 1,
+  "gridOpacity": 0.5,
+  "labelSize": 8,
+  "labelDistance": 9,
+  "labelOrientation": "horizontal",
+  "showRadialValues": false,
+  "radialValueSize": 6,
+  "featureOrder": [
+    "basal_dendrite_total_length",
+    "basal_dendrite_bias_medial",
+    "basal_dendrite_num_branches",
+    "basal_dendrite_max_path_distance",
+    "basal_dendrite_max_euclidean_distance",
+    "basal_dendrite_extent_dorsal",
+    "basal_dendrite_max_branch_order",
+    "basal_dendrite_stem_exit_ventral",
+    "basal_dendrite_stem_exit_MedialLateral",
+    "basal_dendrite_stem_exit_dorsal"
+  ],
+  "featureLabels": {
+    "basal_dendrite_max_path_distance": "BD-MaxPD",
+    "basal_dendrite_bias_medial": "BD-Bias-Med",
+    "basal_dendrite_max_branch_order": "BD-MaxBO",
+    "basal_dendrite_num_branches": "BD-NBranch",
+    "basal_dendrite_total_length": "BD-TotLen",
+    "basal_dendrite_stem_exit_MedialLateral": "BD-StemExit-ML",
+    "basal_dendrite_stem_exit_ventral": "BD-StemExit-Ven",
+    "basal_dendrite_stem_exit_dorsal": "BD-StemExit-Dor",
+    "basal_dendrite_max_euclidean_distance": "BD-MaxED",
+    "basal_dendrite_extent_dorsal": "BDE-Dor"
+  },
+  "centerColor": "#202020",
+  "gridColor": "#b8b8b8",
+  "textColor": "#b8b8b8",
+  "canvasColor": "#ffffff",
+  "exportWidthIn": 5.2,
+  "exportDpi": 600
+}

@@ -1,0 +1,5 @@
+# Morphology transformation and principal component analysis
+
+The 18 retained morphology features were transformed independently. Adjusted sample skewness was calculated on the 126-cell cohort. Features with an absolute adjusted skewness of at least 0.5 underwent maximum-likelihood Yeo–Johnson transformation, with the transformation parameter optimized over −5 to 5; the remaining variables were left on their original scale. Each resulting feature was centered and divided by its sample standard deviation. Principal component analysis was then performed by singular-value decomposition without further centering or scaling. The frozen classification used PC1–PC5.
+
+The transformation and PCA were fitted to all 126 morphology-complete cells because they were part of the unsupervised discovery procedure. In donor-held-out machine-learning validation, transformation, standardization and PCA parameters were instead estimated within each training split and applied unchanged to the corresponding test cells.

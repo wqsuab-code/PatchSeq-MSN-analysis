@@ -1,0 +1,86 @@
+{
+  "scope": "Macaque MSN only; ROI Ca+Pu+NAC; morphology complete cases",
+  "source_zip": "C:\\Users\\53461\\Downloads\\Macaque-PatchSeq-BG.zip",
+  "source_zip_sha256": "8b0aeaed726e27658066230fe467bdbb765d641d1ea1e3a115e079e4ff0c13a6",
+  "all_complete_cells": 126,
+  "consensus_cells": 117,
+  "class_counts": {
+    "M1": 43,
+    "M2": 42,
+    "M3": 20,
+    "M4": 12
+  },
+  "donors": 41,
+  "features": [
+    "basal_dendrite_bias_dorsal",
+    "basal_dendrite_bias_medial",
+    "basal_dendrite_calculate_number_of_stems",
+    "basal_dendrite_extent_dorsal",
+    "basal_dendrite_extent_medial",
+    "basal_dendrite_max_branch_order",
+    "basal_dendrite_max_euclidean_distance",
+    "basal_dendrite_max_path_distance",
+    "basal_dendrite_mean_contraction",
+    "basal_dendrite_mean_diameter",
+    "basal_dendrite_num_branches",
+    "basal_dendrite_soma_percentile_dorsal",
+    "basal_dendrite_soma_percentile_medial",
+    "basal_dendrite_stem_exit_MedialLateral",
+    "basal_dendrite_stem_exit_dorsal",
+    "basal_dendrite_stem_exit_ventral",
+    "basal_dendrite_total_length",
+    "soma_surface_area"
+  ],
+  "feature_n": 18,
+  "transformation": "Within each training sample: adjusted skewness |g1|>=0.5 -> ML Yeo-Johnson in [-5,5], otherwise direct; sample Z-score",
+  "frozen_PCA_n": 5,
+  "frozen_HC": "Euclidean + Ward.D2, K=4",
+  "frozen_GC": "Seurat SNN k=20, prune=1/15, Louvain algorithm 1, resolution=2.3, seed=777; stored raw K=13 merged by maximum HC overlap",
+  "repeats": 500,
+  "unsupervised": {
+    "donor_fraction": 0.8,
+    "NPC": "2-10",
+    "K": "2-8",
+    "algorithms": [
+      "Ward",
+      "K-means",
+      "Gaussian mixture",
+      "Spectral"
+    ]
+  },
+  "supervised": {
+    "train_donor_fraction": 0.75,
+    "test_donor_fraction": 0.25,
+    "all_classes_required_both": true,
+    "models": [
+      "Multinomial logistic",
+      "Linear SVM",
+      "RBF SVM",
+      "kNN",
+      "Random forest",
+      "Extra trees",
+      "HistGradientBoosting"
+    ],
+    "primary_metrics": [
+      "balanced_accuracy",
+      "macro_F1"
+    ],
+    "PCA_n": 5
+  },
+  "permutation": "Within-donor label shuffle on identical splits",
+  "consensus_margin_risk_threshold": 0.1,
+  "seed": 20260911,
+  "software": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.8.0",
+    "joblib": "1.5.3",
+    "matplotlib": "3.10.9",
+    "seaborn": "0.13.2"
+  },
+  "E_data_used_as_predictors": false,
+  "Mouse_data_used": false
+}

@@ -1,0 +1,5 @@
+# T-class composition and transcriptome-to-morphology reduced-rank regression
+
+Transcriptomic D1, D2 and hybrid identities were treated as post hoc annotations and were not used to define morphology classes. The 117-cell consensus cohort contained 47 D1, 62 D2 and 8 hybrid MSNs. T-class composition was summarized as counts and within-M-class percentages.
+
+Transcriptome-to-morphology coupling was examined by pooled reduced-rank regression (RRR) in the 117 consensus cells. Transcriptomic predictors were the first 20 principal components derived from 1,000 eligible variable genes. Responses were the 18 frozen transformed and standardized morphology features; `3_Sholl_PC1` was excluded. A rank-three model was used for display. Panels show components 2 versus 1 and 3 versus 1 in transcriptomic and morphological score space. D1 and D2 cells were assigned distinct colors and 90% bivariate-normal ellipses; hybrid cells were retained as grey points. The ten genes or morphology features with the largest correlation-loading magnitudes were shown in each component plane, with vectors uniformly rescaled for display.

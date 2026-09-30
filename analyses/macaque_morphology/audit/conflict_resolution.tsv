@@ -1,0 +1,7 @@
+item	observed_difference	authoritative_resolution	impact
+Legacy transformed matrix filename	02_transformed_z_117.csv contains 126 rows	Renamed in bundle to 02_transformed_z_all126.csv; consensus panels subset it by the 117 frozen IDs	Resolved; content is correct
+Radar feature order	Earlier top10 parameter text uses a different circular order from the final radar-layout JSON	Final radar-layout JSON and current main SVG are authoritative	Display-only; same ten features and same values
+Radar physical width	Earlier static specification records 4.64 in; final layout requests 5.2 in	Final layout JSON and manuscript SVG are authoritative	Display-only
+RRR radial scaling	Early README records 99th-percentile radius; final layout JSON records radialPercentile=100	Final layout JSON is authoritative for the current main figure	Display-only; RRR scores and loadings unchanged
+Legacy preprocessing branch	Older m18 directory contains shift-sum-log1p outputs	Frozen labels demonstrably use m18_adaptive_pca126: skew-adaptive Yeo-Johnson/direct Z-score and PC1-PC5	Legacy branch excluded from bundle except raw126 source table
+Panel order	Earlier drafts placed consensus t-SNE before the confusion matrix	Current SVG is c=confusion matrix and d=consensus t-SNE	Resolved in bundled legend

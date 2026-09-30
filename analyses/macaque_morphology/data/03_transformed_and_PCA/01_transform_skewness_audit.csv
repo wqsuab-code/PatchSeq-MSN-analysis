@@ -1,0 +1,19 @@
+﻿feature,raw_skewness,rule,YJ_lambda,post_transform_skewness,variance_after_Z
+basal_dendrite_bias_dorsal,-0.249343218063531,direct Z-score,,-0.249343218063531,1
+basal_dendrite_bias_medial,1.40270888116362,Yeo-Johnson + Z-score,0.24522723535268,-0.0499330095553955,1
+basal_dendrite_calculate_number_of_stems,1.13972767674043,Yeo-Johnson + Z-score,-0.265205357108392,-0.00499688783635525,1
+basal_dendrite_extent_dorsal,0.142833905578168,direct Z-score,,0.142833905578168,1
+basal_dendrite_extent_medial,-0.159860783269609,direct Z-score,,-0.159860783269609,1
+basal_dendrite_max_branch_order,0.429640210557578,direct Z-score,,0.429640210557578,1
+basal_dendrite_max_euclidean_distance,-0.0334885909142714,direct Z-score,,-0.0334885909142714,1
+basal_dendrite_max_path_distance,0.233034803816539,direct Z-score,,0.233034803816539,1
+basal_dendrite_mean_contraction,-0.482712598223626,direct Z-score,,-0.482712598223626,1
+basal_dendrite_mean_diameter,0.607850365546687,Yeo-Johnson + Z-score,-4.99994431585175,0.16058460960325,1
+basal_dendrite_num_branches,0.0199654207886259,direct Z-score,,0.0199654207886259,1
+basal_dendrite_soma_percentile_dorsal,0.384634452847505,direct Z-score,,0.384634452847505,1
+basal_dendrite_soma_percentile_medial,-1.24950473549096,Yeo-Johnson + Z-score,4.99994431585175,-0.599965562231829,1
+basal_dendrite_stem_exit_MedialLateral,-0.314247228545525,direct Z-score,,-0.314247228545525,1
+basal_dendrite_stem_exit_dorsal,0.310024239351067,direct Z-score,,0.310024239351067,1
+basal_dendrite_stem_exit_ventral,0.54174382846324,Yeo-Johnson + Z-score,-1.22548408979487,0.0557056616680398,1
+basal_dendrite_total_length,0.214868675089395,direct Z-score,,0.214868675089395,1
+soma_surface_area,1.30293654924932,Yeo-Johnson + Z-score,-0.0596298732441642,0.00136709252172589,1

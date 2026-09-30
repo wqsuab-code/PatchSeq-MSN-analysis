@@ -1,0 +1,6 @@
+#!/usr/bin/env Rscript
+suppressPackageStartupMessages({library(data.table);library(ggplot2)})
+out<-"C:/Users/53461/OneDrive/Documentos/Patch-seq_Mouse_Acb_MSN_T-type_Visualization/macaque_m/m18_tempfreeze_NPC5_HCK4_res2.3";d<-fread(file.path(out,"09_tSNE_optimized_coordinates.csv"));d[,`:=`(cx=mean(tSNE1),cy=mean(tSNE2)),by=HC_K4];d[,`:=`(x=cx+.85*(tSNE1-cx),y=cy+.85*(tSNE2-cy))]
+long<-rbind(d[,.(x,y,class=factor(HC_K4),concordant,panel="Fixed HC K=4")],d[,.(x,y,class=factor(GC_merged_K4),concordant,panel="Merged GC K=4")]);cols<-c("1"="#0072B2","2"="#D55E00","3"="#009E73","4"="#CC79A7")
+p<-ggplot(long,aes(x,y,color=class,shape=concordant))+geom_point(size=3,alpha=.92)+facet_wrap(~panel,nrow=1)+scale_color_manual(values=cols)+scale_shape_manual(values=c(`TRUE`=16,`FALSE`=4))+coord_equal()+labs(title="Temporary macaque MSN morphology classification",subtitle="Optimized t-SNE; within-HC display distance at 85% | visualization only",x="Display t-SNE 1",y="Display t-SNE 2",color="M class",shape="HC-GC concordant")+theme_classic(base_size=12)+theme(axis.text=element_blank(),axis.ticks=element_blank(),legend.position="bottom")
+ggsave(file.path(out,"16_tSNE_final_85pct.png"),p,width=11,height=5.8,dpi=500,bg="white")

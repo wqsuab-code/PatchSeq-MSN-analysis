@@ -1,0 +1,7 @@
+Canvas: 3.36 x 1.24 inches
+Font: Arial 4 pt for all vector labels
+Panels: four equal circular panels in one row
+Displayed labels: four strongest absolute loading vectors per panel
+Label clipping: 0
+Label-label overlaps: 0
+RRR model, scores, cell set, ellipses, and saved full loadings: unchanged

@@ -1,0 +1,13 @@
+Macaque M1-M4 circular dendrogram audit
+========================================
+Tree input: 126 frozen Macaque MSN morphology-complete cells
+PCA input: frozen PC1-PC5 scores
+Clustering: Euclidean distance; Ward.D2; full HC tree
+Leaf order: labels(as.dendrogram(hclust(...))); no class-based reordering or rotation
+HC counts (all 126): M1 44, M2 43, M3 24, M4 15
+Merged GC counts (all 126): M1 49, M2 44, M3 20, M4 13
+Consensus HC counts (117): M1 43, M2 42, M3 20, M4 12
+HC-GC agreement: 117/126 (92.86%)
+Ring order: inner HC; outer merged GC
+Palette: M1 #1F77B4; M2 #D9A400; M3 #8C564B; M4 #E377C2
+Reference E files were used for visual geometry only; no E features or E PCA were read.

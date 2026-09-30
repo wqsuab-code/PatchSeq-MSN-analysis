@@ -1,0 +1,15 @@
+Frozen Macaque M4 ML500 validation manifest
+===========================================
+Source audit: 486 target Macaque MSN cells; 126 complete morphology cases; 117 HC-GC consensus cells.
+Frozen class counts: M1=43, M2=42, M3=20, M4=12; 41 donors.
+Frozen HC reproduction: ARI=1.000, NMI=1.000, mapped accuracy=1.000, mismatches=0.
+Frozen GC reproduction: raw K=13, label-invariant ARI=1.000; merged exact agreement=1.000, mismatches=0.
+Unsupervised raw rows: 126000 = 500 repeats x 9 NPC values x 7 K values x 4 algorithms.
+Supervised performance rows: 3500 = 500 splits x 7 models.
+Cell prediction/probability rows: 111636; probability row-sum maximum absolute error=8.88e-16.
+Confusion-matrix rows: 56000 = 500 x 7 x 4 x 4.
+Donor split logs: 500; train/test donor overlap=0 in every split.
+Raw MDI/logistic importance rows: 9000 = 500 x 18.
+Nested training-donor permutation-importance rows: 9000 = 500 x 18.
+Label permutation rows: 500.
+Figures: 4 PNG and 4 vector PDF; all PDFs render as one page without clipping.

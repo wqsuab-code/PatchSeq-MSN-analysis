@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript and archived software release."
+title: "Patch-seq MSN analysis"
+version: "0.1.0-review"
+authors:
+  - name: "AUTHOR DETAILS TO BE COMPLETED"
+repository-code: "https://github.com/wqsuab-code/PatchSeq-MSN-analysis"

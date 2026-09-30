@@ -1,0 +1,14 @@
+Required R packages used by frozen scripts:
+data.table
+ggplot2
+jsonlite
+digest
+car
+Seurat
+mclust
+Rtsne
+circlize
+dendextend
+
+Before public release, run sessionInfo() in the original R environment and save
+the exact R and package versions as environment/R_sessionInfo.txt.

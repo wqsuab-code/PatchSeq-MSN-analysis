@@ -1,0 +1,17 @@
+{
+  "raw_GC_K": 13,
+  "raw_GC_ARI_label_invariant": 1,
+  "merged_GC_ARI": 1,
+  "merged_GC_exact_agreement": 1,
+  "merged_mismatch_n": 0,
+  "parameters": {
+    "NPC": 5,
+    "kNN": 20,
+    "prune_SNN": 0.0667,
+    "algorithm": "Louvain 1",
+    "resolution": 2.3,
+    "seed": 777,
+    "n_start": 30,
+    "n_iter": 30
+  }
+}

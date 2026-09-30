@@ -1,0 +1,61 @@
+{
+  "frozen_HC_reproduction": {
+    "ARI": 1.0,
+    "NMI": 1.0,
+    "mapped_accuracy": 1.0,
+    "max_abs_Z_difference": 8.733530306948012e-06,
+    "max_abs_PC_abs_difference": 9.761414982989436e-06,
+    "mapping": {
+      "2": "M1",
+      "1": "M2",
+      "3": "M3",
+      "4": "M4"
+    },
+    "mismatch_n": 0
+  },
+  "frozen_GC_reproduction": {
+    "raw_GC_K": 13,
+    "raw_GC_ARI_label_invariant": 1,
+    "merged_GC_ARI": 1,
+    "merged_GC_exact_agreement": 1,
+    "merged_mismatch_n": 0,
+    "parameters": {
+      "NPC": 5,
+      "kNN": 20,
+      "prune_SNN": 0.0667,
+      "algorithm": "Louvain 1",
+      "resolution": 2.3,
+      "seed": 777,
+      "n_start": 30,
+      "n_iter": 30
+    }
+  },
+  "unsupervised_frozen_NPC5_K4_Ward": {
+    "ARI_median": 0.32237386381008615,
+    "ARI_95CI": [
+      0.10728218115590119,
+      0.6264725015258421
+    ],
+    "NMI_median": 0.4371077459957928,
+    "silhouette_median": 0.15474662735421446,
+    "minimum_cluster_n_median": 10.0,
+    "small_cluster_le2_rate": 0.0
+  },
+  "best_supervised_model": "RBF SVM",
+  "best_supervised_BA_median": 0.909283424908425,
+  "best_supervised_BA_95CI": [
+    0.7299505427170868,
+    1.0
+  ],
+  "best_supervised_macro_F1_median": 0.8986283962298979,
+  "best_supervised_macro_F1_95CI": [
+    0.7126017316017316,
+    1.0
+  ],
+  "permutation_BA_median": 0.3758775946275946,
+  "permutation_empirical_p": 0.001996007984031936,
+  "feature_rank_Spearman_rho": 0.6738906088751291,
+  "risk_cells_margin_le_0": 16,
+  "risk_cells_margin_below_0.10": 27,
+  "E_annotation_available_n": 91
+}

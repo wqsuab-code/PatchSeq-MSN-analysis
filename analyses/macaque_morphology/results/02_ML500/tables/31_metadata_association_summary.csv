@@ -1,0 +1,10 @@
+variable,n,levels,Cramers_V,permutation_p,status
+donor,117,41.0,0.6124661978637648,0.18762475049900199,Tested
+ROI_final,117,3.0,0.2883236417674699,0.005988023952095809,Tested
+T_class,117,3.0,0.13648394229029268,0.5129740518962076,Tested
+E_class,91,4.0,0.257074687380424,0.08383233532934131,Tested
+reconstruction_batch,117,1.0,,,Not testable: fewer than two observed levels
+recording_batch_proxy,117,1.0,,,Not testable: fewer than two observed levels
+recording_date,0,0.0,,,Not testable: fewer than two observed levels
+reconstruction_complete,117,1.0,,,Not testable: fewer than two observed levels
+morphology_missing_rate,117,,,,Not testable: constant by complete-case design

@@ -1,0 +1,261 @@
+冻结 Macaque MSN 形态学 M1-M4：机器学习 Methods 参数全表
+================================================================
+本文件依据实际执行脚本、参数 JSON 和 500 次原始输出整理。附件中的 E1-E4
+文字仅作为问题清单，未把 E 特征、E PCA 或 E 预处理参数用于本报告。
+
+1. 冻结数据量与类别构成
+------------------------
+分析范围：Macaque；MSN（STR D1 MSN、STR D2 MSN、STR Hybrid MSN）；ROI 仅
+Ca、Pu、NAC。
+
+目标元数据细胞：486。
+18项形态指标完整病例：126；其中 donor=42。
+HC-GC共识并进入 ML500：117；其中 donor=41。
+排除：9个形态完整但 HC-GC 不一致的细胞；未因 PCA 离群值自动删除细胞。
+
+冻结共识类别：M1=43，M2=42，M3=20，M4=12，总计117。
+ROI：Ca=63，Pu=41，NAC=13。
+T class：STR D1 MSN=47，STR D2 MSN=62，STR Hybrid MSN=8。
+
+每个 donor 的 ML 细胞数：
+Q19.26.014=4; Q19.26.019=1; Q20.26.003=2; Q20.26.009=1;
+Q21.26.009=4; Q21.26.013=1; Q21.26.019=1; Q21.26.021=2;
+Q21.26.023=1; QM22.26.003=4; QM22.26.030=1; QM22.26.031=6;
+QM24.26.011=1; QM25.26.006=1; QN21.26.029=1; QN22.26.002=1;
+QN22.26.009=5; QN22.26.010=3; QN22.26.011=9; QN22.26.014=2;
+QN22.26.015=3; QN22.26.016=3; QN22.26.017=1; QN22.26.019=2;
+QN22.26.020=6; QN22.26.023=4; QN22.26.025=4; QN22.26.027=1;
+QN22.26.028=2; QN22.26.036=12; QN22.26.037=1; QN23.26.003=1;
+QN23.26.008=4; QN23.26.010=1; QN23.26.016=4; QN23.26.017=4;
+QN24.26.003=5; QN24.26.005=1; QN24.26.010=2; QN24.26.012=3;
+QN24.26.013=2。
+
+2. 冻结形态特征（实际为18项，不是19项）
+------------------------------------------
+01 basal_dendrite_bias_dorsal
+02 basal_dendrite_bias_medial
+03 basal_dendrite_calculate_number_of_stems
+04 basal_dendrite_extent_dorsal
+05 basal_dendrite_extent_medial
+06 basal_dendrite_max_branch_order
+07 basal_dendrite_max_euclidean_distance
+08 basal_dendrite_max_path_distance
+09 basal_dendrite_mean_contraction
+10 basal_dendrite_mean_diameter
+11 basal_dendrite_num_branches
+12 basal_dendrite_soma_percentile_dorsal
+13 basal_dendrite_soma_percentile_medial
+14 basal_dendrite_stem_exit_MedialLateral
+15 basal_dendrite_stem_exit_dorsal
+16 basal_dendrite_stem_exit_ventral
+17 basal_dendrite_total_length
+18 soma_surface_area
+
+来源和筛选：最初39项原始形态字段中，17项轴突/轴突Sholl字段全缺失；
+axon_exit_theta_coronal为圆周角且仅124/126可用，不进入主面板。21项完整树突/
+胞体候选中，按 |Spearman rho|>=0.80 去除冗余的 3_Sholl_PC0 和
+basal_dendrite_total_surface_area，得到19项。随后因ZIP不含Sholl载荷、半径网格
+和生成参数，排除不可审计的二次派生字段3_Sholl_PC1，最终冻结为上述18项。
+
+21项中的冗余关系：3_Sholl_PC0与total_length rho=0.9894；total_length与
+total_surface_area rho=0.9350；3_Sholl_PC0与total_surface_area rho=0.9250；
+3_Sholl_PC0与num_branches rho=0.8133。
+
+126完整病例和117 ML病例中，18项均无缺失、无零方差字段。验证不插补。
+没有在ML前再次按全数据相关性筛选特征；18项为验证开始前冻结的输入。
+
+3. 预处理及防泄漏
+------------------
+冻结/验证采用逐特征自适应规则：在当前训练样本中计算无偏校正样本偏度。
+若 |adjusted skewness|>=0.5，以最大似然在lambda属于[-5,5]内拟合
+Yeo-Johnson；否则保持原值。随后使用训练样本均值及样本标准差（ddof=1）
+进行Z标准化。训练所得变换类型、lambda、均值和标准差原样应用于测试集。
+
+无log1p、winsorization或outlier clipping。无median/KNN/其他插补。
+每次供体重抽样或训练/测试划分后才拟合变换和PCA；禁止全数据Z-score或PCA
+后再交叉验证。PCA使用sklearn PCA(svd_solver="full")；监督分析固定5 PCs。
+
+4. 冻结M1-M4无监督发现参数
+---------------------------
+冻结输入：126个完整形态细胞的18项自适应变换Z值。
+PCA：PC1-PC5。
+HC：Euclidean distance；Ward.D2；K=4。
+GC：Seurat SNN，k=20，prune.SNN=1/15，Louvain algorithm=1，
+resolution=2.3，n.start=30，n.iter=30，seed=777。原始GC产生13群。
+每个GC原始群按与HC群的最大重叠映射并合并为4群。
+
+冻结时全部126细胞的HC-GC一致率为117/126=92.86%，ARI=0.825。
+M1-M4为R cutree得到并保存的HC 1-4编号加前缀M；未按T class、ROI或其他
+生物学注释重新排序。跨软件精确复现时，任意原始cluster ID仅通过Hungarian/
+最大重叠消除标签置换；重算HC与冻结标签ARI=NMI=1.000，0个不一致。
+
+K=4并非由单一silhouette、gap statistic或后续ML准确率自动决定；它是围绕
+NPC=3-5和K>=3的HC-GC交叉扫描后，结合可合并GC的一致率、群大小及解释性所作
+的临时冻结选择。监督验证没有参与定义K。
+
+5. 七个监督模型的准确实现
+--------------------------
+共同输入：每个外层训练折内拟合的变换和PCA，使用PC1-PC5。
+
+Multinomial logistic：sklearn LogisticRegression；solver=lbfgs；C=1.0；
+默认L2行为；class_weight="balanced"；max_iter=3000；tol=1e-4；fit_intercept=True。
+
+Linear SVM：SVC(kernel="linear")；C=1.0；class_weight="balanced"；
+probability=True；decision_function_shape="ovr"；shrinking=True；tol=0.001。
+
+RBF SVM：SVC(kernel="rbf")；C=1.0；gamma="scale"；
+class_weight="balanced"；probability=True；decision_function_shape="ovr"；
+shrinking=True；tol=0.001。
+
+kNN：KNeighborsClassifier；n_neighbors=7；weights="distance"；
+metric="minkowski"，p=2（Euclidean）；algorithm="auto"；leaf_size=30。
+
+Random forest：200 trees；criterion="gini"；bootstrap=True；
+max_features="sqrt"；min_samples_leaf=1；min_samples_split=2；
+max_depth=None；class_weight="balanced"。
+
+Extra Trees：200 trees；criterion="gini"；bootstrap=False；
+max_features="sqrt"；min_samples_leaf=1；min_samples_split=2；
+max_depth=None；class_weight="balanced"。
+
+Histogram gradient boosting：loss="log_loss"；learning_rate=0.06；
+max_iter=180；max_leaf_nodes=31；min_samples_leaf=20；l2_regularization=0；
+max_bins=255；early_stopping="auto"；class_weight=None。
+
+除kNN和HGB外使用balanced class weights；没有oversampling、undersampling或
+SMOTE。所有适用模型记录外层split seed；森林类n_jobs=1以保证可复现。
+
+6. 监督训练/测试划分
+--------------------
+主要设计为donor-grouped split，不是cell-level split。
+使用GroupShuffleSplit(test_size=0.25)，每个有效划分为30个训练donor和11个
+测试donor，同一donor绝不跨训练/测试。共500个有效划分；训练和测试均必须
+同时包含M1-M4，否则舍弃并继续抽取。取得500个有效划分共尝试543次。
+约75% donor训练、25% donor测试。七个模型使用完全相同的500组划分。
+
+每次性能指标：balanced accuracy、macro-F1、MCC、逐类recall、逐类precision；
+汇总为中位数和2.5%-97.5%经验分位数。
+
+7. 超参数调优
+--------------
+七个主模型超参数预先固定；没有grid search，也没有nested hyperparameter CV。
+因此不存在使用测试集选择超参数的问题，但不能把这些结果描述为“经嵌套CV调优”。
+模型优劣在相同500个外层测试划分上比较，排序首先看balanced accuracy中位数，
+其次看macro-F1中位数。最佳模型为RBF SVM。
+
+内层donor split只用于训练折内的permutation importance，不用于主模型调参。
+
+8. 标签置换检验
+----------------
+置换次数500；使用与真实RBF SVM分析完全相同的500个外层donor划分。
+M标签在每个donor内部独立打乱，而非全局打乱。每次重新拟合训练折变换、PCA
+和RBF SVM，并对相应置换后的测试标签评价balanced accuracy和macro-F1。
+经验P=(1 + #置换BA>=真实BA中位数)/(500+1)。
+真实BA中位数=0.9093；置换BA中位数=0.3759；P=0.001996。
+
+9. ROC和PR
+-----------
+采用one-vs-rest。最佳RBF SVM的概率来自predict_proba。
+每个细胞多次作为测试样本时，先对其M1-M4预测概率取平均；最终每个细胞只贡献
+一次。ROC-AUC和average precision基于117个细胞级平均held-out概率计算，不把
+重复测试记录当作独立样本。未报告micro/macro平均曲线。
+
+M1：AUC=0.9893，AP=0.9833，prevalence=0.3675。
+M2：AUC=0.9921，AP=0.9845，prevalence=0.3590。
+M3：AUC=0.9964，AP=0.9840，prevalence=0.1709。
+M4：AUC=0.9960，AP=0.9755，prevalence=0.1026。
+
+10. donor-resampled无监督发现
+-----------------------------
+500次。每次从41个donor中无放回随机保留ceil(0.8*41)=33个donor；保留这些
+donor的全部细胞。每次在重抽样数据内重新估计18项变换、Z标准化及PCA。
+扫描NPC=2-10、K=2-8。
+
+Ward：AgglomerativeClustering(linkage="ward")，Euclidean。
+K-means：n_init=20。
+Gaussian mixture：covariance_type="full"，reg_covar=1e-5，n_init=5。
+Spectral：affinity="nearest_neighbors"，n_neighbors=15，
+assign_labels="kmeans"，n_init=10。
+各随机模型使用seed=20260911+repeat。
+
+ARI和NMI直接比较新聚类与该次抽中细胞的冻结M标签；二者无需标签对齐。
+另用Hungarian最大重叠映射后计算mapped accuracy。
+冻结位置NPC5/K4 Ward：ARI中位数0.3224（95%区间0.1073-0.6265），
+NMI中位数0.4371，silhouette中位数0.1547，最小群n中位数10，
+出现<=2细胞小群的比例为0。
+
+11. cell-level consensus margin
+-------------------------------
+基于上述500次donor重抽样中NPC5/K4 Ward结果。任意细胞对的分母只计两细胞
+同时被抽中的次数；分子为同时被抽中且归入同一新聚类的次数。
+
+对细胞i：within probability为i与所有其他冻结同类细胞的共聚类概率均值；
+每个其他冻结M类分别求均值，competing probability取三个异类均值中的最大值。
+margin = mean same-class co-clustering - max mean other-class co-clustering。
+
+风险阈值同时报告margin<=0和margin<0.10；未预设0.20阈值。
+margin<=0：16个细胞；margin<0.10：27个细胞。
+
+12. 特征稳健性
+----------------
+Extra Trees MDI：500个外层donor划分；在每个训练集的18项变换Z值上拟合
+200-tree Extra Trees（不经过PCA），每次MDI天然归一化为总和1。
+
+Logistic系数：同一500个训练集，在18项变换Z值上拟合class-balanced logistic
+（不经过PCA）；每项取四个类别绝对标准化系数的算术均值，不是跨类L2范数。
+
+训练折内permutation importance：每个外层训练集再作一次donor-grouped 75/25
+内层划分；内层训练和验证均要求M1-M4齐全。内层训练拟合变换和150-tree
+Extra Trees；每项重复置换5次；scoring="balanced_accuracy"。报告原始性能下降，
+未做相对归一化。共500 inner splits x 18 features=9000行，不是25 folds。
+
+跨模型Spearman比较的是18项的“500次MDI中位数”与“500次mean absolute
+logistic coefficient中位数”：rho=0.6739，P=0.00217；不是0.83。
+
+13. progressive feature ablation
+--------------------------------
+每个外层训练折内，按该折Extra Trees MDI排序，避免用全数据预选。
+条件：All 18；删除训练折top 2；删除训练折top 5；仅保留训练折bottom 3。
+每个条件以150-tree class-balanced Extra Trees重新拟合并在相同外层测试集评价；
+共500次，完全复用主监督分析的donor-held-out划分。输入为训练折估计的逐特征
+变换Z值；消融分类器不使用PCA。
+
+balanced accuracy中位数：All18=0.7699；remove top2=0.7551；
+remove top5=0.7117；bottom3=0.3690。
+
+14. 元数据关联及混杂
+---------------------
+Cramer's V使用Pearson chi-square、correction=False；未做小样本bias correction。
+置换次数500，经验P使用加1公式。ROI、T class、E class等在donor内部打乱M标签；
+检验donor本身时采用全局标签置换，因为无法在同一donor内检验donor关联。
+
+donor：V=0.6125，P=0.1876；ROI：V=0.2883，P=0.00599；
+T class：V=0.1365，P=0.5130；E class（91/117可用）：V=0.2571，P=0.08383。
+reconstruction batch、recording batch/date、重建完整性和缺失率在当前complete-case
+数据中不可检验或无独立字段，未作推断。
+
+ROI列联表（行=M）：
+M1 Ca24/NAC3/Pu16；M2 Ca27/NAC1/Pu14；M3 Ca10/NAC4/Pu6；
+M4 Ca2/NAC5/Pu5。
+T class列联表：
+M1 D1=18/D2=20/Hybrid=5；M2 18/23/1；M3 6/13/1；M4 5/6/1。
+
+15. 软件版本与随机种子
+----------------------
+Python 3.14.3；NumPy 2.4.6；pandas 2.3.3；SciPy 1.17.1；
+scikit-learn 1.8.0；joblib 1.5.3；Matplotlib 3.10.9；Seaborn 0.13.2。
+Windows 11 10.0.26200。
+
+R 4.5.1；Seurat 5.4.0；SeuratObject 5.2.0；data.table 1.17.8；
+mclust 6.1.2；igraph 2.1.4。
+
+主验证seed=20260911。第r次无监督重抽样使用20260911+r；外层监督候选split
+从20260911起逐次递增并把实际seed写入split log；GC冻结seed=777。
+PCA(svd_solver="full")为确定性算法，无单独随机seed。
+
+解释边界
+--------
+高监督性能只说明冻结M1-M4可从定义它们的同一形态特征域中恢复；不能等同于
+从头聚类的稳定发现，也不是独立生物学验证。冻结参数下无监督donor重抽样ARI
+明显较低，必须与监督可恢复性分开陈述。独立支持需要来自未参与定义M标签的
+T/E、解剖位置、连接或其他数据；其中ROI关联还需作为潜在混杂审慎讨论。

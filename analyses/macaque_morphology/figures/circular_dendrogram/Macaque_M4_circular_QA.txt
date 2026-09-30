@@ -1,0 +1,17 @@
+Macaque M1-M4 circular dendrogram quality check
+================================================
+PASS  Clean PNG: 600 x 600 pixels at 600 dpi.
+PASS  Clean PDF: 72 x 72 pt (exactly 1 x 1 inch), one page.
+PASS  Annotated PNG: 1092 x 696 pixels at 600 dpi (1.82 x 1.16 inch).
+PASS  Annotated PDF: 1.82 x 1.16 inch, one page.
+PASS  PDF files were rasterized and visually inspected after generation.
+PASS  Clean PDF rendered extent: 548 x 548 pixels at 600 dpi; circular aspect ratio = 1.000.
+PASS  Reference E PNG extent: 550 x 550 pixels; M/E diameter difference = 2 pixels (0.36%).
+PASS  No branch, ring, title, legend, or outer circle is clipped.
+PASS  The two rings share the same 126-cell Ward.D2 leaf order.
+PASS  Inner ring = HC M1-M4; outer ring = merged GC M1-M4.
+PASS  Leaf-order CSV has 126 rows and 126 unique cell IDs.
+PASS  Leaf order exactly equals labels(as.dendrogram(hclust(dist(PC1-PC5), method="ward.D2"))).
+PASS  HC, merged GC, and consensus values match the frozen assignment file cell by cell.
+PASS  Cutting the plotted Ward.D2 tree at K=4 reproduces all 126 frozen HC labels exactly.
+PASS  No label-guided leaf rearrangement, dendrogram rotation, or topology change was applied.

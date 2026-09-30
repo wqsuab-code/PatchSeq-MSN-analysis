@@ -1,0 +1,5 @@
+# Hierarchical and graph-based consensus classification
+
+Hierarchical clustering was performed in PC1–PC5 space using Euclidean distance and Ward's minimum-variance linkage (Ward.D2), and the dendrogram was cut at four groups. In parallel, a shared-nearest-neighbour graph was constructed with 20 nearest neighbours and an SNN pruning threshold of 1/15. Louvain community detection used algorithm 1, resolution 2.3 and random seed 777, yielding 13 graph communities. Each graph community was mapped to the hierarchical cluster containing the largest number of its cells, producing four merged graph classes.
+
+Cells with identical hierarchical and merged graph assignments were defined as the frozen consensus set. Agreement was observed for 117 of 126 cells (92.86%; adjusted Rand index 0.825), yielding M1=43, M2=42, M3=20 and M4=12. Nine discordant cells were retained in displays where indicated but excluded from consensus-class summaries and supervised label-recovery analyses. T class, anatomical region and donor identity were not used to construct the M labels.

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Macaque T–M RRR figure editor</title>
+  <meta name="description" content="Interactive editor for the Macaque transcriptomic-to-morphological reduced-rank regression figure.">
+  <link rel="stylesheet" href="rrr-editor.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Macaque T–M RRR figure editor</h1><p>Rank 3 · n = 117 HC–GC consensus MSN cells · Macaque-E reference geometry with frozen Macaque-M data and colours</p></div>
+    <nav><a class="button" href="index.html">Back to M feature studio</a></nav>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="RRR figure controls">
+      <details open><summary>Labels</summary><div class="control-group">
+        <label>Gene labels <output id="geneCountValue"></output><input id="geneCount" type="range" min="0" max="30" value="9"></label>
+        <label>M-feature labels <output id="featureCountValue"></output><input id="featureCount" type="range" min="0" max="10" value="10"></label>
+        <label>Font size <output id="fontSizeValue"></output><input id="fontSize" type="range" min="5" max="24" step="0.5" value="11"></label>
+        <label>Text alignment<select id="labelAlign"><option value="auto">Auto by space</option><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></label>
+        <label>Box opacity <output id="boxOpacityValue"></output><input id="boxOpacity" type="range" min="0" max="1" step="0.05" value="0.9"></label>
+        <label class="check"><input id="showBoxes" type="checkbox" checked>Label backgrounds</label>
+        <label class="check"><input id="showConnectors" type="checkbox" checked>Connector lines</label>
+      </div></details>
+
+      <details open><summary>Cells and geometry</summary><div class="control-group">
+        <label>Panel arrangement<select id="panelLayout"><option value="row">1 × 4 · Macaque-E reference</option><option value="grid">2 × 2</option></select></label>
+        <label>Cell size <output id="cellSizeValue"></output><input id="cellSize" type="range" min="0.5" max="8" step="0.25" value="2"></label>
+        <label>Cell opacity <output id="cellOpacityValue"></output><input id="cellOpacity" type="range" min="0" max="1" step="0.05" value="0.72"></label>
+        <label>Plot radius <output id="plotRadiusValue"></output><input id="plotRadius" type="range" min="55" max="135" value="90"></label>
+        <label>Panel width <output id="panelWidthValue"></output><input id="panelWidth" type="range" min="300" max="620" step="10" value="440"></label>
+        <label>Panel height <output id="panelHeightValue"></output><input id="panelHeight" type="range" min="260" max="520" step="10" value="370"></label>
+        <label>Horizontal gap <output id="columnGapValue"></output><input id="columnGap" type="range" min="0" max="180" step="5" value="0"></label>
+        <label>Vertical gap <output id="rowGapValue"></output><input id="rowGap" type="range" min="0" max="180" step="5" value="0"></label><label>Left page margin <output id="marginLeftValue"></output><input id="marginLeft" type="range" min="0" max="300" step="5" value="70"></label><label>Right page margin <output id="marginRightValue"></output><input id="marginRight" type="range" min="0" max="300" step="5" value="60"></label><label>Top page margin <output id="marginTopValue"></output><input id="marginTop" type="range" min="0" max="300" step="5" value="0"></label><label>Bottom page margin <output id="marginBottomValue"></output><input id="marginBottom" type="range" min="0" max="300" step="5" value="0"></label>
+        <label>Radial scaling percentile <output id="radialPercentileValue"></output><input id="radialPercentile" type="range" min="90" max="100" step="0.5" value="99"></label>
+        <label>Ellipse area <output id="ellipseLevelValue"></output><input id="ellipseLevel" type="range" min="0.5" max="0.99" step="0.01" value="0.9"></label>
+        <label class="check"><input id="showEllipses" type="checkbox" checked>D1/D2 covariance ellipses in all panels</label>
+        <label class="check"><input id="showLegend" type="checkbox" checked>Point-colour legends</label>
+        <label class="check"><input id="showCircle" type="checkbox" checked>Reference circles</label>
+        <label class="check"><input id="showPoints" type="checkbox" checked>Cell points</label>
+      </div></details>
+
+      <details open><summary>Panel X/Y components</summary><div class="control-group axis-pairs">
+        <fieldset><legend>T panel 1</legend><label>X<select id="T12X"><option>1</option><option>2</option><option>3</option></select></label><label>Y<select id="T12Y"><option>1</option><option selected>2</option><option>3</option></select></label><label class="check"><input id="T12ShowX" type="checkbox" checked>X line</label><label class="check"><input id="T12ShowY" type="checkbox" checked>Y line</label><label class="check"><input id="T12LabelX" type="checkbox" checked>X title</label><label class="check"><input id="T12LabelY" type="checkbox" checked>Y title</label><label class="check"><input id="T12TickX" type="checkbox" checked>X coordinates</label><label class="check"><input id="T12TickY" type="checkbox" checked>Y coordinates</label></fieldset>
+        <fieldset><legend>T panel 2</legend><label>X<select id="T13X"><option>1</option><option>2</option><option>3</option></select></label><label>Y<select id="T13Y"><option>1</option><option>2</option><option selected>3</option></select></label><label class="check"><input id="T13ShowX" type="checkbox" checked>X line</label><label class="check"><input id="T13ShowY" type="checkbox" checked>Y line</label><label class="check"><input id="T13LabelX" type="checkbox" checked>X title</label><label class="check"><input id="T13LabelY" type="checkbox" checked>Y title</label><label class="check"><input id="T13TickX" type="checkbox" checked>X coordinates</label><label class="check"><input id="T13TickY" type="checkbox" checked>Y coordinates</label></fieldset>
+        <fieldset><legend>M panel 1</legend><label>X<select id="M12X"><option>1</option><option>2</option><option>3</option></select></label><label>Y<select id="M12Y"><option>1</option><option selected>2</option><option>3</option></select></label><label class="check"><input id="M12ShowX" type="checkbox" checked>X line</label><label class="check"><input id="M12ShowY" type="checkbox" checked>Y line</label><label class="check"><input id="M12LabelX" type="checkbox" checked>X title</label><label class="check"><input id="M12LabelY" type="checkbox" checked>Y title</label><label class="check"><input id="M12TickX" type="checkbox" checked>X coordinates</label><label class="check"><input id="M12TickY" type="checkbox" checked>Y coordinates</label></fieldset>
+        <fieldset><legend>M panel 2</legend><label>X<select id="M13X"><option>1</option><option>2</option><option>3</option></select></label><label>Y<select id="M13Y"><option>1</option><option>2</option><option selected>3</option></select></label><label class="check"><input id="M13ShowX" type="checkbox" checked>X line</label><label class="check"><input id="M13ShowY" type="checkbox" checked>Y line</label><label class="check"><input id="M13LabelX" type="checkbox" checked>X title</label><label class="check"><input id="M13LabelY" type="checkbox" checked>Y title</label><label class="check"><input id="M13TickX" type="checkbox" checked>X coordinates</label><label class="check"><input id="M13TickY" type="checkbox" checked>Y coordinates</label></fieldset>
+      </div></details>
+
+      <details><summary>Line weights and text</summary><div class="control-group">
+        <label>Font family<select id="fontFamily"><option>Arial</option><option>Helvetica</option><option>Times New Roman</option></select></label>
+        <label>Loading-vector scale <output id="loadingScaleValue"></output><input id="loadingScale" type="range" min="0.2" max="1.2" step="0.05" value="0.76"></label>
+        <label>Arrow width <output id="arrowWidthValue"></output><input id="arrowWidth" type="range" min="0.2" max="4" step="0.1" value="1.4"></label>
+        <label>Connector width <output id="connectorWidthValue"></output><input id="connectorWidth" type="range" min="0" max="3" step="0.1" value="0.8"></label>
+        <label>Ellipse width <output id="ellipseWidthValue"></output><input id="ellipseWidth" type="range" min="0" max="5" step="0.1" value="2"></label>
+        <label>Ellipse fill opacity <output id="ellipseOpacityValue"></output><input id="ellipseOpacity" type="range" min="0" max="0.5" step="0.01" value="0.055"></label>
+        <label>Circle width <output id="circleWidthValue"></output><input id="circleWidth" type="range" min="0" max="5" step="0.1" value="2"></label>
+        <label>Axis width <output id="axisWidthValue"></output><input id="axisWidth" type="range" min="0" max="4" step="0.1" value="1"></label>
+        <label>Axis line colour<input id="axisColor" type="color" value="#aeb6c2"></label>
+        <label>Axis text colour<input id="axisTextColor" type="color" value="#111111"></label>
+        <label class="check"><input id="showTicks" type="checkbox">Master numeric-coordinate display</label>
+        <label>Tick count<select id="tickCount"><option>3</option><option selected>5</option><option>7</option><option>9</option></select></label>
+        <label>Tick decimals <output id="tickDecimalsValue"></output><input id="tickDecimals" type="range" min="0" max="3" step="1" value="1"></label>
+        <label>Tick font size <output id="tickSizeValue"></output><input id="tickSize" type="range" min="5" max="18" step="1" value="9"></label>
+        <label>Title size <output id="titleSizeValue"></output><input id="titleSize" type="range" min="8" max="30" value="18"></label>
+        <label>Axis-label size <output id="axisLabelSizeValue"></output><input id="axisLabelSize" type="range" min="7" max="22" value="13"></label>
+      </div></details>
+
+      <details><summary>Titles, colours and export</summary><div class="control-group">
+        <label>T-space title<input id="titleT" type="text" value="Transcriptomic space"></label>
+        <label>M-space title<input id="titleM" type="text" value="Morphological space"></label>
+        <label>Canvas colour<input id="canvasColor" type="color" value="#ffffff"></label>
+        <div id="colorControls" class="color-editor"></div>
+        <label>Figure width (in)<input id="exportWidth" type="number" min="2" max="20" step="0.1" value="7.2"></label>
+        <label>PNG resolution<select id="exportDpi"><option>300</option><option selected>600</option><option>900</option></select></label>
+      </div></details>
+
+      <div class="actions">
+        <button id="resetLabels" class="wide" type="button">Reset label positions</button>
+        <button id="resetAll" class="wide" type="button">Reset entire figure</button>
+        <button id="exportSvg" type="button">Export SVG</button>
+        <button id="exportPng" type="button">Export PNG</button>
+        <button id="exportCsv" type="button">Export labels CSV</button>
+        <button id="exportLayout" type="button">Export layout</button>
+        <label class="button wide" for="importLayout">Import layout JSON</label><input id="importLayout" type="file" accept="application/json" hidden>
+      </div>
+      <p class="hint">Drag any label to move it. Double-click a label to rename it. Preview, SVG and PNG use the same SVG state.</p>
+    </aside>
+
+    <section class="canvas-shell">
+      <div class="canvas-head"><strong>Live Macaque-M preview</strong><span id="rrrSummary">Loading data…</span></div>
+      <p id="rrrStatus" role="status">Loading embedded RRR data…</p>
+      <div class="canvas-scroll"><svg id="rrrSvg" role="img" aria-label="Interactive Macaque transcriptomic-to-morphological reduced-rank regression figure"></svg></div>
+    </section>
+  </main>
+  <script src="macaque-m-rrr-data.js?v=20260922"></script>
+  <script src="macaque-m-rrr-default-layout.js?v=20260922"></script>
+  <script src="macaque-m-rrr-editor.js?v=20260922"></script>
+</body>
+</html>

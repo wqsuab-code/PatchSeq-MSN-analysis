@@ -1,0 +1,5 @@
+Feature_A,Feature_B,N,Spearman_rho,Abs_rho,P_value
+3_Sholl_PC0,basal_dendrite_total_length,126,0.9894173228346458,0.9894173228346458,8.032107177992189e-106
+basal_dendrite_total_length,basal_dendrite_total_surface_area,126,0.9349621297337833,0.9349621297337833,1.1832301040495991e-57
+3_Sholl_PC0,basal_dendrite_total_surface_area,126,0.9249853768278966,0.9249853768278966,6.0420967977302e-54
+3_Sholl_PC0,basal_dendrite_num_branches,126,0.8132714115460581,0.8132714115460581,6.055303025435246e-31

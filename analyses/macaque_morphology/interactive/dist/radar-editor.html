@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Macaque M1–M4 morphology radar editor</title>
+  <meta name="description" content="Mouse-E-style interactive radar editor for the frozen Macaque M1–M4 consensus cells.">
+  <link rel="stylesheet" href="radar-editor.css">
+</head>
+<body>
+  <header>
+    <div><h1>Macaque M1–M4 morphology radar editor</h1><p>Frozen 117-cell HC–GC consensus morphology cohort</p></div>
+    <div class="header-actions"><a class="button" href="index.html">Feature studio</a><a class="button" href="index.html">t-SNE comparisons</a><a class="button" href="rrr-editor.html">RRR editor</a></div>
+  </header>
+  <main class="editor-main">
+    <div class="editor-shell radar-shell">
+      <aside class="editor-controls" aria-label="Radar controls">
+        <details open><summary>Canvas and panels</summary><div class="control-group">
+          <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="700" max="1800" step="10"></label>
+          <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="220" max="700" step="10"></label>
+          <label>Side margin <output id="sideMarginValue"></output><input id="sideMargin" type="range" min="0" max="160" step="2"></label>
+          <label>Panel gap <output id="panelGapValue"></output><input id="panelGap" type="range" min="0" max="100" step="2"></label>
+          <label>Radar radius <output id="radarRadiusValue"></output><input id="radarRadius" type="range" min="55" max="220" step="2"></label>
+          <label>Vertical center <output id="centerYValue"></output><input id="centerY" type="range" min="90" max="520" step="2"></label>
+          <label class="check"><input id="showTitles" type="checkbox"> Titles and counts</label>
+          <label>Title size <output id="titleSizeValue"></output><input id="titleSize" type="range" min="7" max="30" step="1"></label>
+          <div id="classControls" class="panel-editor"></div>
+        </div></details>
+        <details open><summary>Profile and shared Z-score space</summary><div class="control-group">
+          <label>Radial scaling<select id="scaleMode"><option value="zscore">Frozen cohort-wide Z-score</option><option value="percentile">Robust raw-value percentile scale (0–1)</option></select></label>
+          <label>Z-score lower bound <output id="zMinValue"></output><input id="zMin" type="range" min="-6" max="0" step="0.25"></label>
+          <label>Z-score upper bound <output id="zMaxValue"></output><input id="zMax" type="range" min="0" max="6" step="0.25"></label>
+          <label>Center statistic<select id="centerStatistic"><option value="median">Median</option><option value="mean">Mean</option></select></label>
+          <label class="check"><input id="showCells" type="checkbox"> Individual-cell curves</label>
+          <label>Cell-line width <output id="cellWidthValue"></output><input id="cellWidth" type="range" min="0" max="2" step="0.05"></label>
+          <label>Cell opacity <output id="cellOpacityValue"></output><input id="cellOpacity" type="range" min="0" max="0.5" step="0.01"></label>
+          <label class="check"><input id="showIqr" type="checkbox"> Interquartile band</label>
+          <label>IQR opacity <output id="iqrOpacityValue"></output><input id="iqrOpacity" type="range" min="0" max="0.6" step="0.01"></label>
+          <label>Center-line width <output id="centerWidthValue"></output><input id="centerWidth" type="range" min="0" max="5" step="0.1"></label>
+          <label>Center fill opacity <output id="centerFillOpacityValue"></output><input id="centerFillOpacity" type="range" min="0" max="0.6" step="0.01"></label>
+          <label>Curve tension <output id="curveTensionValue"></output><input id="curveTension" type="range" min="0" max="1" step="0.05"></label>
+        </div></details>
+        <details><summary>Axes and labels</summary><div class="control-group">
+          <label>Grid rings <output id="ringCountValue"></output><input id="ringCount" type="range" min="1" max="10" step="1"></label>
+          <label>Grid width <output id="gridWidthValue"></output><input id="gridWidth" type="range" min="0" max="3" step="0.1"></label>
+          <label>Grid opacity <output id="gridOpacityValue"></output><input id="gridOpacity" type="range" min="0" max="1" step="0.05"></label>
+          <label>Label size <output id="labelSizeValue"></output><input id="labelSize" type="range" min="6" max="24" step="1"></label>
+          <label>Label distance <output id="labelDistanceValue"></output><input id="labelDistance" type="range" min="0" max="80" step="1"></label>
+          <label>Label orientation<select id="labelOrientation"><option value="tangent">Tangential</option><option value="horizontal">Horizontal</option></select></label>
+          <label class="check"><input id="showRadialValues" type="checkbox"> Radial values</label>
+          <label>Radial-value size <output id="radialValueSizeValue"></output><input id="radialValueSize" type="range" min="6" max="18" step="1"></label>
+        </div></details>
+        <details><summary>Feature order and labels</summary><div id="featureControls" class="feature-order control-group"></div></details>
+        <details><summary>Colors</summary><div class="control-group"><div id="colorControls" class="color-editor"></div><label>Center line<input id="centerColor" type="color"></label><label>Grid<input id="gridColor" type="color"></label><label>Text<input id="textColor" type="color"></label><label>Canvas<input id="canvasColor" type="color"></label></div></details>
+        <div class="editor-actions">
+          <button id="saveDefault" class="wide" type="button">Set current as default</button>
+          <button id="restoreDefault" class="wide" type="button">Restore saved default</button>
+          <button id="resetAll" class="wide" type="button">Reset frozen M preset</button>
+          <button id="exportSvg" type="button">Export SVG</button>
+          <button id="exportPng" type="button">Export PNG</button>
+          <button id="exportPdf" type="button">Export PDF</button>
+          <button id="exportCsv" type="button">Export CSV</button>
+          <button id="exportLayout" type="button">Export layout</button>
+          <label class="button" for="importLayout">Import layout</label><input id="importLayout" type="file" accept="application/json" hidden>
+        </div>
+        <details open><summary>High-resolution export</summary><div class="control-group">
+          <label>Figure width (inches)<input id="exportWidthIn" type="number" min="1" max="20" step="0.1"></label>
+          <label>Resolution<select id="exportDpi"><option value="300">300 DPI</option><option value="600" selected>600 DPI</option><option value="900">900 DPI</option></select></label>
+          <output id="exportPixels" class="export-note"></output>
+        </div></details>
+        <p class="hint">The ten frozen M features and their order are retained. The Z-score bounds alter display mapping only; frozen Z-scores, M1–M4 labels and statistics are never recalculated.</p>
+      </aside>
+      <section class="editor-canvas"><p id="radarStatus" role="status">Loading 117 consensus cells…</p><svg id="radarSvg" role="img" aria-label="Interactive radar profiles for frozen Macaque M1 through M4"></svg></section>
+    </div>
+  </main>
+  <script type="module" src="macaque-m-radar-editor.js?v=zrange-20260923"></script>
+</body>
+</html>

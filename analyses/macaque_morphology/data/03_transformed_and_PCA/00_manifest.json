@@ -1,0 +1,11 @@
+{
+  "analysis": "Macaque all126 adaptive feature transformation and PCA",
+  "source_zip": "C:/Users/53461/Downloads/Macaque-PatchSeq-BG.zip",
+  "source_zip_sha256": "8b0aeaed726e27658066230fe467bdbb765d641d1ea1e3a115e079e4ff0c13a6",
+  "mouse_morphology_results_read": false,
+  "n": 126,
+  "features": ["basal_dendrite_bias_dorsal", "basal_dendrite_bias_medial", "basal_dendrite_calculate_number_of_stems", "basal_dendrite_extent_dorsal", "basal_dendrite_extent_medial", "basal_dendrite_max_branch_order", "basal_dendrite_max_euclidean_distance", "basal_dendrite_max_path_distance", "basal_dendrite_mean_contraction", "basal_dendrite_mean_diameter", "basal_dendrite_num_branches", "basal_dendrite_soma_percentile_dorsal", "basal_dendrite_soma_percentile_medial", "basal_dendrite_stem_exit_MedialLateral", "basal_dendrite_stem_exit_dorsal", "basal_dendrite_stem_exit_ventral", "basal_dendrite_total_length", "soma_surface_area"],
+  "rule": "abs raw adjusted skewness >=0.5: maximum-likelihood Yeo-Johnson; otherwise direct Z-score",
+  "PCA_outlier_rule": "any of PC1-PC5 absolute standardized score >3",
+  "clustering_performed": false
+}

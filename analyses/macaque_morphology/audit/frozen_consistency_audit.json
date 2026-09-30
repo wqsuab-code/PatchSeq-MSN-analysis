@@ -1,0 +1,74 @@
+{
+  "authoritative_scope": "Macaque MSN only; Ca, Pu and NAC; 18 complete dendrite/soma features",
+  "source_zip_sha256_observed": "8b0aeaed726e27658066230fe467bdbb765d641d1ea1e3a115e079e4ff0c13a6",
+  "source_zip_sha256_expected": "8b0aeaed726e27658066230fe467bdbb765d641d1ea1e3a115e079e4ff0c13a6",
+  "source_zip_hash_match": true,
+  "n_complete": 126,
+  "n_complete_donors": 42,
+  "n_consensus": 117,
+  "n_consensus_donors": 41,
+  "class_counts": {
+    "M1": 43,
+    "M2": 42,
+    "M3": 20,
+    "M4": 12
+  },
+  "roi_counts": {
+    "Ca": 63,
+    "NAC": 13,
+    "Pu": 41
+  },
+  "T_class_counts": {
+    "STR D1 MSN": 47,
+    "STR D2 MSN": 62,
+    "STR Hybrid MSN": 8
+  },
+  "agreement": 0.9285714285714286,
+  "adjusted_rand_HC_vs_merged_GC": 0.8248850255218072,
+  "recomputed_HC_ARI": 1.0,
+  "recomputed_HC_NMI": 1.0,
+  "raw_shape": [
+    126,
+    23
+  ],
+  "raw_missing_values": 0,
+  "z_file_shape": [
+    126,
+    19
+  ],
+  "z_missing_values": 0,
+  "PCA_score_shape": [
+    126,
+    19
+  ],
+  "feature_count": 18,
+  "feature_set_raw_match": true,
+  "feature_set_z_match": true,
+  "feature_set_RRR_match": true,
+  "IDs_raw_match_assignments": true,
+  "IDs_z_match_assignments": true,
+  "IDs_PCA_match_assignments": true,
+  "IDs_tSNE_match_assignments": true,
+  "IDs_RRR_match_consensus": true,
+  "stored_GC_merge_map_exact": true,
+  "stored_confusion_exact": true,
+  "radar_feature_count": 10,
+  "radar_features_subset_of_18": true,
+  "radar_counts_match": true,
+  "radar_colors_present_in_main_SVG": {
+    "M1": true,
+    "M2": true,
+    "M3": true,
+    "M4": true
+  },
+  "main_SVG_panel_order": {
+    "c": "HC-GC confusion matrix",
+    "d": "consensus clustering"
+  },
+  "RRR_rank_display": 3,
+  "RRR_layout_radial_percentile": 100,
+  "ML_class_counts_match": true,
+  "ML_feature_count_match": true,
+  "Mouse_morphology_used": false,
+  "Macaque_E_features_used": false
+}

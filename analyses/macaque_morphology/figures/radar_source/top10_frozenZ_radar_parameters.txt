@@ -1,0 +1,11 @@
+MACAQUE M1-M4 TOP-TEN FROZEN-Z RADAR
+Cohort: 117 HC-GC consensus MSN cells; counts: {'M1': 43, 'M2': 42, 'M3': 20, 'M4': 12}.
+Frozen Z-score source: C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\macaque_m\m18_adaptive_pca126\02_transformed_z_117.csv
+Frozen ten-feature selection/order source: C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization\macaque_m\m18_tempfreeze_NPC5_HCK4_res2.3\panels_A_I\radar_group_top10_feature_selection_117_consensus.csv
+Feature order: 1. BD-MaxPD [basal_dendrite_max_path_distance]; 2. BD-Bias-Med [basal_dendrite_bias_medial]; 3. BD-MaxBO [basal_dendrite_max_branch_order]; 4. BD-NBranch [basal_dendrite_num_branches]; 5. BD-TotLen [basal_dendrite_total_length]; 6. BD-StemExit-ML [basal_dendrite_stem_exit_MedialLateral]; 7. BD-StemExit-Ven [basal_dendrite_stem_exit_ventral]; 8. BD-StemExit-Dor [basal_dendrite_stem_exit_dorsal]; 9. BD-MaxED [basal_dendrite_max_euclidean_distance]; 10. BDE-Dor [basal_dendrite_extent_dorsal]
+Shared display range: Z=-3 to +3; values outside this interval are clipped for display only.
+All panels use the same frozen cohort-wide Z scores; no within-class normalization is performed.
+Pale curves: individual cells; colored band: feature-wise IQR; black curve: feature-wise median.
+Periodic cubic splines produce closed curves. No median interior fill is used.
+Canvas: 4.64 x 1.00 in; Arial 4 pt; PNG 900 dpi and vector PDF.
+No PCA, clustering, labels, feature selection, or Z scores were recalculated.
