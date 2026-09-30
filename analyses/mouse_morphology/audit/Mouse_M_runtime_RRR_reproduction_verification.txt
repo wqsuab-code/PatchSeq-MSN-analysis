@@ -1,0 +1,36 @@
+Mouse-M runtime and T-M RRR reproduction verification
+Verification date: 2026-09-24
+
+Primary reporting environment
+- Python 3.14.3
+- NumPy 2.4.6
+- pandas 2.3.3
+- SciPy 1.17.1
+- scikit-learn 1.8.0
+- Matplotlib 3.10.9
+
+Frozen analysis rerun
+- Cohort: 168 strict RPCA-Pearson-concordant D1/D2 cells with HC-GC morphology consensus
+- Morphology features: 10
+- Transcriptomic genes: 1,000 re-ranked from the label-blind HVG2,000 matrix
+- Transcriptomic PCs: 20
+- RRR rank: 3
+- Cell identity and order identical: yes
+
+Maximum absolute differences from the archived outputs
+- Transcriptomic scores: 1.2034817586936697e-13
+- Morphological scores: 1.7896795156957523e-13
+- Transcriptomic correlation loadings: 2.7297608617971036e-14
+- Morphological correlation loadings: 2.967071033310731e-14
+
+Conclusion
+The archived Mouse T-M RRR outputs were reproduced from the frozen input
+tables to floating-point precision in the stated environment. These versions
+may therefore be reported using the wording 'analysis was performed using'.
+
+Data-source boundary
+The mouse Patch-seq measurements and morphology reconstructions were generated
+in the present study. No public GEO, SRA, DANDI, NeMO or equivalent accession
+was identified in the frozen archive as of the verification date. A permanent
+repository accession remains to be inserted after deposition. Macaque HMBA,
+NeMO and DANDI identifiers must not be assigned to this mouse dataset.

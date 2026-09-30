@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mouse morphology distribution statistics</title>
+  <meta name="description" content="Interactive numerical audit of total, HC-GC consensus and strict D1/D2 morphology distributions.">
+  <link rel="stylesheet" href="rrr-editor.css">
+  <style>
+    .topbar nav{display:flex;gap:7px;flex-wrap:wrap}.controls input[type=color]{width:100%;height:30px;padding:2px;border:1px solid #b8c0cc;border-radius:4px;background:#fff}
+    .stats-main{padding:14px;display:grid;gap:16px}.audit-flow{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:12px}.audit-step{border:1px solid #d9dee7;padding:12px;background:#fff}.audit-step strong{display:block;font-size:22px}.audit-step span{font-size:12px;color:var(--muted)}
+    .stats-table{width:100%;border-collapse:collapse;font-size:12px}.stats-table th,.stats-table td{padding:7px 9px;border-bottom:1px solid #d9dee7;text-align:right}.stats-table th:first-child,.stats-table td:first-child{text-align:left}.stats-table tr.subset td:first-child{padding-left:25px}.stats-table tr.key{font-weight:600;background:#eef4fb}.table-wrap{overflow-x:auto}
+    #statsSvg{display:block;width:100%;height:auto;background:#fff}.note{font-size:11px;color:var(--muted);margin:0}.statline{font-size:12px;margin:0}
+    @media(max-width:850px){.audit-flow{grid-template-columns:1fr}.editor-shell{display:block}.controls{position:static;max-height:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Morphology distribution statistics</h1><p>Ordered audit: total cells → HC–GC morphology consensus → strict stable D1/D2 identity</p></div>
+    <nav><a class="button" href="d1d2-distribution-editor.html">Distribution editor</a><a class="button" href="percentage-editor.html">Percentage editor</a><a class="button" href="rrr-editor.html">T–M RRR editor</a><a class="button" href="index.html">Feature studio</a></nav>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="Distribution statistics controls">
+      <details open><summary>Values and labels</summary><div class="control-group">
+        <label>Cell values<select id="valueMode"><option value="count">Counts</option><option value="rowPercent">Row percentage</option><option value="totalPercent">Percentage of all 187</option></select></label>
+        <label>Decimal places<select id="decimals"><option>0</option><option selected>1</option><option>2</option></select></label>
+        <label class="check"><input id="showValues" type="checkbox" checked>Show values on bars</label>
+        <label class="check"><input id="showDiscordant" type="checkbox" checked>Show strict 174 comparison row</label>
+        <label>Chart title<input id="chartTitle" type="text" value="M-class composition across the ordered audit"></label>
+      </div></details>
+      <details open><summary>Chart</summary><div class="control-group">
+        <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="500" max="1600" step="10" value="900"></label>
+        <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="300" max="1000" step="10" value="520"></label>
+        <label>Bar gap <output id="barGapValue"></output><input id="barGap" type="range" min="0" max="0.7" step="0.05" value="0.25"></label>
+        <label>Font size <output id="fontSizeValue"></output><input id="fontSize" type="range" min="8" max="24" step="1" value="12"></label>
+        <label class="check"><input id="showLegend" type="checkbox" checked>Show legend</label>
+      </div></details>
+      <details><summary>M-class colours</summary><div class="control-group">
+        <label>M1<input id="colorM1" type="color" value="#00468B"></label><label>M2<input id="colorM2" type="color" value="#42B540"></label>
+        <label>M3<input id="colorM3" type="color" value="#ED0000"></label><label>M4<input id="colorM4" type="color" value="#0099B4"></label>
+      </div></details>
+      <div class="actions">
+        <button id="saveAsDefault" class="wide" type="button">Save current settings as default</button>
+        <button id="resetDefault" type="button">Reset to saved default</button><button id="factoryDefault" type="button">Restore factory defaults</button>
+        <button id="exportSvg" type="button">Export SVG</button><button id="exportCsv" type="button">Export statistics CSV</button>
+      </div>
+      <p class="hint">Defaults are stored locally in this browser. No cell identity or classification data are changed.</p>
+    </aside>
+    <section class="canvas-shell">
+      <div class="stats-main">
+        <div class="audit-flow" aria-label="Ordered inclusion flow">
+          <div class="audit-step"><strong id="flowTotal">187</strong><span>Total morphology cells</span></div>
+          <div class="audit-step"><strong id="flowConsensus">181</strong><span>HC–GC morphology consensus</span></div>
+          <div class="audit-step"><strong id="flowStrict">168</strong><span>Strict D1/D2 within morphology consensus</span></div>
+        </div>
+        <p id="flowRetention" class="statline"></p>
+        <div class="table-wrap"><table class="stats-table"><thead><tr><th>Cohort</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>Total</th><th>Retention</th></tr></thead><tbody id="statsBody"></tbody></table></div>
+        <svg id="statsSvg" role="img" aria-label="M-class composition by ordered inclusion cohort"></svg>
+        <p id="association" class="statline"></p>
+        <p class="note">Strict identity requires Stable_D1/Stable_D2 together with agree_RPCA = TRUE and agree_Pearson = TRUE. The D1/D2 association test is calculated only in the 168-cell strict morphology-consensus cohort.</p>
+        <p id="status" class="note" role="status"></p>
+      </div>
+    </section>
+  </main>
+  <script src="rrr-data.js"></script>
+  <script src="strict-identity-data.js"></script>
+  <script src="distribution-statistics.js"></script>
+</body>
+</html>

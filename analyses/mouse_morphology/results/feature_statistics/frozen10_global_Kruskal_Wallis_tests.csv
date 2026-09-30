@@ -1,0 +1,11 @@
+Feature,Display,Kruskal_Wallis_p
+M_soma_circularity_index,Soma circularity,2.0854562462081469e-13
+M_soma_aspect_ratio,Soma aspect ratio,5.026198537287418e-13
+M_cell_max_radial_dist,Maximum radial distance,0.023236507552360616
+M_total_number_of_neurites,Primary neurite number,4.2843510178274597e-13
+M_basal_dendrite_avg_tortuosity,Mean tortuosity,0.22108638908178144
+M_Total_neurite_length_(sections),Total neurite length,1.1394321306705594e-18
+M_Number_of_bifurcation_points,Bifurcation points,1.447437612811707e-23
+M_Maximum_branch_order,Maximum branch order,9.308437015561435e-20
+M_trunk_angle_min,Minimum trunk angle,1.0503205202532716e-05
+M_trunk_angle_max,Maximum trunk angle,6.372351408303113e-08

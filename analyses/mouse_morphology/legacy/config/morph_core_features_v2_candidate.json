@@ -1,0 +1,161 @@
+{
+  "configuration_name": "Morph_core11_v2_candidate",
+  "status": "candidate_not_frozen",
+  "analysis_cohort_n": 215,
+  "batch_used": false,
+  "selection_rule": "Build the full-panel Spearman graph at abs(rho)>0.80, then choose biologically interpretable and measurement-stable representatives.",
+  "preprocessing": {
+    "name": "shift_sum10000_log1p_zscore",
+    "order": [
+      "For each feature, subtract its minimum across the fixed 215-cell dataset so the minimum is zero",
+      "Divide each shifted value by the shifted feature column sum across all 215 cells",
+      "Multiply by 10000",
+      "Apply natural log1p: log(1+x)",
+      "Apply feature-wise z-score using sample standard deviation (n-1)"
+    ],
+    "formula": "zscore(log1p((x - min_feature) / sum_cells(x - min_feature) * 10000))",
+    "scale_factor": 10000,
+    "zscore_ddof": 1,
+    "batch_used": false
+  },
+  "features": [
+    {
+      "order": 1,
+      "feature": "M_soma_average_radius",
+      "short_name": "SomaAvgR",
+      "module": "Soma size",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.7474372649967819,
+      "reason": "Stable central representative of the six-feature soma-size block.",
+      "final_skewness": -1.2825495899409776
+    },
+    {
+      "order": 2,
+      "feature": "M_soma_aspect_ratio",
+      "short_name": "SomaAR",
+      "module": "Soma shape",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": -0.3810801748409759,
+      "reason": "Direct, nearly symmetric measure of soma anisotropy.",
+      "final_skewness": -2.5392539379799564
+    },
+    {
+      "order": 3,
+      "feature": "M_cell_max_radial_dist",
+      "short_name": "MaxRadialDist",
+      "module": "Dendritic reach",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 1.7519188689160718,
+      "reason": "Direct Euclidean arbor reach; slightly less overlap with total length than longest path.",
+      "final_skewness": -0.5602639066321113
+    },
+    {
+      "order": 4,
+      "feature": "M_Total_neurite_length_(sections)",
+      "short_name": "TotalNeuriteLength",
+      "module": "Arbor scale",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.02176604270886949,
+      "reason": "Core whole-arbor length measure; log1p nearly removes skewness.",
+      "final_skewness": -1.3067981664246189
+    },
+    {
+      "order": 5,
+      "feature": "M_Total_neurite_area",
+      "short_name": "TotalNeuriteArea",
+      "module": "Neurite caliber/surface",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.9872054662123823,
+      "reason": "More stable representative than volume: post-log skew 0.987 and no |robust z|>5 flags.",
+      "final_skewness": 0.20532885210634738
+    },
+    {
+      "order": 6,
+      "feature": "M_total_number_of_neurites",
+      "short_name": "NeuriteN",
+      "module": "Branching complexity",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.41899879270697254,
+      "reason": "Representative of the exact duplicate neurite-count pair.",
+      "final_skewness": -2.5432653881749654
+    },
+    {
+      "order": 7,
+      "feature": "M_Number_of_bifurcation_points",
+      "short_name": "BifurcationN",
+      "module": "Branching complexity",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.6712384616418313,
+      "reason": "Branching breadth; not redundant with branch depth at the 0.80 threshold.",
+      "final_skewness": -1.7611538126049195
+    },
+    {
+      "order": 8,
+      "feature": "M_Maximum_branch_order",
+      "short_name": "MaxBranchOrder",
+      "module": "Branching complexity",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 0.24263194250312062,
+      "reason": "Hierarchical branching depth; complementary to bifurcation count.",
+      "final_skewness": -2.478469023068266
+    },
+    {
+      "order": 9,
+      "feature": "M_basal_dendrite_avg_tortuosity",
+      "short_name": "AvgTortuosity",
+      "module": "Path geometry",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 1.0995064508346883,
+      "reason": "Typical path tortuosity; substantially less tail-sensitive than the maximum.",
+      "final_skewness": -1.1141484053485162
+    },
+    {
+      "order": 10,
+      "feature": "M_trunk_angle_min",
+      "short_name": "TrunkAngleMin",
+      "module": "Path geometry",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": 2.0239262282365282,
+      "reason": "Lower angular envelope; unique information despite residual skewness.",
+      "final_skewness": -0.374981426214474
+    },
+    {
+      "order": 11,
+      "feature": "M_trunk_angle_max",
+      "short_name": "TrunkAngleMax",
+      "module": "Path geometry",
+      "transform": "shift_min_to_zero_then_column_sum10000_then_log1p_then_zscore",
+      "post_transform_skewness": -0.1483189399197487,
+      "reason": "Upper angular envelope; nearly symmetric and not highly correlated with minimum angle.",
+      "final_skewness": -2.1366869603477148
+    }
+  ],
+  "sensitivity_features": [
+    "M_Total_neurite_volume",
+    "M_basal_dendrite_max_tortuosity",
+    "M_basal_dendrite_longthest_path"
+  ],
+  "audit": {
+    "full_features": 22,
+    "retained_features": 11,
+    "redundant_pairs_abs_spearman_gt_0.80": 19,
+    "core_pairs_abs_spearman_gt_0.80": 0,
+    "max_abs_spearman_within_core": 0.7248018153204138,
+    "max_abs_spearman_core_pair": [
+      "M_Number_of_bifurcation_points",
+      "M_Maximum_branch_order"
+    ],
+    "exact_circularity_formula_max_abs_error": 6.439293542825908e-15
+  },
+  "preprocessing_audit": {
+    "cells": 215,
+    "features": 11,
+    "scale_factor": 10000,
+    "zscore_sd_denominator": "n-1 (sample standard deviation)",
+    "max_abs_shifted_minimum": 0,
+    "max_abs_normalized_sum_error": 1.4551915228366852e-11,
+    "max_abs_final_z_mean": 5.776258024863721e-15,
+    "max_abs_final_z_sd_error": 3.1086244689504383e-15,
+    "finite_values": true
+  }
+}

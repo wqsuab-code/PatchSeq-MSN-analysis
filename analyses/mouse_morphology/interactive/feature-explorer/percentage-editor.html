@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mouse M-class D1/D2 percentage editor</title>
+  <meta name="description" content="Interactive editor for the D1/D2 percentage composition of Mouse M1–M4 morphology classes.">
+  <link rel="stylesheet" href="rrr-editor.css">
+  <style>
+    .topbar nav{display:flex;gap:7px;flex-wrap:wrap}.compact-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.compact-grid .wide{grid-column:1/-1}
+    .controls input[type=color]{width:100%;height:30px;padding:2px;border:1px solid #b8c0cc;border-radius:4px;background:#fff}.controls textarea{width:100%;min-height:48px;resize:vertical;padding:5px;border:1px solid #b8c0cc;border-radius:4px;font:inherit}
+    #pctSvg{display:block;width:100%;height:auto;background:#fff}.value-table{width:100%;border-collapse:collapse;font-size:11px}.value-table th,.value-table td{padding:4px;border-bottom:1px solid var(--line);text-align:right}.value-table th:first-child,.value-table td:first-child{text-align:left}
+    @media(max-width:820px){.compact-grid{grid-template-columns:1fr}.compact-grid .wide{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Mouse M-class D1/D2 percentage editor</h1><p>HC–GC-consensus morphology cells · strict D1/D2 plus ambiguous/non-strict identity · 100% composition within each M class</p></div>
+    <nav><a class="button" href="distribution-statistics.html">Distribution statistics</a><a class="button" href="d1d2-distribution-editor.html">D1/D2 distribution editor</a><a class="button" href="rrr-editor.html">T–M RRR editor</a><a class="button" href="index.html">Feature studio</a></nav>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="Percentage figure controls">
+      <details open><summary>Data, order and labels</summary><div class="control-group">
+        <label>Bar order (comma-separated)<input id="barOrder" type="text" value="M1,M2,M3,M4"></label>
+        <label>Stack order<select id="stackOrder"><option value="D1,D2,Ambiguous">D1 bottom · D2 middle · ambiguous top</option><option value="D2,D1,Ambiguous">D2 bottom · D1 middle · ambiguous top</option><option value="Ambiguous,D1,D2">Ambiguous bottom · D1 middle · D2 top</option></select></label>
+        <label class="check"><input id="includeAmbiguous" type="checkbox" checked>Include ambiguous/non-strict cells</label>
+        <label>Chart title<input id="chartTitle" type="text" value="D1/D2 composition across M classes"></label>
+        <label>X-axis title<input id="xTitle" type="text" value="Morphological class"></label>
+        <label>Y-axis title<input id="yTitle" type="text" value="Cells (%)"></label>
+        <div class="compact-grid">
+          <label>M1 label<input id="labelM1" type="text" value="M1"></label><label>M2 label<input id="labelM2" type="text" value="M2"></label>
+          <label>M3 label<input id="labelM3" type="text" value="M3"></label><label>M4 label<input id="labelM4" type="text" value="M4"></label>
+        </div>
+        <label class="check"><input id="showTitle" type="checkbox">Show chart title</label>
+        <label class="check"><input id="showXAxisTitle" type="checkbox" checked>Show X-axis title</label>
+        <label class="check"><input id="showYAxisTitle" type="checkbox" checked>Show Y-axis title</label>
+      </div></details>
+
+      <details open><summary>Bars and annotations</summary><div class="control-group">
+        <label>Bar width <output id="barWidthValue"></output><input id="barWidth" type="range" min="8" max="120" step="1" value="48"></label>
+        <label>Bar gap <output id="barGapValue"></output><input id="barGap" type="range" min="0" max="100" step="1" value="18"></label>
+        <label>Segment opacity <output id="segmentOpacityValue"></output><input id="segmentOpacity" type="range" min="0.1" max="1" step="0.05" value="1"></label>
+        <label>Segment divider width <output id="segmentStrokeValue"></output><input id="segmentStroke" type="range" min="0" max="5" step="0.25" value="1"></label>
+        <label>Divider colour<input id="segmentStrokeColor" type="color" value="#ffffff"></label>
+        <label class="check"><input id="showPercent" type="checkbox" checked>Percentage labels</label>
+        <label class="check"><input id="showCounts" type="checkbox">Cell-count labels</label>
+        <label class="check"><input id="showSampleN" type="checkbox">Total n above bars</label>
+        <label>Percentage decimals<select id="percentDecimals"><option>0</option><option selected>1</option><option>2</option></select></label>
+        <label>Value-label size <output id="valueSizeValue"></output><input id="valueSize" type="range" min="5" max="24" step="1" value="10"></label>
+        <label>Value-label colour<input id="valueColor" type="color" value="#111827"></label>
+      </div></details>
+
+      <details open><summary>Axes, ticks and grid</summary><div class="control-group">
+        <label class="check"><input id="showXAxis" type="checkbox" checked>X-axis line</label>
+        <label class="check"><input id="showYAxis" type="checkbox" checked>Y-axis line</label>
+        <label class="check"><input id="showXLabels" type="checkbox" checked>M-class tick labels</label>
+        <label class="check"><input id="showYLabels" type="checkbox" checked>Percentage tick labels</label>
+        <label class="check"><input id="showGrid" type="checkbox">Horizontal grid</label>
+        <label>Y-axis minimum<input id="yMin" type="number" min="0" max="99" step="1" value="0"></label>
+        <label>Y-axis maximum<input id="yMax" type="number" min="1" max="120" step="1" value="100"></label>
+        <label>Y tick intervals<select id="yTickIntervals"><option>2</option><option>4</option><option selected>5</option><option>10</option></select></label>
+        <label>Axis width <output id="axisWidthValue"></output><input id="axisWidth" type="range" min="0" max="5" step="0.25" value="1.25"></label>
+        <label>Tick length <output id="tickLengthValue"></output><input id="tickLength" type="range" min="0" max="12" step="1" value="4"></label>
+        <label>Grid width <output id="gridWidthValue"></output><input id="gridWidth" type="range" min="0" max="3" step="0.25" value="0.5"></label>
+        <label>Axis colour<input id="axisColor" type="color" value="#111827"></label>
+        <label>Grid colour<input id="gridColor" type="color" value="#D0D5DD"></label>
+      </div></details>
+
+      <details><summary>Canvas, margins and typography</summary><div class="control-group">
+        <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="220" max="1200" step="10" value="420"></label>
+        <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="220" max="1000" step="10" value="420"></label>
+        <label>Left margin <output id="marginLeftValue"></output><input id="marginLeft" type="range" min="0" max="220" step="2" value="62"></label>
+        <label>Right margin <output id="marginRightValue"></output><input id="marginRight" type="range" min="0" max="220" step="2" value="24"></label>
+        <label>Top margin <output id="marginTopValue"></output><input id="marginTop" type="range" min="0" max="220" step="2" value="48"></label>
+        <label>Bottom margin <output id="marginBottomValue"></output><input id="marginBottom" type="range" min="0" max="220" step="2" value="64"></label>
+        <label>Font family<select id="fontFamily"><option>Arial</option><option>Helvetica</option><option>Times New Roman</option></select></label>
+        <label>Axis/tick font size <output id="axisFontSizeValue"></output><input id="axisFontSize" type="range" min="5" max="28" step="1" value="11"></label>
+        <label>Title font size <output id="titleFontSizeValue"></output><input id="titleFontSize" type="range" min="7" max="36" step="1" value="14"></label>
+        <label>Canvas colour<input id="canvasColor" type="color" value="#ffffff"></label>
+        <label>Plot colour<input id="plotColor" type="color" value="#ffffff"></label>
+      </div></details>
+
+      <details><summary>Legend and colours</summary><div class="control-group">
+        <label>D1 colour<input id="colorD1" type="color" value="#FF379B"></label>
+        <label>D2 colour<input id="colorD2" type="color" value="#00EEB3"></label>
+        <label>Ambiguous colour<input id="colorAmbiguous" type="color" value="#BDBDBD"></label>
+        <label class="check"><input id="showLegend" type="checkbox" checked>Show legend</label>
+        <label>Legend position<select id="legendPosition"><option value="top">Top</option><option value="right">Right</option><option value="bottom">Bottom</option><option value="left">Left</option></select></label>
+        <label>Legend font size <output id="legendFontSizeValue"></output><input id="legendFontSize" type="range" min="5" max="24" step="1" value="11"></label>
+        <label>Legend swatch size <output id="legendSwatchValue"></output><input id="legendSwatch" type="range" min="4" max="30" step="1" value="12"></label>
+        <label>Legend gap <output id="legendGapValue"></output><input id="legendGap" type="range" min="0" max="60" step="1" value="18"></label>
+      </div></details>
+
+      <details><summary>Export</summary><div class="control-group">
+        <label>Figure width (in)<input id="exportWidth" type="number" min="1" max="20" step="0.1" value="2.1"></label>
+        <label>PNG resolution<select id="exportDpi"><option>300</option><option>600</option><option selected>900</option></select></label>
+      </div></details>
+
+      <div class="actions">
+        <button id="saveAsDefault" class="wide" type="button">Save current settings as default</button>
+        <button id="resetAll" type="button">Reset to saved default</button><button id="restoreFactory" type="button">Restore factory defaults</button>
+        <button id="exportSvg" type="button">Export SVG</button><button id="exportPng" type="button">Export PNG</button>
+        <button id="exportCsv" type="button">Export data CSV</button><button id="exportLayout" type="button">Export layout</button>
+        <label class="button wide" for="importLayout">Import layout JSON</label><input id="importLayout" type="file" accept="application/json" hidden>
+      </div>
+      <p class="hint">The complete denominator is the 181 HC–GC morphology-consensus cells: 168 strict RPCA–Pearson D1/D2 cells plus 13 ambiguous/non-strict cells. Turning ambiguity off renormalizes D1 and D2 to 100% within each M class.</p>
+    </aside>
+
+    <section class="canvas-shell">
+      <div class="canvas-head"><strong>Live D1/D2 percentage preview</strong><span id="pctSummary">Loading data…</span></div>
+      <p id="pctStatus" role="status">Loading embedded classification data…</p>
+      <div class="canvas-scroll"><svg id="pctSvg" role="img" aria-label="D1 and D2 percentage composition across Mouse M1 to M4 morphology classes"></svg></div>
+      <div style="padding:8px 12px 12px;overflow:auto"><table class="value-table" aria-label="D1, D2 and ambiguous composition data"><thead><tr><th>Class</th><th>D1 n</th><th>D1 %</th><th>D2 n</th><th>D2 %</th><th>Ambiguous n</th><th>Ambiguous %</th><th>Total</th></tr></thead><tbody id="dataBody"></tbody></table></div>
+    </section>
+  </main>
+  <script src="rrr-data.js"></script>
+  <script src="strict-identity-data.js"></script>
+  <script src="percentage-editor.js"></script>
+</body>
+</html>

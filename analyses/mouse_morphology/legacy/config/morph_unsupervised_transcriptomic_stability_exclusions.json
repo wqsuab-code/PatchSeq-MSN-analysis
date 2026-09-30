@@ -1,0 +1,29 @@
+{
+  "scope": "morphology_unsupervised_discovery_cohort",
+  "status": "rescinded_2026-08-25_retained_for_sensitivity_analysis_only",
+  "active": false,
+  "decision_date": "2026-08-25",
+  "base_cohort": "current_193_cell_morphology_cohort",
+  "reason": "Transcriptomic data are present and the MSN root identity is stable, but D1/D2 major-class assignment is unstable across the frozen transcriptomic stability analysis.",
+  "exclusions": [
+    "A11186_Batch4",
+    "A20256303_Batch7",
+    "A2025784_Batch7",
+    "D251161_Batch8",
+    "D251171_Batch8",
+    "M1296_Batch5",
+    "M4248_Batch5",
+    "M4253_Batch5",
+    "O8211_Batch2",
+    "O8233_Batch2"
+  ],
+  "resulting_cohort_n_if_applied": 183,
+  "current_primary_cohort_n": 193,
+  "rescission_reason": "User decided that D1/D2 instability must not be used to remove cells from morphology-unsupervised discovery; only morphology-extreme or reconstruction-QC quarantine remains active.",
+  "interpretation": [
+    "These cells are not classified as morphology-QC failures.",
+    "They remain available for morphology-only sensitivity analyses and continuous-axis projection.",
+    "They remain included in the primary HC, GC, PCA-bootstrap and consensus discovery cohort.",
+    "The 183-cell filtered result is retained only as a sensitivity analysis and must not replace the primary 193-cell morphology result."
+  ]
+}

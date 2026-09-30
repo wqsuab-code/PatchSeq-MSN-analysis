@@ -1,0 +1,74 @@
+{
+  "cohort_n": 187,
+  "target": "HC-derived final M1-M4 labels",
+  "grouping": "Recording_day_proxy (one mouse per recording day)",
+  "outer_validation": "5 repeats x 5-fold StratifiedGroupKFold",
+  "inner_selection": "4-fold StratifiedGroupKFold",
+  "candidate_families": [
+    "RBF SVM",
+    "Regularized logistic",
+    "Extra trees",
+    "Random forest",
+    "kNN",
+    "Shrinkage LDA"
+  ],
+  "best_family_by_mean_outer_balanced_accuracy": "RBF SVM",
+  "most_common_selected_hyperparameters_within_best_family": "C=0.5, gamma=scale",
+  "aggregated_repeated_OOF_metrics": {
+    "accuracy": 0.9411764705882353,
+    "balanced_accuracy": 0.9406797160261605,
+    "macro_F1": 0.9387687164256617,
+    "ARI": 0.8449623816170743
+  },
+  "recording_day_group_bootstrap_95CI": {
+    "accuracy": [
+      0.9010869565217392,
+      0.9743589743589743
+    ],
+    "balanced_accuracy": [
+      0.898473899924947,
+      0.9756352584836357
+    ],
+    "macro_F1": [
+      0.8976922801262245,
+      0.973020418677867
+    ],
+    "ARI": [
+      0.7427040338996395,
+      0.9366239222259071
+    ]
+  },
+  "correct_cells": 176,
+  "total_cells": 187,
+  "mean_vote_agreement": 0.9657754010695186,
+  "median_vote_agreement": 1.0,
+  "interpretation_limit": "ML recovery tests reproducibility of labels derived from the same morphology features; it is not independent biological validation.",
+  "best_RBF_nested_repeated_OOF_metrics": {
+    "accuracy": 0.9411764705882353,
+    "balanced_accuracy": 0.9301299802330762,
+    "macro_F1": 0.9348448285344994,
+    "ARI": 0.8537138892436816
+  },
+  "best_RBF_recording_day_group_bootstrap_95CI": {
+    "accuracy": [
+      0.9057540721349622,
+      0.9725274725274725
+    ],
+    "balanced_accuracy": [
+      0.8843192078870097,
+      0.9693520174678264
+    ],
+    "macro_F1": [
+      0.893874569295549,
+      0.9693381630176978
+    ],
+    "ARI": [
+      0.770778731885688,
+      0.9312389752278165
+    ]
+  },
+  "best_RBF_correct_cells": 176,
+  "best_RBF_total_cells": 187,
+  "best_RBF_mean_vote_agreement": 0.9775401069518718,
+  "best_RBF_median_vote_agreement": 1.0
+}

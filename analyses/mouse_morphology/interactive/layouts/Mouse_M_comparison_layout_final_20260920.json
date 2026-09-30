@@ -1,0 +1,163 @@
+{
+  "cohort": "all",
+  "pairLayout": "side-tsne-first",
+  "pairGap": 92,
+  "uniformYAxisHeight": true,
+  "statsAspectRatio": 2.5,
+  "columns": 4,
+  "panelWidth": 800,
+  "panelHeight": 600,
+  "panelGapX": 0,
+  "panelGapY": 9,
+  "canvasColor": "#ffffff",
+  "showPanelTitles": true,
+  "panelTitleSize": 25.5,
+  "showPoints": true,
+  "pointSize": 5,
+  "pointOpacity": 0.6,
+  "jitterWidth": 0.4,
+  "showBoxes": true,
+  "boxWidth": 0.62,
+  "boxLineWidth": 1,
+  "boxFillOpacity": 0,
+  "whiskerWidth": 0.25,
+  "medianLineWidth": 2,
+  "showP": true,
+  "pSource": "BH_FDR_q",
+  "pCutoff": 0.05,
+  "pFontSize": 25,
+  "pLineWidth": 1,
+  "pRowGap": 26,
+  "pLabelGap": 4,
+  "pNotation": "scientific",
+  "showOmnibus": false,
+  "showTsne": true,
+  "tsneFraction": 0.49,
+  "tsnePointSize": 8,
+  "tsnePointOpacity": 1,
+  "tsneOutline": true,
+  "tsneOutlineWidth": 2.5,
+  "tsneOutlineOpacity": 1,
+  "tsneDash": "10 5",
+  "tsneShowLabels": true,
+  "tsneShowAxes": false,
+  "tsneShowColorbar": false,
+  "tsneZMin": -2.5,
+  "tsneZMax": 2.5,
+  "tsneLowColor": "#2166ac",
+  "tsneMidColor": "#d9d9d9",
+  "tsneHighColor": "#b2182b",
+  "tsneXMin": -14.31547664,
+  "tsneXMax": 13.15428664,
+  "tsneYMin": -17.23719376,
+  "tsneYMax": 14.25975776,
+  "tsneUnitRatio": 1,
+  "showAxes": true,
+  "showTicks": true,
+  "showTickLabels": true,
+  "showXLabels": true,
+  "showYLabels": true,
+  "axisLineWidth": 1,
+  "tickLength": 7,
+  "tickCount": 5,
+  "axisFontSize": 25,
+  "yLabelSize": 25,
+  "yLabelOffset": 65,
+  "fontFamily": "Arial",
+  "dataPadding": 0.15,
+  "colors": {
+    "M1": "#00468B",
+    "M2": "#42B540",
+    "M3": "#ED0000",
+    "M4": "#0099B4"
+  },
+  "order": [
+    "M_soma_circularity_index",
+    "M_soma_aspect_ratio",
+    "M_cell_max_radial_dist",
+    "M_total_number_of_neurites",
+    "M_basal_dendrite_avg_tortuosity",
+    "M_Total_neurite_length_(sections)",
+    "M_Number_of_bifurcation_points",
+    "M_Maximum_branch_order",
+    "M_trunk_angle_min",
+    "M_trunk_angle_max"
+  ],
+  "visible": {
+    "M_soma_circularity_index": true,
+    "M_soma_aspect_ratio": true,
+    "M_cell_max_radial_dist": true,
+    "M_total_number_of_neurites": true,
+    "M_basal_dendrite_avg_tortuosity": true,
+    "M_Total_neurite_length_(sections)": true,
+    "M_Number_of_bifurcation_points": true,
+    "M_Maximum_branch_order": true,
+    "M_trunk_angle_min": true,
+    "M_trunk_angle_max": true
+  },
+  "labels": {
+    "M_soma_circularity_index": {
+      "name": "Soma circularity",
+      "unit": "index",
+      "min": "",
+      "max": ""
+    },
+    "M_soma_aspect_ratio": {
+      "name": "Soma aspect ratio",
+      "unit": "ratio",
+      "min": "",
+      "max": ""
+    },
+    "M_cell_max_radial_dist": {
+      "name": "Max radial distance",
+      "unit": "µm",
+      "min": "",
+      "max": ""
+    },
+    "M_total_number_of_neurites": {
+      "name": "Primary neurite number",
+      "unit": "count",
+      "min": "",
+      "max": ""
+    },
+    "M_basal_dendrite_avg_tortuosity": {
+      "name": "Mean tortuosity",
+      "unit": "ratio",
+      "min": "",
+      "max": ""
+    },
+    "M_Total_neurite_length_(sections)": {
+      "name": "Total neurite length",
+      "unit": "µm",
+      "min": "",
+      "max": ""
+    },
+    "M_Number_of_bifurcation_points": {
+      "name": "Bifurcation points",
+      "unit": "count",
+      "min": "",
+      "max": ""
+    },
+    "M_Maximum_branch_order": {
+      "name": "Maximum branch order",
+      "unit": "order",
+      "min": "",
+      "max": ""
+    },
+    "M_trunk_angle_min": {
+      "name": "Minimum trunk angle",
+      "unit": "rad",
+      "min": "",
+      "max": ""
+    },
+    "M_trunk_angle_max": {
+      "name": "Maximum trunk angle",
+      "unit": "rad",
+      "min": "",
+      "max": ""
+    }
+  },
+  "exportWidthIn": 7.2,
+  "exportDpi": 600,
+  "exportBackground": "white"
+}

@@ -1,0 +1,13 @@
+{
+  "cells": 187,
+  "parameter": "NPC3 HC K4 GC resolution 0.50",
+  "HC_GC_consensus_n": 181,
+  "HC_GC_consensus_percent": 96.79144385026738,
+  "M_sizes": {
+    "M1": 67,
+    "M2": 23,
+    "M3": 62,
+    "M4": 35
+  },
+  "importance_target": "HC-derived M1-M4; descriptive recovery, not independent biological validation"
+}
