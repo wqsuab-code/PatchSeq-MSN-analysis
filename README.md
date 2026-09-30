@@ -22,16 +22,17 @@ It contains the complete derived-data chain from the 486-cell target cohort to
 HC-GC consensus cells, donor-grouped machine-learning validation, M-T RRR source
 data, figures and interactive editors.
 
-### Mouse morphology M1-M4 and transcriptome-to-morphology analysis
+### Macaque electrophysiology E1-E4 and transcriptome-to-electrophysiology analysis
 
-The audited mouse morphology module is located in
-[`analyses/mouse_morphology`](analyses/mouse_morphology). It contains the
-228-to-193-to-187-cell QC trail, frozen ten-feature M1-M4 taxonomy, HC-GC
-consensus, recording-day-grouped machine-learning validation, strict 168-cell
-T-M RRR, figure source data, final figures and interactive editors.
+The audited macaque electrophysiology module is located in
+[`analyses/macaque_ephys`](analyses/macaque_ephys). It contains the frozen
+Ca/Pu/NAc 19-feature cohort, HC-GC consensus E1-E4 classification,
+donor-grouped machine-learning validation, T-E reduced-rank regression source
+data, figures, interactive editors, provenance records and clean-clone
+integrity checks.
 
-Additional macaque electrophysiology, mouse electrophysiology and shared
-cross-modal modules will be added as separately audited releases.
+Additional mouse electrophysiology, mouse morphology and cross-modal modules
+will be added as separately audited releases.
 
 ## Data policy
 

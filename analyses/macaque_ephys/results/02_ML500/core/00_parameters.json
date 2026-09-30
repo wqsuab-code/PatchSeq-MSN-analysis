@@ -1,0 +1,21 @@
+{
+  "scope": "Macaque MSN; Ca+Pu+NAc",
+  "frozen_classes": [
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "grouping_unit": "donor_label",
+  "repeats": 500,
+  "test_fraction": 0.25,
+  "seed": 20260910,
+  "features": 19,
+  "pca_components_supervised": 3,
+  "primary_transform": {
+    "positive_ratio_features": "log2 then training-fold Z-score (ddof=0)",
+    "other_features": "training minimum shift; training shifted-column sum to 10,000; log1p; training-fold Z-score (ddof=0)",
+    "test_application": "reuse training-fold parameters; clip below training minimum before log1p",
+    "yeo_johnson": false
+  }
+}

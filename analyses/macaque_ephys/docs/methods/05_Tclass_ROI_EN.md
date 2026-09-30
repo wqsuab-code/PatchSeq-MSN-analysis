@@ -1,0 +1,3 @@
+# Transcriptomic-class and anatomical composition
+
+Transcriptomic class and ROI were evaluated after the E classes had been frozen. Stacked bars show the percentage of D1, D2, and Hybrid cells within each E class; numbers within bars denote cell counts. The corresponding E-by-transcriptomic-class counts were E1: 24 D1, 20 D2, 15 Hybrid; E2: 35 D1, 95 D2, 3 Hybrid; E3: 38 D1, 19 D2, 0 Hybrid; and E4: 66 D1, 49 D2, 4 Hybrid. ROI counts were E1: 20 Ca, 23 Pu, 16 NAc; E2: 70 Ca, 49 Pu, 14 NAc; E3: 25 Ca, 28 Pu, 4 NAc; and E4: 54 Ca, 32 Pu, 33 NAc. These metadata were not used to fit PCA or clustering.

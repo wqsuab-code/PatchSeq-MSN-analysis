@@ -1,0 +1,26 @@
+R version 4.5.1 (2025-06-13 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+LAPACK: 3.12.1
+Locale: C
+Time zone: America/Chicago
+
+Attached packages:
+Seurat 5.4.0
+SeuratObject 5.2.0
+sp 2.2-0
+
+Key loaded packages used by the clustering environment:
+Matrix 1.7-4
+igraph 2.1.4
+RcppAnnoy 0.0.22
+Rcpp 1.1.0
+Rtsne 0.17
+data.table 1.17.8
+dplyr 1.1.4
+ggplot2 4.0.2
+
+Note: the installed Seurat 5.4.0 binary reports that it was built under R 4.5.2.
+This environment snapshot was recorded on 2026-09-12. The final archived
+analysis should be rerun in this frozen environment or in a version-locked
+environment before manuscript submission.

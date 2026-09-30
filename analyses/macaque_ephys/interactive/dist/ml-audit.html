@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Macaque E1–E4 ML方法与预处理审计</title>
+<meta name="description" content="Frozen-pipeline audit, donor-aware validation methods, results and reproducibility files for Macaque E1-E4.">
+<link rel="stylesheet" href="ml-audit.css"></head>
+<body>
+<header><div><p class="eyebrow">MACAQUE · ELECTROPHYSIOLOGY · FROZEN E4</p><h1>机器学习方法与预处理审计</h1><p class="subtitle">冻结变换一致性、供体感知验证、结果边界与完整代码披露</p></div>
+<nav><a href="ml-editor.html">返回互动图版</a><a href="index.html">Feature editor</a><span>Audit</span></nav></header>
+<main>
+<section class="hero"><div><span class="badge ok">PRIMARY PIPELINE VERIFIED</span><h2>当前a–p结果与冻结E1–E4流程一致</h2><p>主分析未使用Yeo–Johnson。7项正值ratio使用log2；其余12项使用minimum shift → column-sum 10,000 → log1p；随后逐项Z-score。每个供体训练拆分内独立拟合全部参数和PCA。</p></div><div id="heroMetrics" class="hero-metrics"></div></section>
+
+<section><div class="section-head"><div><p class="eyebrow">PIPELINE</p><h2>冻结流程与机器学习验证</h2></div><p>分类定义和验证严格分离；机器学习只检验已冻结标签的可恢复性与稳定性。</p></div>
+<div class="flow">
+ <article><b>01</b><h3>冻结队列</h3><p>Ca + Pu + NAc；390个完整病例；19项E-feature；不插补。</p></article>
+ <article><b>02</b><h3>特征特异变换</h3><p>7 ratios：log2。12 non-ratios：shift、sum-to-10k、log1p。全部Z-score。</p></article>
+ <article><b>03</b><h3>冻结标签</h3><p>full-SVD PCA，PC1–PC3；Ward.D2 K=4；GC15合并为4群；368个共识细胞。</p></article>
+ <article><b>04</b><h3>供体外验证</h3><p>500次供体分组拆分；变换和PCA仅在训练供体拟合；测试供体完全隔离。</p></article>
+</div></section>
+
+<section><div class="section-head"><div><p class="eyebrow">NUMERICAL AUDIT</p><h2>与冻结文件逐值复核</h2></div><p>结果来自重新读取原始ZIP后独立重建，而非复用保存的Z-score或PCA。</p></div><div id="auditCards" class="cards"></div></section>
+
+<section><div class="section-head"><div><p class="eyebrow">EVIDENCE CHAIN</p><h2>a–p panel的分析含义</h2></div><p>每类图回答不同问题，不能把监督可预测性等同于无监督天然离散性。</p></div>
+<div class="evidence">
+ <article><h3>a–f · 供体外可恢复性</h3><p>500个供体分组75/25拆分；7种监督模型；Extra Trees累计混淆矩阵、ROC与PR。随机基线为0.25。</p></article>
+ <article><h3>g–i · 无监督重新发现</h3><p>80%供体重抽样、NPC/K扫描以及Ward、K-means、GMM、spectral的ARI。衡量从扰动数据中重新发现冻结四群的能力。</p></article>
+ <article><h3>j–l · 归属与结构审计</h3><p>共聚类margin、类内稳定性以及偏差校正Cramér's V。T class/ROI采用供体内置换；donor采用全局置换。</p></article>
+ <article><h3>m–p · 特征证据</h3><p>训练折限定permutation importance、500次MDI、跨模型秩相关，以及训练内排序的嵌套消融。</p></article>
+</div></section>
+
+<section><div class="section-head"><div><p class="eyebrow">RESULTS</p><h2>核心结果与解释边界</h2></div></div><div id="resultGrid" class="result-grid"></div>
+<div class="interpretation"><h3>可发表的结论</h3><p><strong>支持：</strong>E1–E4是供体外高度可恢复、显著优于匹配置换基线的冻结操作型分类。</p><p><strong>限制：</strong>Ward供体重抽样ARI仅为中等水平，且跨算法差异明显；这些结果不足以单独证明算法无关、天然离散的生物类型。</p></div></section>
+
+<section><div class="section-head"><div><p class="eyebrow">REPRODUCIBILITY</p><h2>数据、方法与代码</h2></div><p>网页中的每个结果均链接到可下载表格；代码快照与方法文件随网页一起保存。</p></div>
+<div class="downloads">
+ <a href="Macaque_E4_ML_methods_results_disclosure_CN.md" download><b>完整方法与结果</b><span>中文Markdown</span></a>
+ <a href="Macaque_E4_ML_revalidation_20260916_CN.txt" download><b>验证报告</b><span>中文TXT</span></a>
+ <a href="ml-data/preprocessing_audit.json" download><b>预处理审计</b><span>JSON</span></a>
+ <a href="ml-data/feature_transform_audit.csv" download><b>19项变换表</b><span>CSV</span></a>
+ <a href="ml-code/audit_macaque_E4_ml_preprocessing.py" download><b>复现审计脚本</b><span>Python</span></a>
+ <a href="ml-code/validate_macaque_E4_full_ml500.py" download><b>主验证脚本</b><span>Python</span></a>
+ <a href="ml-code/complete_macaque_E4_submission_ml_audit.py" download><b>严格补充审计</b><span>Python</span></a>
+ <a href="ml-code/add_macaque_E4_roc_pr.py" download><b>ROC/PR脚本</b><span>Python</span></a>
+</div></section>
+</main><footer>Frozen Macaque E1–E4 · primary preprocessing verified · Yeo–Johnson reserved for a separately labelled sensitivity analysis.</footer>
+<script type="module" src="ml-audit.js"></script></body></html>

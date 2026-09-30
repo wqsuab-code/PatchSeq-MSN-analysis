@@ -1,0 +1,376 @@
+Macaque Ca+Pu+NAC 电生理冻结四分类：流程与参数
+================================================
+
+版本状态
+--------
+本文记录截至 2026-09-07 当前图组所采用的“冻结四分类”。除非后续明确解冻并重算，主分析固定使用：
+
+  数据空间：Ca + Pu + NAC
+  输入：19 项非冗余 E-feature，严格完整病例，不做缺失值填补
+  PCA：PC1-PC3
+  HC：Ward.D2，K=4
+  GC：Seurat graph-based clustering，resolution=3.0，原始 K=15
+  GC 合并：将原始 15 群按最大重叠的满射映射合并为 4 群
+  共识：HC 标签与合并后 GC 标签相同
+  最终共识：368/390（94.36%）
+
+
+一、分析对象与队列冻结
+----------------------
+
+1. 物种与细胞类型
+   - Macaque Patch-seq 数据。
+   - 使用已经通过上游 MSN/T-class 标注与 stage-1 细胞 QC 的细胞。
+   - T_class（D1、D2、Hybrid）只作为后验注释，不参与 E 分类建模。
+
+2. 解剖范围
+   - 只保留 Lib_region_of_interest_label 属于 Ca、Pu 或 NAC 的细胞。
+   - 不包含 VS、DS、ic 等其余 ROI。
+
+3. 队列数量
+   - stage-1 QC 文件中，Ca+Pu+NAC 共 455 个细胞。
+   - 全 E-feature 冗余审计使用此前冻结的 Ca+Pu+NAC 分析框架，共 441 个细胞。
+   - 19 项最终特征严格 complete-case 后为 390 个细胞。
+   - 390 个细胞与先前 final20 complete-case 的 390 个 cell_label 完全一致。
+   - 390 个细胞的 ROI：Ca=181，Pu=140，NAC=69。
+   - 390 个细胞的 T class：D1=175，D2=193，Hybrid=22。
+
+4. 缺失数据规则
+   - 上游 stage-1 名单沿用细胞层面缺失 QC（以 50% 为界）的冻结结果。
+   - 最终 PCA/聚类阶段不做中位数填补、KNN 填补或其他插补。
+   - 19 项中任意一项缺失的细胞均不进入 PCA，即 complete-case analysis。
+   - 最终 390×19 数值矩阵中缺失值为 0 个。
+
+说明：441 是执行全 E-feature 冗余筛选时的冻结候选框；455 是最终 PCA 脚本读取 stage-1 文件后按 Ca/Pu/NAC 过滤得到的解剖/QC 队列。两条路径最后得到相同的 390 个完整病例。为了复现当前结果，应直接以最终 390 个 cell_label 为冻结输入，不应混用 455 或 441 作为聚类样本数。
+
+
+二、E-feature QC 与去冗余
+-------------------------
+
+1. 初始指标
+   - 从 cell_metadata_AllCell.csv 中读取所有以“Epsy_”开头的 57 项电生理指标。
+   - 可用性条件：observed_n >= 30 且非缺失唯一值数 n_unique > 1。
+   - 54 项满足可用性条件；3 项因 100% 缺失而不可用：
+       Epsy_fast_trough_v_short_square
+       Epsy_trough_t_short_square
+       Epsy_trough_v_short_square
+
+2. 冗余判定
+   - 相关系数：Spearman rho。
+   - 缺失处理：每一对指标使用 pairwise-complete observations。
+   - 最少配对观测数：30。
+   - 冗余阈值：|rho| > 0.80。
+   - 共检测到 122 对超过阈值的指标对。
+
+3. 冗余指标保留优先级
+   对可用指标进行贪心独立集筛选；若新指标与已保留指标存在 |rho|>0.80，则剔除新指标。排序优先级如下：
+
+       rheobase (_rheo)             100
+       last rheobase (_last_rheo)    95
+       5-spike (_5spike)             75
+       hero (_hero)                  70
+       adaptation ratio              65
+       ramp (_ramp)                  50
+       short square                  40
+       other                         30
+
+   同一优先级内依次优先：缺失率更低者、规范字段名、更稳定的字母顺序。
+   例如 width_rheo 与 width_rheo_ms 表达相同信息时，优先保留规范字段 Epsy_width_rheo。
+
+4. 去冗余结果
+   - 54 项可用指标中保留 22 项，因冗余剔除 32 项。
+   - 22 项中进一步剔除两个高缺失 ramp 指标：
+       Epsy_postap_slope_ramp
+       Epsy_upstroke_ramp
+   - 得到 20 项候选指标。
+
+5. 偏态审计与第 20 项剔除
+   - Epsy_peak_deltav_adapt_ratio 原始偏度为 6.117，属于严重右偏；其 D1/D2/Hybrid 单变量检验无明显分类信息（Kruskal-Wallis p=0.778）。
+   - 因严重偏态且未显示有效 T-class 区分信息，将其从 final20 中剔除。
+   - Epsy_width_adapt_ratio 虽然原始偏度较高，但作为正值 ratio 使用 log2 变换后保留。
+   - 最终冻结为 19 项。
+
+6. 极端值处理
+   - 不删除单个极端值。
+   - 不进行 winsorization、截尾或人工替换。
+   - 仅通过下面规定的单调变换降低偏态，然后逐列 Z-score。
+
+
+三、冻结的 19 项 E-feature
+--------------------------
+
+01. Epsy_width_rheo
+02. Epsy_fast_trough_v_rheo
+03. Epsy_peak_deltav_rheo
+04. Epsy_peak_v_rheo
+05. Epsy_postap_slope_rheo
+06. Epsy_threshold_v_rheo
+07. Epsy_trough_t_rheo
+08. Epsy_trough_v_rheo
+09. Epsy_upstroke_downstroke_ratio_rheo
+10. Epsy_ahp_delay_5spike
+11. Epsy_ahp_delay_ratio_5spike
+12. Epsy_postap_slope_hero
+13. Epsy_trough_t_hero
+14. Epsy_downstroke_adapt_ratio
+15. Epsy_peak_v_adapt_ratio
+16. Epsy_threshold_v_adapt_ratio
+17. Epsy_upstroke_adapt_ratio
+18. Epsy_width_adapt_ratio
+19. Epsy_threshold_v_short_square
+
+
+四、类转录组变换与标准化
+------------------------
+
+对 390 个完整病例逐列处理。变换参数只由这 390 个细胞估计。
+
+1. 名称中含“ratio”的 7 项正值指标
+   - 先检查所有数值均 >0；如出现 <=0，流程应报错而不是加伪计数。
+   - 变换：x' = log2(x)。
+   - 随后逐列 Z-score：z = (x' - mean(x')) / SD(x')。
+
+2. 其余 12 项指标
+   对每一列分别执行：
+
+   a. 平移至非负：x_shift = x - min(x)
+   b. 列和归一化：x_10k = x_shift / sum(x_shift) × 10000
+   c. 对数变换：x_log = log(1 + x_10k)
+   d. 逐列 Z-score：z = (x_log - mean(x_log)) / SD(x_log)。这里使用 sklearn StandardScaler 的总体标准差定义（ddof=0）。
+
+3. 明确未执行的步骤
+   - 没有对细胞（行）做总量归一化。
+   - 没有缺失值插补。
+   - 没有批次回归、donor 回归或 ROI 回归。
+   - 没有利用 D1/D2/Hybrid、ROI 或 donor 标签监督变换或聚类。
+
+
+五、PCA
+--------
+
+1. 输入矩阵
+   - 390 cells × 19 transformed/Z-scored E-features。
+
+2. 算法
+   - sklearn.decomposition.PCA。
+   - n_components=19。
+   - svd_solver="full"。
+   - 聚类仅使用 PC1、PC2、PC3（NPCs=3）。
+
+3. 解释方差
+   - PC1：23.2751%
+   - PC2：17.5400%
+   - PC3：13.8060%
+   - PC1-PC3 累计：54.6211%
+   - PC4：10.9330%；PC1-PC4 累计：65.5542%（仅用于敏感性比较，不进入冻结分类）。
+
+
+六、层次聚类（HC）
+------------------
+
+1. 输入：PC1-PC3 scores。
+2. 距离：Euclidean distance。
+3. linkage：Ward（scipy method="ward"；对应 Ward.D2 的最小类内平方和思想）。
+4. 切树：criterion="maxclust"，K=4。
+5. 390 个细胞的 HC4 原始群大小：
+   - HC1=65
+   - HC2=139
+   - HC3=64
+   - HC4=122
+
+
+七、Graph-based clustering（GC）
+-------------------------------
+
+1. 软件结构
+   - 使用 Seurat 建立图聚类。
+   - 为承载细胞对象创建 2×390 的全 1 dummy count matrix；不对该 dummy matrix 做 NormalizeData、FindVariableFeatures 或 ScaleData。
+   - 将上述 PCA scores 直接写入 Seurat 的“pca”DimReducObject。
+
+2. 邻接图
+   - FindNeighbors(reduction="pca", dims=1:3)
+   - k.param=20
+   - prune.SNN=1/15
+
+3. 聚类
+   - FindClusters
+   - resolution=3.0
+   - algorithm=1（Seurat 的 Louvain modularity optimization）
+   - random.seed=777
+   - 该参数在 390 个细胞上得到原始 GC K=15。
+
+4. 参数扫描与稳定性
+   - 全扫描：NPCs=2-10；resolution=0.2-3.0，步长 0.1。
+   - 当前主结果冻结在 NPCs=3、HC K=4、resolution=3.0。
+   - 额外用 10 个随机种子检查 resolution=3.0：42、99、101、303、555、777、999、1201、2025、2026。
+   - 10 次均达到合并后共识率 >=90%。
+   - raw GC K 范围 14-16；平均共识率 92.95%，范围 90.00%-94.62%。
+   - seed=777 的冻结结果：raw GC K=15，共识率 94.36%。
+
+
+八、GC15 合并为 GC4
+--------------------
+
+1. 原理
+   - 先构建 HC4 × raw-GC15 交叉表。
+   - 每个 raw GC 必须且只能映射到一个 HC 类别。
+   - 四个 HC 类别均须至少被一个 raw GC 覆盖，即使用“满射”约束。
+   - 在该约束下，以动态规划寻找总对角重叠数最大的映射。
+   - 该步骤只重新编码 GC 子群，不改变 HC 树、不重新拟合 PCA，也不移动细胞。
+
+2. 冻结映射（原始 Seurat GC 编号从 0 开始）
+   - GC0  -> C4
+   - GC1  -> C2
+   - GC2  -> C1
+   - GC3  -> C3
+   - GC4  -> C3
+   - GC5  -> C2
+   - GC6  -> C1
+   - GC7  -> C4
+   - GC8  -> C4
+   - GC9  -> C2
+   - GC10 -> C2
+   - GC11 -> C4
+   - GC12 -> C4
+   - GC13 -> C2
+   - GC14 -> C2
+
+3. 标签命名
+   - 合并后的四类按 HC1-HC4 对齐并命名为 C1-C4。
+   - C1-C4 是冻结的算法标签，不代表预先指定的 D1、D2、解剖区或生物学顺序。
+
+
+九、共识定义与冻结样本
+----------------------
+
+1. 对每个细胞：
+   - 若 HC_class == merged_GC_class，则 consensus_class=C1/C2/C3/C4。
+   - 若二者不一致，则标记 discordant，不强行分入共识类。
+
+2. HC4 × merged-GC4 计数矩阵
+
+                 merged C1   C2   C3   C4   行总数
+   HC1               59       0    4    2      65
+   HC2                2     133    2    2     139
+   HC3                0       2   57    5      64
+   HC4                1       2    0  119     122
+
+3. 结果
+   - 一致细胞：368/390=94.36%。
+   - 不一致细胞：22/390=5.64%。
+   - merged ARI=0.86571。
+   - merged NMI=0.80880。
+   - 各 HC 类别内部共识率：
+       C1：59/65=90.77%
+       C2：133/139=95.68%
+       C3：57/64=89.06%
+       C4：119/122=97.54%
+
+4. 最终共识四分类样本量
+   - C1=59
+   - C2=133
+   - C3=57
+   - C4=119
+   - 合计=368
+
+5. 共识 368 个细胞的 T-class 构成
+   - D1=163
+   - D2=183
+   - Hybrid=22
+
+   分类别：
+             D1   D2   Hybrid
+       C1    24   20      15
+       C2    35   95       3
+       C3    38   19       0
+       C4    66   49       4
+
+6. 共识 368 个细胞的 ROI 构成
+   - Ca=169
+   - Pu=132
+   - NAC=67
+
+   分类别：
+             Ca   Pu   NAC
+       C1    20   23    16
+       C2    70   49    14
+       C3    25   28     4
+       C4    54   32    33
+
+
+十、可视化参数（不参与分类）
+--------------------------
+
+1. t-SNE
+   - 输入：冻结的 PC1-PC3。
+   - perplexity=80。
+   - early_exaggeration=12。
+   - learning_rate="auto"。
+   - init="random"。
+   - max_iter=3000。
+   - random_state=777。
+   - 当前 R3_panels_v3 仅在显示时将 X 方向压缩至等比例版本的 75%；数值坐标和分类标签不变。
+
+2. 类别范围圈
+   - 当前 R3_panels_v3 使用 robust Minimum Covariance Determinant 椭圆。
+   - support_fraction=0.75，random_state=777。
+   - 显示覆盖率=80%。
+   - 椭圆、KDE 边界或 t-SNE 参数均不参与 C1-C4 的计算。
+
+3. 热图
+   - 仅绘制 368 个共识细胞。
+   - 使用冻结的 19 项 transformed Z-score。
+   - 色阶显示截断为 [-2, 2]；低值紫红、中值黑、高值黄。
+   - 热图内细胞排序、gap 与颜色只影响排版，不改变分类。
+
+4. 冻结类别配色
+   - C1：#F8766D（coral）
+   - C2：#7CAE00（green）
+   - C3：#00BFC4（cyan）
+   - C4：#C77CFF（purple）
+
+
+十一、建议在论文 Methods 中使用的简写
+------------------------------------
+
+“After cell-level QC, macaque Ca, Pu and NAc neurons were restricted to strict complete cases across 19 nonredundant electrophysiological features (n=390). Redundant variables were screened using pairwise-complete Spearman correlations (|rho|>0.80), prioritizing rheobase measurements. Positive ratio features were log2-transformed, whereas all other features were shifted by the column minimum, normalized to a column sum of 10,000, and log1p-transformed; all variables were subsequently z-scored. PCA was performed using full SVD, and PC1-PC3 (54.62% cumulative variance) were used for clustering. Ward hierarchical clustering was cut at K=4. In parallel, a Seurat SNN graph was constructed using k=20 and prune.SNN=1/15, followed by Louvain clustering at resolution 3.0 (seed=777), yielding 15 raw graph clusters. Raw graph clusters were merged onto the four Ward clusters using a maximum-overlap surjective mapping. Cells receiving identical Ward and merged graph labels were retained as the consensus classification (368/390, 94.36%), yielding C1=59, C2=133, C3=57 and C4=119.”
+
+
+十二、关键复现文件
+------------------
+
+1. 最终 PCA scores：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_scores_n390.csv
+
+2. 变换后 Z-score 矩阵：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_transformed_Zscore_matrix_n390.csv
+
+3. 变换方案：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_transform_plan.csv
+
+4. PCA loadings 与解释方差：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_loadings.csv
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_PCA_variance.csv
+
+5. 冻结 GC15->C4 映射：
+   outputs/R3_panels_v3/00_res3_GC15_to_C4_mapping.csv
+
+6. 细胞级 HC、GC、共识与 t-SNE 坐标：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/res3_main_panel_basket_H1in/00_res3_main_cell_assignments_and_tsne.csv
+
+7. 冻结交叉矩阵：
+   outputs/dSTR_dSTRvSTR_E_QC/Ca_Pu_NAC_final19_consensus_scan/Ca_Pu_NAC_final19_NPC3_HCK4_res3p0_merged_4x4_confusion.csv
+
+
+十三、冻结规则
+--------------
+
+以下任何变化都应视为“解冻并建立新版本”，不能继续沿用当前 C1-C4：
+  - 改变 ROI 范围；
+  - 改变 complete-case 细胞名单；
+  - 增删 19 项特征；
+  - 改变变换方式、标准化方式或 PCA 重算样本；
+  - 改变 NPC 数、HC K、Seurat k.param、prune.SNN、resolution、algorithm 或 seed；
+  - 改变 GC15->C4 映射规则。
+
+仅改变颜色、字体、图尺寸、t-SNE 显示比例、椭圆覆盖率或热图排序，不构成分类解冻。

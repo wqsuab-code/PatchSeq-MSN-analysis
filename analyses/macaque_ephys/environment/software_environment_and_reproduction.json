@@ -1,0 +1,18 @@
+{
+  "status": "numerically verified reproduction environment",
+  "python": "3.14.3",
+  "numpy": "2.4.6",
+  "pandas": "2.3.3",
+  "scipy": "1.17.1",
+  "scikit_learn": "1.8.0",
+  "h5py": "3.16.0",
+  "matplotlib": "3.10.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "verification": {
+    "cell_score_max_absolute_difference": 8.881784197001252e-16,
+    "gene_loading_max_absolute_difference": 9.996344030316351e-17,
+    "E_loading_max_absolute_difference": 8.326672684688674e-17,
+    "gene_ID_order_identical": true,
+    "interpretation": "Current environment reproduced the frozen numeric outputs to floating-point precision."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "source_publication": {
+    "title": "Morphoelectric Diversity and Specialization of Neuronal Cell Types in the Primate Striatum",
+    "doi": "https://doi.org/10.64898/2026.02.26.708019"
+  },
+  "allen_processed_release": {
+    "name": "HMBA Macaque Patch-seq",
+    "version": "20260228",
+    "url": "https://alleninstitute.github.io/abc_atlas_access/descriptions/HMBA-Macaque-PatchSeq-BG.html",
+    "license_as_reported_by_allen": "CC BY-NC 4.0"
+  },
+  "raw_sequencing": {
+    "repository": "NeMO Archive",
+    "accession": "nemo:dat-nsm6mxv",
+    "url": "https://assets.nemoarchive.org/dat-nsm6mxv"
+  },
+  "local_source_archive_not_redistributed": {
+    "filename": "Macaque-PatchSeq-BG.zip",
+    "bytes": 36351463,
+    "sha256": "8B0AEAED726E27658066230FE467BDBB765D641D1EA1E3A115E079E4FF0C13A6"
+  },
+  "expression_matrix_not_redistributed": {
+    "filename": "HMBA-Macaque-PatchSeq-BG-log2.h5ad",
+    "bytes": 63797589,
+    "sha256": "E3DD6C32A3872AB83CB45E13F813C50BD06C61BFDC5F889D12BDDEF46EEA0986",
+    "local_timestamp": "2026-08-31T15:59:24-05:00"
+  },
+  "DANDI_records_from_source_publication": [
+    "10.48324/dandi.001626/0.251028.1747",
+    "10.48324/dandi.001465/0.250627.1703",
+    "10.48324/dandi.001348/0.250401.1556",
+    "10.48324/dandi.000934/0.240315.1754",
+    "10.48324/dandi.000768/0.231221.2138",
+    "10.48324/dandi.000635/0.230921.1734",
+    "10.48324/dandi.000569/0.230706.1630"
+  ],
+  "redistribution_policy": "Third-party source archive and H5AD excluded from Git pending redistribution review."
+}

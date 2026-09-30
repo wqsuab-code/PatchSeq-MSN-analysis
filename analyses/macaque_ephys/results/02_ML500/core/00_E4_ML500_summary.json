@@ -1,0 +1,19 @@
+{
+  "scope": "Macaque MSN; Ca+Pu+NAC",
+  "all_complete_cells": 390,
+  "consensus_cells": 368,
+  "donors": 55,
+  "features": 19,
+  "repeats": 500,
+  "frozen_reproduction_ARI": 1.0,
+  "Ward_resampling_ARI_median": 0.47587390462877877,
+  "Ward_resampling_ARI_95CI": [
+    0.25281791816520555,
+    0.7762982808216421
+  ],
+  "Spectral_resampling_ARI_median": 0.7185026405661374,
+  "best_supervised_model": "Extra trees",
+  "best_supervised_BA_median": 0.972584541062802,
+  "permutation_BA_median": 0.2443975322922691,
+  "seed": 20260910
+}

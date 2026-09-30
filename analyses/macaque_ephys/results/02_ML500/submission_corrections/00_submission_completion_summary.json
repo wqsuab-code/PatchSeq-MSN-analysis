@@ -1,0 +1,47 @@
+{
+  "observed_ET_grouped5fold_mean_BA": 0.9817414705345741,
+  "matched_within_donor_null_median": 0.30410488226305316,
+  "matched_permutation_empirical_p": 0.001996007984031936,
+  "top5_train_only_permutation_features": [
+    "Epsy_ahp_delay_5spike",
+    "Epsy_upstroke_adapt_ratio",
+    "Epsy_width_adapt_ratio",
+    "Epsy_ahp_delay_ratio_5spike",
+    "Epsy_upstroke_downstroke_ratio_rheo"
+  ],
+  "metadata": [
+    {
+      "metadata": "donor_label",
+      "cramers_v_uncorrected": 0.4525574240369621,
+      "cramers_v_bias_corrected": 0.24676265174990225,
+      "permutation_scheme": "global E-label shuffle",
+      "n_permutations": 5000,
+      "null_median": 0.001335691986841301,
+      "null_q025": 0.0,
+      "null_q975": 0.1717401300630648,
+      "empirical_p": 0.0001999600079984003
+    },
+    {
+      "metadata": "T_class",
+      "cramers_v_uncorrected": 0.34031969045731253,
+      "cramers_v_bias_corrected": 0.32898773536975046,
+      "permutation_scheme": "within-donor E-label shuffle",
+      "n_permutations": 5000,
+      "null_median": 0.07143453399774283,
+      "null_q025": 0.0,
+      "null_q975": 0.15149852733156063,
+      "empirical_p": 0.0001999600079984003
+    },
+    {
+      "metadata": "Lib_region_of_interest_label",
+      "cramers_v_uncorrected": 0.1865504453209909,
+      "cramers_v_bias_corrected": 0.16362329098997053,
+      "permutation_scheme": "within-donor E-label shuffle",
+      "n_permutations": 5000,
+      "null_median": 0.07455294347994769,
+      "null_q025": 0.0,
+      "null_q975": 0.13137354163269513,
+      "empirical_p": 0.0015996800639872025
+    }
+  ]
+}
