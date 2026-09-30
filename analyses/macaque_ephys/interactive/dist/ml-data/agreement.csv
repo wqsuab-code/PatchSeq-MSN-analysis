@@ -1,0 +1,11 @@
+analysis,algorithm_A,algorithm_B,ARI
+E4_full,Ward,KMeans,0.5933582739770024
+E4_full,Ward,GMM,0.4006697464054184
+E4_full,Ward,Spectral,0.7421302690192068
+E4_full,Ward,Frozen_HC,1.0
+E4_full,KMeans,GMM,0.2818584360439062
+E4_full,KMeans,Spectral,0.6495246041550319
+E4_full,KMeans,Frozen_HC,0.5933582739770024
+E4_full,GMM,Spectral,0.3677905125608111
+E4_full,GMM,Frozen_HC,0.4006697464054184
+E4_full,Spectral,Frozen_HC,0.7421302690192068

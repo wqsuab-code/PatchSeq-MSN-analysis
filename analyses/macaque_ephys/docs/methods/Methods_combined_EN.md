@@ -1,0 +1,37 @@
+# Frozen Macaque E1-E4 analysis: Methods
+
+# Cohort definition and electrophysiological quality control
+
+Macaque Patch-seq cells were obtained from the original `Macaque-PatchSeq-BG.zip` release. The analysis was restricted to medium spiny neurons from caudate (Ca), putamen (Pu), and nucleus accumbens (NAc). Cells first passed the upstream cell-level quality-control rule (no more than 50% missingness across the assessed electrophysiological features). The frozen analysis then used strict complete cases across the final 19-feature panel; no missing values were imputed. This yielded 390 cells (Ca, 181; Pu, 140; NAc, 69). Transcriptomic D1, D2, and Hybrid annotations were not used to derive electrophysiological classes.
+
+Of 57 `Epsy_` variables, 54 had at least 30 observations and more than one distinct value. Redundancy was assessed using pairwise-complete Spearman correlations (minimum 30 paired observations). A greedy independent-set procedure removed a candidate when |rho| exceeded 0.80 with a higher-priority retained variable. Protocol priority favored rheobase, last-rheobase, five-spike, hero, adaptation-ratio, ramp, and short-square measurements, in that order. Two high-missingness ramp variables and one severely skewed, uninformative adaptation variable were subsequently removed, leaving 19 prespecified nonredundant features. Extreme observations were retained; no winsorization or trimming was used.
+
+# Feature transformation and principal-component analysis
+
+All transformations were fitted to the 390 complete cases. The seven strictly positive ratio variables were log2-transformed. For each of the remaining 12 variables, the column minimum was subtracted, the shifted column was normalized to a total of 10,000, and `log1p` was applied. Every transformed variable was then standardized to zero mean and unit variance using the population standard deviation (`ddof=0`). No row normalization, imputation, batch correction, covariate regression, or Yeo-Johnson transformation was used in the frozen classification.
+
+Principal-component analysis was performed on the 390 x 19 standardized matrix by full singular-value decomposition. The first three components were used for clustering and explained 23.2751%, 17.5400%, and 13.8060% of the variance, respectively (cumulative, 54.6211%). PC4 was examined only in sensitivity analyses.
+
+# Hierarchical, graph-based, and consensus clustering
+
+Ward hierarchical clustering was performed in PC1-PC3 space using Euclidean distances and the tree was cut at K=4. Independently, the same three PCs were inserted into a Seurat PCA reduction. A shared-nearest-neighbor graph was built with `k.param=20` and `prune.SNN=1/15`, followed by Louvain community detection (`algorithm=1`, `resolution=3.0`, random seed 777), yielding 15 raw graph communities. The graph communities were mapped surjectively onto the four Ward clusters by dynamic programming to maximize diagonal overlap while assigning every graph community to exactly one Ward class and ensuring that every Ward class received at least one graph community.
+
+A cell was designated as consensus when its Ward label matched its merged graph-clustering label. This criterion retained 368 of 390 cells (94.36%) and defined E1-E4 (internal archived labels C1-C4): E1, n=59; E2, n=133; E3, n=57; and E4, n=119. The 22 discordant cells were not forced into an E class. The consensus set comprised D1, n=163; D2, n=183; and Hybrid, n=22 cells, and Ca, n=169; Pu, n=132; and NAc, n=67 cells. A ten-seed audit at the frozen parameters produced 14-16 raw communities and post-merge consensus rates of 90.00-94.62% (mean, 92.95%).
+
+# t-SNE, concordance matrix, heat map, and radar plots
+
+t-SNE was used only for visualization of the frozen PC1-PC3 scores (`perplexity=80`, `early_exaggeration=12`, `learning_rate='auto'`, random initialization, 3,000 iterations, random seed 777). Displayed class outlines were robust minimum-covariance-determinant regions (`support_fraction=0.75`, seed 777) covering 80% of each class. Neither t-SNE coordinates nor outlines contributed to clustering.
+
+The HC-GC panel is a concordance matrix, not a predictive confusion matrix. The heat map contains the 368 consensus cells and all 19 frozen transformed feature z-scores, displayed over [-2, 2] with values outside this interval clipped for visualization. Columns are grouped by E class and annotated by transcriptomic class and ROI. The radar plots show ten selected electrophysiological measurements for the same 368 consensus cells. Cohort-wide feature z-scores were mapped linearly from -3 at the center to +3 at the outer edge and clipped only for display; pale lines denote individual cells, shaded bands denote feature-wise interquartile ranges, and black outlines denote feature-wise medians. The ten radar axes are a display subset and do not replace the 19-feature clustering input.
+
+# Transcriptomic-class and anatomical composition
+
+Transcriptomic class and ROI were evaluated after the E classes had been frozen. Stacked bars show the percentage of D1, D2, and Hybrid cells within each E class; numbers within bars denote cell counts. The corresponding E-by-transcriptomic-class counts were E1: 24 D1, 20 D2, 15 Hybrid; E2: 35 D1, 95 D2, 3 Hybrid; E3: 38 D1, 19 D2, 0 Hybrid; and E4: 66 D1, 49 D2, 4 Hybrid. ROI counts were E1: 20 Ca, 23 Pu, 16 NAc; E2: 70 Ca, 49 Pu, 14 NAc; E3: 25 Ca, 28 Pu, 4 NAc; and E4: 54 Ca, 32 Pu, 33 NAc. These metadata were not used to fit PCA or clustering.
+
+# Reduced-rank regression
+
+Reduced-rank regression related transcriptomic and electrophysiological variation among the 346 consensus cells with stable D1 or D2 transcriptomic assignments (D1, n=163; D2, n=183); Hybrid cells were excluded from this analysis. The displayed solution used rank 3 and shows Components 1-2 and 1-3 in both transcriptomic and electrophysiological spaces. Points represent cells, colors indicate D1 or D2 identity in transcriptomic space and E1-E4 identity in electrophysiological space, vectors show selected variable loadings, and ellipses are descriptive 90% class regions rather than confidence intervals. The display contains 15 selected genes and ten electrophysiological features. RRR was a cross-modal descriptive analysis and did not alter the frozen E-class assignments.
+
+# Machine-learning stability and reproducibility analysis
+
+The frozen E1-E4 labels were evaluated in 500 donor-grouped resampling iterations. Donors, rather than individual cells, were assigned to training or held-out subsets. Within each split, the original mixed 19-feature transformation was fitted using the training data only and then applied to held-out cells; standardization and PCA were likewise fitted within the training fold. The primary validation therefore did not use Yeo-Johnson preprocessing and avoided information leakage. Seven classifiers were compared using held-out balanced accuracy, macro-F1, class recall, aggregated confusion matrices, and one-versus-rest ROC and precision-recall curves. Additional analyses included donor-resampled Ward, k-means, Gaussian-mixture and spectral clustering; NPC-by-K sensitivity; donor-structured label permutation; cell-level consensus margins; fold-restricted permutation importance; Extra Trees mean-decrease-in-impurity stability; cross-model rank agreement; metadata association; and nested progressive feature ablation. Complete numerical outputs are archived in `04_ML_VALIDATION_RESULTS`.

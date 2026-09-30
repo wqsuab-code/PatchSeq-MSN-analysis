@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Macaque E1–E4 machine-learning panel editor</title>
+<meta name="description" content="Interactive editor for the donor-aware Macaque E1–E4 stability and reproducibility panels.">
+<link rel="stylesheet" href="ml-editor.css"></head>
+<body>
+<header><div><h1>Macaque E1–E4 stability editor</h1><p>500-repeat donor-aware validation · frozen-matched feature transform · 368 consensus cells · 55 donors · 19 E-features</p></div><nav><a href="ml-audit.html">Methods & audit</a><a href="Macaque_E4_ML_revalidation_20260916_CN.txt" download>Validation report</a><a href="index.html">Feature editor</a><span>ML editor</span></nav></header>
+<main>
+<aside aria-label="Figure controls">
+<details open><summary>Canvas and arrangement</summary><div class="controls">
+<label>Canvas width<input id="canvasW" type="number" min="800" max="5000" step="10"></label>
+<label>Canvas height<input id="canvasH" type="number" min="500" max="4000" step="10"></label>
+<label>Columns<input id="columns" type="number" min="1" max="8"></label>
+<label>Horizontal gap<input id="gapX" type="number" min="0" max="200"></label>
+<label>Vertical gap<input id="gapY" type="number" min="0" max="200"></label>
+<label>Background<input id="background" type="color"></label>
+<button id="autoLayout">Arrange visible panels</button><button id="reset">Reset all</button>
+</div></details>
+<details open><summary>Apply consistently to all panels</summary><div class="controls">
+<label>All font size<input id="allFontSize" type="number" min="3" max="30" step=".25" value="7"></label>
+<label>All text color<input id="allTextColor" type="color" value="#111111"></label>
+<label>Title alignment<select id="allTitleAlign"><option value="start">Left</option><option value="middle">Center</option><option value="end">Right</option></select></label>
+<label>All X-category angles<input id="allCategoryAngle" type="number" min="-90" max="90" step="1" value="0"></label>
+<label>All line width<input id="allLineWidth" type="number" min=".1" max="8" step=".1" value="1"></label>
+<label>All fill opacity<input id="allFillAlpha" type="number" min="0" max="1" step=".05" value=".75"></label>
+<button id="applyAllTypography">Apply text settings</button><button id="applyAllLines">Apply line/fill settings</button>
+</div></details>
+<details open><summary>Selected panel</summary><div class="controls">
+<label>Panel<select id="panelSelect"></select></label><label class="check"><input id="visible" type="checkbox"> Visible</label>
+<label>Copy parameters from<select id="copyFromPanel"></select></label><label>Copy scope<select id="copyScope"><option value="style">Style only</option><option value="geometry">Geometry only</option><option value="all">All parameters</option></select></label>
+<button id="copyPanelParameters">Copy to selected panel</button>
+<label class="wide">Panel title<input id="panelTitle" type="text"></label>
+<label>X<input id="x" type="number"></label><label>Y<input id="y" type="number"></label>
+<label>Width<input id="w" type="number" min="180"></label><label>Height<input id="h" type="number" min="140"></label>
+<label>X minimum<input id="xMin" type="number" step="any"></label><label>X maximum<input id="xMax" type="number" step="any"></label>
+<label>Y minimum<input id="yMin" type="number" step="any"></label><label>Y maximum<input id="yMax" type="number" step="any"></label>
+<label>X ticks<input id="xTicks" type="number" min="2" max="12"></label><label>Y ticks<input id="yTicks" type="number" min="2" max="12"></label>
+<label>Plot left<input id="marginLeft" type="number" min="0"></label><label>Plot right<input id="marginRight" type="number" min="0"></label>
+<label>Plot top<input id="marginTop" type="number" min="0"></label><label>Plot bottom<input id="marginBottom" type="number" min="0"></label>
+<label>Panel background<input id="panelBg" type="color"></label><label>Panel border<input id="panelBorder" type="color"></label>
+<label>Panel background opacity<input id="panelBgAlpha" type="number" min="0" max="1" step=".05"></label><label>Panel border width<input id="panelBorderWidth" type="number" min="0" max="10" step=".1"></label><label>Corner radius<input id="panelRadius" type="number" min="0" max="30" step=".5"></label>
+<label>Primary color<input id="panelColor" type="color"></label><label>Secondary color<input id="panelColor2" type="color"></label>
+<button id="fitAxes">Fit axes to data</button><button id="front">Bring to front</button>
+</div></details>
+<details><summary>Selected text positions</summary><div class="controls">
+<label>Title X offset<input id="titleDx" type="number"></label><label>Title Y offset<input id="titleDy" type="number"></label>
+<label>Panel-letter X<input id="letterDx" type="number"></label><label>Panel-letter Y<input id="letterDy" type="number"></label>
+<label>X-label X offset<input id="xLabelDx" type="number"></label><label>X-label Y offset<input id="xLabelDy" type="number"></label>
+<label>Y-label X offset<input id="yLabelDx" type="number"></label><label>Y-label Y offset<input id="yLabelDy" type="number"></label>
+<label>Title size<input id="panelTitleSize" type="number" min="3" max="40" step=".25"></label><label>Title color<input id="titleColor" type="color"></label>
+<label>Title alignment<select id="titleAlign"><option value="start">Left</option><option value="middle">Center</option><option value="end">Right</option></select></label>
+<label>Letter size<input id="panelLetterSize" type="number" min="3" max="40" step=".25"></label><label>Letter color<input id="letterColor" type="color"></label>
+<label>Axis-label size<input id="labelSize" type="number" min="3" max="40" step=".25"></label><label>Axis-label color<input id="labelColor" type="color"></label>
+<label>Tick-label size<input id="panelAxisSize" type="number" min="3" max="30" step=".25"></label><label>Tick-label color<input id="tickColor" type="color"></label>
+</div></details>
+<details><summary>Typography and marks</summary><div class="controls">
+<label>Font family<input id="fontFamily" type="text"></label><label>Title size<input id="titleSize" type="number" min="6" max="40"></label>
+<label>Panel-letter size<input id="letterSize" type="number" min="6" max="40"></label><label>Axis font size<input id="axisSize" type="number" min="5" max="30"></label>
+<label>Line width<input id="lineWidth" type="number" min=".2" max="8" step=".1"></label><label>Point size<input id="pointSize" type="number" min=".5" max="12" step=".1"></label>
+<label>Point opacity<input id="pointOpacity" type="number" min="0" max="1" step=".05"></label>
+</div></details>
+<details><summary>Selected axes, grid and marks</summary><div class="controls">
+<label>Axis color<input id="axisColor" type="color"></label><label>Axis width<input id="panelAxisWidth" type="number" min=".1" max="8" step=".1"></label>
+<label>Tick length<input id="tickLength" type="number" min="0" max="20" step=".5"></label><label>Grid opacity<input id="gridOpacity" type="number" min="0" max="1" step=".05"></label>
+<label>X category-label angle<input id="xCategoryAngle" type="number" min="-90" max="90" step="1"></label>
+<label>Grid color<input id="gridColor" type="color"></label><label>Mark line width<input id="panelLineWidth" type="number" min=".1" max="8" step=".1"></label>
+<label>Point size<input id="panelPointSize" type="number" min=".2" max="20" step=".1"></label><label>Point opacity<input id="panelPointOpacity" type="number" min="0" max="1" step=".05"></label>
+<label>Point color<input id="pointColor" type="color"></label><label>Box fill opacity<input id="boxAlpha" type="number" min="0" max="1" step=".05"></label>
+<label>Jitter width<input id="jitterWidth" type="number" min="0" max="80" step=".5"></label><label>Bar opacity<input id="barAlpha" type="number" min="0" max="1" step=".05"></label>
+<label>Heat/cell fill opacity<input id="fillAlpha" type="number" min="0" max="1" step=".05"></label><label>Histogram bins<input id="histogramBins" type="number" min="5" max="100"></label>
+</div></details>
+<details><summary>Colors</summary><div id="colors" class="controls colors"></div></details>
+<details open><summary>Export and reproducibility</summary><div class="controls">
+<label>Width (in)<input id="exportWidth" type="number" min="1" max="30" step=".1" value="7.2"></label>
+<label>DPI<select id="dpi"><option>300</option><option selected>600</option><option>900</option></select></label>
+<button id="exportSvg">Export SVG</button><button id="exportPng">Export PNG</button><button id="exportTif">Export TIF</button><button id="exportPdf">Export PDF</button><button id="exportLayout">Export layout</button>
+<label class="button" for="importLayout">Import layout</label><input id="importLayout" type="file" accept="application/json" hidden>
+<button id="setDefault">Set current as default</button><button id="factoryDefault">Restore factory default</button>
+</div></details>
+<p class="help">Drag a panel to move it. Drag the square at its lower-right corner to resize it. Drag the panel letter, title, or axis labels to reposition that text. Click any panel to edit its exact values.</p>
+</aside>
+<section class="workspace"><div class="status" id="status">Loading revalidated source data…</div><div class="stage"><svg id="figure" role="img" aria-label="Editable Macaque E1 to E4 machine-learning validation panels"></svg></div></section>
+</main>
+<script type="module" src="ml-editor.js?v=x-category-angle-1"></script></body></html>

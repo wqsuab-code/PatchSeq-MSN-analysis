@@ -1,0 +1,26 @@
+{
+  "policy": "Files listed here are excluded from ordinary Git history.",
+  "files": [
+    {
+      "filename": "Macaque-PatchSeq-BG.zip",
+      "description": "Third-party Allen HMBA Macaque Patch-seq source archive; not redistributed pending license review.",
+      "bytes": 36351463,
+      "sha256": "8B0AEAED726E27658066230FE467BDBB765D641D1EA1E3A115E079E4FF0C13A6",
+      "planned_location": "Retrieve from the source URL recorded in SOURCE_ARCHIVE_MANIFEST.json"
+    },
+    {
+      "filename": "HMBA-Macaque-PatchSeq-BG-log2.h5ad",
+      "description": "Third-party transcriptomic expression matrix used by the cross-modal RRR analysis.",
+      "bytes": 63797589,
+      "sha256": "E3DD6C32A3872AB83CB45E13F813C50BD06C61BFDC5F889D12BDDEF46EEA0986",
+      "planned_location": "Retrieve from the Allen HMBA Macaque Patch-seq release"
+    },
+    {
+      "filename": "Macaque_E4_frozen_analysis_package_20260923.zip",
+      "description": "Local redundant full-package snapshot; repository contents supersede this archive.",
+      "bytes": 36470199,
+      "sha256": "93D87B824913F8660AED7BA122A5BC5A668FE4CEA7F7E0AD4182510F2C2D1623",
+      "planned_location": "Optional future GitHub release asset after final acceptance; not uploaded in this task"
+    }
+  ]
+}

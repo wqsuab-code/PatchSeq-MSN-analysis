@@ -1,0 +1,82 @@
+{
+  "canvasWidth": 1160,
+  "canvasHeight": 300,
+  "sideMargin": 34,
+  "panelGap": 14,
+  "radarRadius": 83,
+  "centerY": 162,
+  "showTitles": true,
+  "titleSize": 15,
+  "classes": {
+    "E1": {
+      "enabled": true,
+      "title": "E1 (n=59)"
+    },
+    "E2": {
+      "enabled": true,
+      "title": "E2 (n=133)"
+    },
+    "E3": {
+      "enabled": true,
+      "title": "E3 (n=57)"
+    },
+    "E4": {
+      "enabled": true,
+      "title": "E4 (n=119)"
+    }
+  },
+  "colors": {
+    "E1": "#F8766D",
+    "E2": "#7CAE00",
+    "E3": "#00BFC4",
+    "E4": "#C77CFF"
+  },
+  "scaleMode": "zscore",
+  "centerStatistic": "median",
+  "showCells": true,
+  "cellWidth": 1,
+  "cellOpacity": 0.15,
+  "showIqr": true,
+  "iqrOpacity": 0,
+  "centerWidth": 2,
+  "centerFillOpacity": 0,
+  "curveTension": 1,
+  "ringCount": 6,
+  "gridWidth": 1,
+  "gridOpacity": 0.5,
+  "labelSize": 11,
+  "labelDistance": 18,
+  "labelOrientation": "horizontal",
+  "showRadialValues": false,
+  "radialValueSize": 6,
+  "featureOrder": [
+    "upstroke_downstroke_ratio_rheo",
+    "width_rheo_ms",
+    "avg_rate_rheo",
+    "postap_slope_rheo",
+    "threshold_v_rheo",
+    "upstroke_rheo",
+    "latency_rheo",
+    "fast_trough_v_rheo",
+    "rheobase_i",
+    "peak_v_rheo"
+  ],
+  "featureLabels": {
+    "fast_trough_v_rheo": "Fast trough",
+    "peak_v_rheo": "Peak V",
+    "postap_slope_rheo": "Post-AP slope",
+    "threshold_v_rheo": "Threshold V",
+    "upstroke_downstroke_ratio_rheo": "Up/down ratio",
+    "upstroke_rheo": "Upstroke",
+    "width_rheo_ms": "Width rheo",
+    "avg_rate_rheo": "Avg rate",
+    "latency_rheo": "Latency",
+    "rheobase_i": "Rheobase"
+  },
+  "centerColor": "#202020",
+  "gridColor": "#A8A8A8",
+  "textColor": "#303030",
+  "canvasColor": "#FFFFFF",
+  "exportWidthIn": 5.2,
+  "exportDpi": 600
+}

@@ -1,0 +1,18 @@
+Historical absolute-path references (not secrets)
+=================================================
+code/01_cohort_QC/audit_dstr_missingness_overlap.py:6: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/01_cohort_QC/audit_dstrvstr_complete_pca_outliers.py:9: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/01_cohort_QC/audit_primary10_missing_reason.py:6: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/01_cohort_QC/build_primary10_sensitivity_cohorts.py:6: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/01_cohort_QC/run_dstr_dstrvstr_redundancy_skewness.py:15: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/01_cohort_QC/run_dstr_dstrvstr_rheobase_qc.py:11: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/05_ML_validation/validate_macaque_EM_stability_500.py:42: ZIP_FILE = Path(r"C:\Users\53461\Downloads\Macaque-PatchSeq-BG.zip")
+code/06_cross_modal/analyze_nac_d1d2_transcriptomic_ephys_rrr.py:17: ROOT = Path(r"C:\Users\53461\OneDrive\Documentos\Patch-seq_Mouse_Acb_MSN_T-type_Visualization")
+code/07_interactive/build_macaque_e_rrr_editor.py:15: UPLOADED_LAYOUT = Path(r"C:\Users\53461\Downloads\Macaque_T-E_RRR_gc_merged_layout.json")
+code/08_packaging/package_macaque_E4_frozen_analysis.py:27: RAW_ZIP = Path(r"C:\Users\53461\Downloads\Macaque-PatchSeq-BG.zip")
+code/08_packaging/package_macaque_E4_frozen_analysis.py:28: MAIN_SVG = Path(r"C:\Users\53461\OneDrive\Desktop\Patch-seq\4Manuscript\Macaque_E_Main.svg")
+code/08_packaging/package_macaque_E4_frozen_analysis.py:29: RADAR_LAYOUT = Path(r"C:\Users\53461\Downloads\Macaque_E1-E4_radar_layout.json")
+code/08_packaging/package_macaque_E4_frozen_analysis.py:30: RRR_LAYOUT = Path(r"C:\Users\53461\Downloads\Macaque_T-E_RRR_gc_merged_layout (3).json")
+code/08_packaging/package_macaque_E4_tsne_feature_statistics.py:26: r"C:\Users\53461\OneDrive\Desktop\Patch-seq\4Manuscript\Macaque_E4_ML_layout (Ver20260921).json"
+code/08_packaging/package_macaque_E_RRR_methods_supplement.py:28: LAYOUT = Path(r"C:\Users\53461\Downloads\Macaque_T-E_RRR_gc_merged_layout (3).json")
+interactive/dist/ml-code/validate_macaque_EM_stability_500.py:42: ZIP_FILE = Path(r"C:\Users\53461\Downloads\Macaque-PatchSeq-BG.zip")

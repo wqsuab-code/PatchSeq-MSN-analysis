@@ -22,8 +22,17 @@ It contains the complete derived-data chain from the 486-cell target cohort to
 HC-GC consensus cells, donor-grouped machine-learning validation, M-T RRR source
 data, figures and interactive editors.
 
-Additional macaque electrophysiology, mouse electrophysiology, mouse morphology
-and cross-modal modules will be added as separately audited releases.
+### Macaque electrophysiology E1-E4 and transcriptome-to-electrophysiology analysis
+
+The audited macaque electrophysiology module is located in
+[`analyses/macaque_ephys`](analyses/macaque_ephys). It contains the frozen
+Ca/Pu/NAc 19-feature cohort, HC-GC consensus E1-E4 classification,
+donor-grouped machine-learning validation, T-E reduced-rank regression source
+data, figures, interactive editors, provenance records and clean-clone
+integrity checks.
+
+Additional mouse electrophysiology, mouse morphology and cross-modal modules
+will be added as separately audited releases.
 
 ## Data policy
 

@@ -1,0 +1,28 @@
+{
+  "input_cells": 368,
+  "unique_cell_ids": 368,
+  "features": 19,
+  "class_counts": {
+    "E1": 59,
+    "E2": 133,
+    "E3": 57,
+    "E4": 119
+  },
+  "omnibus_tests": 19,
+  "pairwise_tests": 114,
+  "omnibus_BH_lt_0.05": 19,
+  "pairwise_Holm_lt_0.05": 85,
+  "pairwise_global_BH_lt_0.05": 86,
+  "pairwise_reference_max_abs_difference": {
+    "Dunn_Z": 0.0,
+    "Dunn_r": 0.0,
+    "P_raw": 0.0,
+    "P_adj_Holm_within_feature": 0.0,
+    "P_adj_BH_global_114_tests": 0.0
+  },
+  "omnibus_reference_max_abs_difference": {
+    "Kruskal_H": 0.0,
+    "P_raw": 0.0,
+    "P_adj_BH_across_19_features": 0.0
+  }
+}
