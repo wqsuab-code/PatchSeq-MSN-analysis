@@ -1,0 +1,9 @@
+"Method","Setting","QC_level","Count","Percent"
+"Top15CleanMarker MaxPC","NPC = 5","Good",623,97.191887675507
+"Top15CleanMarker MaxPC","NPC = 10","Good",620,96.7238689547582
+"Top15CleanMarker MaxPC","NPC = 15","Good",618,96.411856474259
+"Top15CleanMarker MaxPC","NPC = 5","Risk",18,2.80811232449298
+"Top15CleanMarker MaxPC","NPC = 10","Risk",21,3.27613104524181
+"Top15CleanMarker MaxPC","NPC = 15","Risk",23,3.58814352574103
+"Top15 risk x040/x050","x040/x050","Good",630,98.2839313572543
+"Top15 risk x040/x050","x040/x050","Risk",11,1.71606864274571

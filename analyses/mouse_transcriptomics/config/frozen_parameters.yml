@@ -1,0 +1,82 @@
+freeze_date: 2026-09-30
+
+cohorts:
+  patchseq_sequenced: 643
+  patchseq_removed_low_reads: 2
+  patchseq_mapped: 641
+  patchseq_qc_good: 622
+  patchseq_qc_risk: 19
+  reference_neurons: 21359
+  reference_D1: 12342
+  reference_D2: 7687
+  reference_IN: 1330
+
+qc:
+  pearson_centroid:
+    retained: 630
+    low_risk: 9
+    high_risk: 2
+    thresholds:
+      good: "R >= 0.50"
+      low_risk: "0.40 < R < 0.50"
+      high_risk: "R <= 0.40"
+  five_pc_centroid:
+    retained: 623
+    low_risk: 3
+    high_risk: 15
+  consensus_rule: "Good only when retained by both diagnostics"
+
+global_rpca:
+  scan_npcs: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+  exploratory_boundary_npc: 10
+  stability_npcs: [12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+  anchor_count_range: [654, 1003]
+  stable_D1: 272
+  stable_D2: 279
+  stable_IN: 34
+  fluctuating_celltype: 56
+  stable_MSN_root: 588
+  stable_IN_root: 34
+  fluctuating_root: 19
+
+msn_subtype_rpca:
+  reference_cells: 20029
+  query_cells: 588
+  hvg_definition: "Top750 by reference-only dispersion_z ranking"
+  initial_hvgs: 750
+  effective_features: 721
+  npcs: 16
+  k_anchor: 10
+  k_filter: 200
+  k_weight: 30
+  anchors: 2331
+
+msn_pearson_bootstrap:
+  repetitions: 500
+  seed: 20260715
+  genes_per_replicate: 721
+  sampling_fraction: 1.0
+  sampling_with_replacement: true
+  reporting_label: "modal Pearson subtype"
+  exact_rpca_agreement: 422
+  exact_rpca_disagreement: 166
+  d1_d2_agreement: 572
+  high_definition: "modal support >= 0.80 and top1-top2 margin >= 0.50"
+  moderate_definition: "modal support >= 0.50 and margin >= 0.20, excluding High"
+  low_definition: "all remaining cells"
+  high_n: 339
+  moderate_n: 175
+  low_n: 74
+
+msn_visualization:
+  embedding: "t-SNE of reference PC1-PC16"
+  perplexity: 15
+  learning_rate: 100
+  iterations: 1000
+  theta: 0.5
+  early_exaggeration: 12
+  note: "Visualization parameters do not determine subtype labels."
+
+in_subtype_mapping:
+  status: "PENDING_NOT_FROZEN"
+  rule: "Optimize independently; do not copy MSN HVG or PC settings."

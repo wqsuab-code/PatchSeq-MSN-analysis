@@ -1,0 +1,2 @@
+parameter,effective_features,n_bootstrap,n_cells,RPCA_bootstrap_top1_agreement,RPCA_support_q1,RPCA_support_median,bootstrap_top1_fraction_q1,bootstrap_top1_fraction_median,bootstrap_margin_q1,bootstrap_margin_median,fraction_RPCA_support_ge_0p5,fraction_RPCA_support_ge_0p7,fraction_RPCA_support_ge_0p8,fraction_RPCA_support_ge_0p9
+top750_PC16_ka10_kf200_kw30,721,500,588,0.717687074829932,0.336,0.793,0.6645,0.85,0.4195,0.746,0.698979591836735,0.581632653061225,0.496598639455782,0.387755102040816

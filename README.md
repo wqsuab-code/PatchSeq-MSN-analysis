@@ -5,6 +5,15 @@ mouse and macaque striatal medium spiny neurons.
 
 ## Available analysis modules
 
+### Mouse transcriptomic mapping and MSN T-type assignment
+
+The frozen mouse transcriptomic module is located in
+[`analyses/mouse_transcriptomics`](analyses/mouse_transcriptomics). It contains
+the audited global neuronal RPCA stability analysis, the 588-cell MSN subtype
+mapping workflow, Pearson gene-bootstrap validation, figure source data,
+publication panels, provenance records and integrity checks. IN subtype mapping
+is explicitly retained as pending work and is not represented as frozen.
+
 ### Macaque morphology M1-M4 and transcriptome-to-morphology analysis
 
 The first frozen module is located in [`analyses/macaque_morphology`](analyses/macaque_morphology).
