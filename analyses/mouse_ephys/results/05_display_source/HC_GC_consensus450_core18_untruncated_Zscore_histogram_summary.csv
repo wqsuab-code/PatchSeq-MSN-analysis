@@ -1,0 +1,9 @@
+Statistic,Value
+N_cells,450.0
+N_features,18.0
+N_values,8100.0
+Minimum_Z,-4.772051454672897
+Maximum_Z,12.258713764588528
+N_below_minus2,90.0
+N_above_plus2,274.0
+Percent_outside_minus2_plus2,4.493827160493828

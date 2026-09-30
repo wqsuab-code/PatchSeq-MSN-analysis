@@ -1,0 +1,8 @@
+Item,Details
+Cohort,"450 HC×GC consensus cells; E1=142, E2=160, E3=45, E4=61, E5=42; expert labels not used."
+Data scale,Raw values of the frozen 18-feature electrophysiology panel; no PCA values used for univariate plots or tests.
+Omnibus test,Two-sided Kruskal-Wallis test with tie correction; BH correction across 18 features.
+Post hoc test,All 10 two-sided Dunn comparisons with tie correction; Holm correction within each feature.
+Pairwise effect size,Dunn r = |Z|/sqrt(450).
+Variance test,Brown-Forsythe median-centered Levene test; BH correction across 18 features.
+Figure,"Raw observations, notched box plots, and exact Holm-adjusted P values for significant pairs only."

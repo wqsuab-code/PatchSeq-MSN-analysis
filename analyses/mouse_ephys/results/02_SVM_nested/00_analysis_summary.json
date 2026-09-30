@@ -1,0 +1,15 @@
+{
+  "N": 450,
+  "Support": {
+    "E1": 142,
+    "E2": 160,
+    "E3": 45,
+    "E4": 61,
+    "E5": 42
+  },
+  "Nested_OOF_accuracy": 0.92,
+  "Nested_OOF_balanced_accuracy": 0.9320459322419031,
+  "Nested_OOF_macro_F1": 0.9205393115288812,
+  "Selected_C": 0.1,
+  "Seed": 777
+}

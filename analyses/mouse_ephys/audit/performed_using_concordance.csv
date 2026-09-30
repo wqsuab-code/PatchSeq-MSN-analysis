@@ -1,0 +1,25 @@
+analysis,new_file,frozen_file,same_shape,same_columns,categorical_values_exact,maximum_absolute_numeric_difference,tolerance,pass
+E-group omnibus statistics,03_python_analyses/statistics/Core18_Egroup_Omnibus_KW.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/statistics/Core18_Egroup_Omnibus_KW.csv,True,True,True,0.0,1e-10,True
+E-group pairwise statistics,03_python_analyses/statistics/Core18_Egroup_Pairwise_Dunn_Holm.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/statistics/Core18_Egroup_Pairwise_Dunn_Holm.csv,True,True,True,0.0,1e-10,True
+Nested SVM confusion counts,03_python_analyses/SVM_nested_support/01a_confusion_counts.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/SVM_nested/01a_confusion_counts.csv,True,True,True,0.0,0,True
+Nested SVM class metrics,03_python_analyses/SVM_nested_support/04_classwise_metrics.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/SVM_nested/04_classwise_metrics.csv,True,True,True,0.0,1e-10,True
+Date-grouped model summary,03_python_analyses/ML_date_grouped/02_model_summary.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/ML_date_grouped/02_model_summary.csv,True,True,True,0.0,1e-10,True
+Date-grouped confusion counts,03_python_analyses/ML_date_grouped/04_confusion_counts.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/ML_date_grouped/04_confusion_counts.csv,True,True,True,0.0,0,True
+Strict441 RRR cell scores,02_RRR_R/RRR_cell_scores_n441.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/RRR_strict441/RRR_cell_scores_n441.csv,True,True,True,0.0,1e-10,True
+Strict441 RRR E-feature loadings,02_RRR_R/RRR_Efeature_correlation_loadings_n441.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/RRR_strict441/RRR_Efeature_correlation_loadings_n441.csv,True,True,True,0.0,1e-10,True
+Strict441 RRR gene loadings,02_RRR_R/RRR_gene_correlation_loadings_n441.csv,outputs/Mouse_E_frozen_analysis_bundle_20260923/02_frozen_analysis/RRR_strict441/RRR_gene_correlation_loadings_n441.csv,True,True,True,0.0,1e-10,True
+Core taxonomy: Active z-score matrix maximum absolute difference,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,2.66453525910038e-14,as specified by core audit,True
+Core taxonomy: First three PCA scores maximum absolute difference,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,5.41788836017076e-14,as specified by core audit,True
+Core taxonomy: Ward.D2 HC K5 assignments exact,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,1.0,as specified by core audit,True
+Core taxonomy: HC E labels exact,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,1.0,as specified by core audit,True
+Core taxonomy: Merged GC E labels exact,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,1.0,as specified by core audit,True
+Core taxonomy: GC-HC consensus mask exact,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,1.0,as specified by core audit,True
+Core taxonomy: Active consensus count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,450.0,as specified by core audit,True
+Core taxonomy: Active E1 count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,142.0,as specified by core audit,True
+Core taxonomy: Active E2 count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,160.0,as specified by core audit,True
+Core taxonomy: Active E3 count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,45.0,as specified by core audit,True
+Core taxonomy: Active E4 count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,61.0,as specified by core audit,True
+Core taxonomy: Active E5 count,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,42.0,as specified by core audit,True
+Core taxonomy: Archived versus recomputed PCA maximum absolute difference,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,5.32907051820075e-14,as specified by core audit,True
+Core taxonomy: Fixed t-SNE maximum absolute coordinate difference,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,4.9737991503207e-14,as specified by core audit,True
+Core taxonomy: Fixed t-SNE Procrustes RMSE,01_core_taxonomy_R/core_taxonomy_concordance.csv,Mouse_E_frozen_analysis_bundle_20260923,True,True,True,1.26255608345371e-14,as specified by core audit,True

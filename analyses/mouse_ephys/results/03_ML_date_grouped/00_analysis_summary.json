@@ -1,0 +1,20 @@
+{
+  "n": 450,
+  "features": 18,
+  "classes": {
+    "E1": 142,
+    "E2": 160,
+    "E3": 45,
+    "E4": 61,
+    "E5": 42
+  },
+  "experimentalDays": 160,
+  "sequencingBatches": 7,
+  "splits": 200,
+  "bestModel": "RBF",
+  "permutationP": 0.009900990099009901,
+  "observedPermutationScore": 0.8692541709100754,
+  "rankRho": 0.7667698658410733,
+  "seed": 20260916,
+  "methods": "Two hundred date-grouped 75:25 train-test splits; same-day cells kept together; fold-fitted feature-minimum shift, column-sum normalization to 10,000, log1p, z-scoring and PCA (3 components); 100 experimental-day-block label permutations evaluated on five fixed grouped splits; 200 date-resampled unsupervised fits; 50 grouped splits for importance and ablation. Batch2-Batch8 retained only as sequencing-submission batch metadata."
+}

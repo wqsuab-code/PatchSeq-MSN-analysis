@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-type electrophysiology explorer</title>
+  <meta name="description" content="Interactive comparison of 18 core electrophysiological features across five HC×GC consensus E-types.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>E-type electrophysiology explorer</h1>
+      <p>450 HC×GC consensus cells · E1 142 · E2 160 · E3 45 · E4 61 · E5 42</p>
+    </div>
+    <div class="header-actions">
+      <a class="button primary" href="tsne-editor.html">t-SNE workflow</a>
+      <a class="button primary" href="comparison-editor.html">Comparison editor</a>
+      <a class="button primary" href="ml-validation-editor.html">ML validation editor</a>
+      <a class="button primary" href="composition-editor.html">Strict T-identity composition</a>
+      <a class="button" href="stability-statistics.html">E stability statistics</a>
+      <a class="button" href="rrr-editor.html">RRR label editor</a>
+      <a class="button" href="radar-editor.html">Radar editor</a>
+      <button id="saveConfig" type="button">Export settings</button>
+      <label class="button" for="loadConfig">Import settings</label>
+      <input id="loadConfig" type="file" accept="application/json" hidden>
+      <button id="reset" class="quiet" type="button">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Plot controls">
+      <label>Columns
+        <select id="columns"><option>1</option><option>2</option><option selected>3</option></select>
+      </label>
+      <label>Point size <output id="pointSizeValue">4.0</output>
+        <input id="pointSize" type="range" min="1" max="8" step="0.5" value="4">
+      </label>
+      <label>Point opacity <output id="opacityValue">0.50</output>
+        <input id="opacity" type="range" min="0.1" max="1" step="0.05" value="0.5">
+      </label>
+      <label>P-value cutoff
+        <select id="pCutoff"><option value="0.05" selected>0.05</option><option value="0.01">0.01</option><option value="0.001">0.001</option></select>
+      </label>
+      <label class="check"><input id="showPoints" type="checkbox" checked> Cells</label>
+      <label class="check"><input id="showBoxes" type="checkbox" checked> Box plots</label>
+      <label class="check"><input id="showP" type="checkbox" checked> Adjusted P values</label>
+      <details>
+        <summary>Colors & features</summary>
+        <div id="colorControls" class="colors"></div>
+        <div class="feature-actions"><button id="allFeatures" type="button">All</button><button id="noFeatures" type="button">None</button></div>
+        <div id="featureControls" class="features"></div>
+      </details>
+    </section>
+
+    <p id="status" role="status">Loading data…</p>
+    <section id="plots" class="plot-grid" style="--columns:3" aria-label="Electrophysiology plots"></section>
+  </main>
+  <footer>Raw values · two-sided Kruskal–Wallis with BH correction across 18 features · two-sided Dunn tests with Holm correction within feature</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

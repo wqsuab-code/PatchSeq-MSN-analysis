@@ -1,0 +1,16 @@
+E_class,T_identity,N
+E1,D1,87
+E1,D2,53
+E1,Ambiguous,2
+E2,D1,50
+E2,D2,105
+E2,Ambiguous,5
+E3,D1,16
+E3,D2,29
+E3,Ambiguous,0
+E4,D1,20
+E4,D2,39
+E4,Ambiguous,2
+E5,D1,36
+E5,D2,6
+E5,Ambiguous,0

@@ -1,0 +1,6 @@
+{
+  "source_stage1_json": "data/01_cohort_QC/stage1_filtered.json",
+  "external_rna_rds": "../release-assets/MSN_raw_branch_counts_and_metadata.rds",
+  "external_abf_directory": "../release-assets/representative_ABF",
+  "module_output_root": "analyses/mouse_ephys/results"
+}

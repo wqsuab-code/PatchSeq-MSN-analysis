@@ -1,0 +1,7 @@
+Core-18 HC x GC consensus heatmap
+N=450 consensus cells; 43 nonconsensus cells excluded
+Features=18 frozen clustering features
+Columns=E1-E5; within-class random shuffle seed=777
+Display z-score ranges generated: -2 to 2, -3 to 3, and -4 to 4
+Right panel=class mean z-score for each feature
+Inline preview=C:\Users\53461\.codex\visualizations\2026\07\17\019f71da-964a-7081-ba5b-b8eb07ce1914\core18-ephys-heatmap.html

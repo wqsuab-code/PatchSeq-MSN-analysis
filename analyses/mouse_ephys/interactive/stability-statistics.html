@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mouse E classification stability statistics</title>
+  <meta name="description" content="Interactive E-only cohort flow from all active E cells through HC-GC E consensus to strict stable D1 and D2 transcriptomic identity.">
+  <link rel="stylesheet" href="rrr-editor.css">
+  <link rel="stylesheet" href="stability-statistics.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>E-classification consensus and strict T-identity statistics</h1><p>493 active E cells -> 450 HC-GC E consensus cells -> 441 strict T-stable cells</p></div>
+    <div class="top-actions"><a class="button" href="tsne-editor.html">t-SNE workflow</a><a class="button" href="composition-editor.html">E-type composition</a><a class="button" href="rrr-editor.html">RRR editor</a><a class="button" href="index.html">Feature studio</a></div>
+  </header>
+  <main class="editor-shell">
+    <aside class="controls" aria-label="E stability statistics figure controls">
+      <details open><summary>Data display</summary><div class="control-group">
+        <label>Display mode<select id="mode"><option value="percent" selected>Percentage</option><option value="count">Cell count</option></select></label>
+        <label class="check"><input id="includeAmbiguous" type="checkbox" checked>Include T-identity ambiguous cells in D1/D2 panels</label>
+        <label>Canvas width <output id="canvasWidthValue"></output><input id="canvasWidth" type="range" min="700" max="1800" step="10"></label>
+        <label>Canvas height <output id="canvasHeightValue"></output><input id="canvasHeight" type="range" min="420" max="1200" step="10"></label>
+        <label>Panel gap <output id="panelGapValue"></output><input id="panelGap" type="range" min="10" max="100" step="2"></label>
+        <label>Outer margin <output id="outerMarginValue"></output><input id="outerMargin" type="range" min="20" max="120" step="2"></label>
+        <label>Bar width <output id="barWidthValue"></output><input id="barWidth" type="range" min="0.2" max="0.9" step="0.01"></label>
+      </div></details>
+      <details open><summary>Colors and text</summary><div class="control-group">
+        <label>D1 color<input id="d1Color" type="color"></label>
+        <label>D2 color<input id="d2Color" type="color"></label>
+        <label>Ambiguous color<input id="ambiguousColor" type="color"></label>
+        <label>Non-consensus color<input id="excludedColor" type="color"></label>
+        <label>Background<input id="backgroundColor" type="color"></label>
+        <label>Axis/text color<input id="textColor" type="color"></label>
+        <label>Font family<select id="fontFamily"><option>Arial</option><option>Helvetica</option><option>Times New Roman</option></select></label>
+        <label>Base font size <output id="fontSizeValue"></output><input id="fontSize" type="range" min="6" max="22" step="0.5"></label>
+        <label>Panel title size <output id="titleSizeValue"></output><input id="titleSize" type="range" min="7" max="28" step="0.5"></label>
+        <label class="check"><input id="showValues" type="checkbox">Values on marks</label>
+        <label class="check"><input id="showLegend" type="checkbox">Legend</label>
+      </div></details>
+      <details><summary>Export</summary><div class="control-group">
+        <label>Figure width (in)<input id="exportWidth" type="number" min="2" max="20" step="0.1"></label>
+        <label>PNG resolution<select id="exportDpi"><option>300</option><option>600</option><option selected>900</option><option>1200</option></select></label>
+      </div></details>
+      <div class="actions">
+        <button id="saveDefault" class="wide" type="button">Save current parameters as default</button>
+        <button id="resetAll" class="wide" type="button">Restore saved default</button>
+        <button id="exportSvg" type="button">Export SVG</button>
+        <button id="exportPng" type="button">Export PNG</button>
+        <button id="exportCsv" type="button">Export cell data</button>
+        <button id="exportSummary" type="button">Export summary</button>
+        <button id="exportLayout" type="button">Export layout</button>
+        <label class="button wide" for="importLayout">Import layout JSON</label><input id="importLayout" type="file" accept="application/json" hidden>
+      </div>
+      <p class="hint">This page is E-only: total active E cells -> HC-GC E consensus -> strict T identity, with optional display of T-identity ambiguous cells.</p>
+    </aside>
+    <section class="canvas-shell">
+      <div class="canvas-head"><strong>Live E-only stability preview</strong><span id="summaryLine">Loading data...</span></div>
+      <p id="statusLine" role="status">Loading E-classification stability table...</p>
+      <div class="decision-note"><strong>Terminology:</strong> HC-GC agreement defines the E1-E5 consensus cohort. Strict T identity is evaluated separately by RPCA/centroid D1-D2 agreement; cells without stable D1 or D2 identity are labeled ambiguous.</div>
+      <div class="canvas-scroll"><svg id="stabilitySvg" role="img" aria-label="E classification consensus and strict T identity distributions"></svg></div>
+      <h2>Distribution numbers</h2>
+      <div class="data-table-wrap"><table id="summaryTable"><thead><tr><th>Analysis population</th><th>Status</th><th>n</th><th>%</th><th>Interpretation</th></tr></thead><tbody></tbody></table></div>
+      <h2>E class by strict T identity</h2>
+      <div class="data-table-wrap"><table id="jointTable"><thead><tr><th>E class</th><th>D1</th><th>D2</th><th>Ambiguous</th><th>Total</th><th>D1 %</th><th>D2 %</th><th>Ambiguous %</th></tr></thead><tbody></tbody></table></div>
+      <h2>Cell-level source fields</h2>
+      <div class="data-table-wrap"><table id="kTable"><thead><tr><th>Field</th><th>Meaning</th><th>Used in current page</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+  <script src="stability-statistics.js"></script>
+</body>
+</html>

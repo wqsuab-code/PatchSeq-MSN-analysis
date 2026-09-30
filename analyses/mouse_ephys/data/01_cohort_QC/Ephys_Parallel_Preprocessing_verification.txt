@@ -1,0 +1,22 @@
+Input cells before six-feature QC: 549
+QC-pass cells retained: 494
+Numeric E-features: 25
+Missing/non-finite values in PCA input: 0
+Unique MSN_unique_ID values: 494
+
+Branch 1: bounded per-feature Yeo-Johnson maximum-likelihood transformation (lambda in [-5, 5]) followed by Z-score.
+Features with boundary-capped lambda: 8 of 25
+Median absolute skewness: raw=0.800977; Yeo-Johnson=0.047825
+
+Branch 2: per-feature shift to zero, divide by shifted column sum, multiply by 10000, apply log1p, then Z-score each feature.
+Maximum absolute final column-sum error: 1.81898940355e-12
+Maximum raw vs pre-log ShiftSum Pearson-correlation difference: 2.22044604925e-16
+Maximum raw vs pre-log ShiftSum skewness difference: 4.99600361081e-15
+Maximum raw-Zscore vs pre-log ShiftSum-Zscore difference: 2.69229083472e-15
+Maximum raw vs post-log Pearson-correlation change: 0.245682325715
+Maximum raw vs post-log skewness change: 9.85430786687
+Final log1p-Zscore maximum absolute column mean: 5.56273847273e-16
+Final log1p-Zscore maximum absolute SD-minus-one: 1.11022302463e-16
+
+Interpretation: the shift and sum-normalization stages alone are positive affine transformations and preserve skewness and Pearson correlation. The subsequent log1p stage is nonlinear and changes both distributional shape and correlation structure; feature-wise Z-scoring is therefore required before PCA.
+For parallel PCA, use Ephys_YeoJohnson_Zscore_PCA_input.csv for Branch 1 and Ephys_ShiftSumNorm10000_Log1p_Zscore_PCA_input.csv for the article-matched Branch 2.

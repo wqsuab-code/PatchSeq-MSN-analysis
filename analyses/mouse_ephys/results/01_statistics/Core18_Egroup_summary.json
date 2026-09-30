@@ -1,0 +1,14 @@
+{
+  "N": 450,
+  "group_counts": {
+    "E1": 142,
+    "E2": 160,
+    "E3": 45,
+    "E4": 61,
+    "E5": 42
+  },
+  "features": 18,
+  "omnibus_BH_significant": 18,
+  "pairwise_Holm_significant": 132,
+  "variance_BH_significant": 12
+}

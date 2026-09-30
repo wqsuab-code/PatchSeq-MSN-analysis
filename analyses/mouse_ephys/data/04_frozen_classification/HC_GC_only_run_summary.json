@@ -1,0 +1,9 @@
+{
+  "N_all": 493,
+  "N_HC_GC_consensus": 450,
+  "N_discordant": 43,
+  "Agreement_fraction": 0.9127789046653144,
+  "Agreement_percent": 91.27789046653145,
+  "ARI": 0.7832004586156048,
+  "NMI": 0.764697628364684
+}

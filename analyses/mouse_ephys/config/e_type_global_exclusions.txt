@@ -1,0 +1,9 @@
+# One MSN_unique_ID per line. All E-type analyses must remove these cells.
+A1175_Batch4
+J5203_Batch6
+M1142_Batch5
+M3104_Batch5
+M3251_Batch5
+O8232_Batch2
+O932_Batch2
+M377_Batch5
